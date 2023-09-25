@@ -53,10 +53,10 @@ const WeatherComponent = () => {
             const data = response.data;
             setWeather({
                 city:data.name,
-                temp: data.main.temp,
-                temp_max: data.main.temp_max,
-                temp_min: data.main.temp_min,
-                feels_like: data.main.feels_like,
+                temp: parseInt(data.main.temp, 10),
+                temp_max: parseInt(data.main.temp_max, 10),
+                temp_min: parseInt(data.main.temp_min, 10),
+                feels_like: parseInt(data.main.feels_like, 10),
                 humidity: data.main.humidity,
                 desc: data.weather[0].description,
                 icon: data.weather[0].icon,
@@ -106,31 +106,55 @@ const WeatherComponent = () => {
     }
   return (
     <S.WeatherComponent>
-      <div>
-        <span>Current Date: {currentTime.toLocaleDateString()}</span>
-        <br />
-        <span>Current Time: {currentTime.toLocaleTimeString()}</span>
-      </div>
-      <div>
-
+        <S.Date>
+            <S.DateTitle>오늘은</S.DateTitle>
+            <S.DateContent>
+                <S.CurrentDate>{currentTime.toLocaleDateString()}</S.CurrentDate>
+                <br />
+                <S.CurrentTime>{currentTime.toLocaleTimeString()}</S.CurrentTime>
+            </S.DateContent>
+        </S.Date>
         {weather.loading 
-        ? <p>Loading...</p> 
-        : <div>
-            <p>현재기온: {weather.temp}</p>
-            <p>체감기온: {weather.feels_like}</p>
-            <p>최대기온: {weather.temp_max}</p>
-            <p>최저기온: {weather.temp_min}</p>
-            <p>습도: {weather.humidity}</p>
-            <p>오늘의 날씨: {weather.desc}</p>
-            <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt="" />
-            <p>Icon: {weather.icon}</p>
-            <p>지역: {weather.city}</p>
-            <p>미세먼지: {pollute.pm2_5}</p>
-            <p>공기질: {air()}</p>
-        </div>
+        ? (
+        <S.Weather>
+            <p>Loading...</p>
+        </S.Weather>
+        )
+        : (
+            <S.Weather>
+                <S.Weather1>
+                    <S.TempWrapper>
+                        <span class="material-symbols-outlined" style={{ fontSize: '60px'}}>thermostat</span>
+                        <S.CurrentTemp>{weather.temp}℃</S.CurrentTemp>
+                        <S.FeelingTemp>체감: {weather.feels_like}℃</S.FeelingTemp>
+                    </S.TempWrapper>
+                    <S.WeatherWrapper>
+                        <S.WeatherText>{weather.desc}</S.WeatherText>
+                        <S.WeatherImg src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt="" />
+                    </S.WeatherWrapper>
+                </S.Weather1>
+                <S.Weather2>
+                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'red', opacity:0.5}}>thermometer_add</span>
+                    <S.MaxTemp>최대기온: {weather.temp_max}℃</S.MaxTemp>
+                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'blue', opacity:0.5}}>thermometer_loss</span>
+                    <S.MinTemp>최저기온: {weather.temp_min}℃</S.MinTemp>
+                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'skyblue'}}>cool_to_dry</span>
+                    <S.Humidity>습도: {weather.humidity}%</S.Humidity>
+                </S.Weather2>
+                <S.Weather3>
+                    <span class="material-symbols-outlined" style={{ fontSize: '50px', color: 'gray'}}>snowing</span>
+                    <S.Pm2>미세먼지: {pollute.pm2_5}</S.Pm2>
+                    <S.Air>{air()}</S.Air>
+                </S.Weather3>
+                <S.Weather4>
+                    <S.City>📌{weather.city}</S.City>
+                </S.Weather4>
+
+            </S.Weather>
+        )
         }
 
-      </div>
+      
     </S.WeatherComponent>
   );
 };
