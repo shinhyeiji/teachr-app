@@ -1,0 +1,76 @@
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const Container = styled.div`
+    width: 1440px;
+    height: 810px;
+    padding: 20px;
+`
+export const AppContent = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+`
+export const NavDiv = styled.div`
+    width: 202px;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+`
+export const Nav = styled.div`
+    width: 200px;
+    height: 100px;
+    background-color: ${props => props.active ? '#a2a2a2' : '#f0f0f0'};
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    color: ${props => props.active ? '#FFF' : '#000'};
+    &:hover{
+        background-color: #a2a2a2;
+        color:#FFF;
+        cursor: pointer;
+    }
+`
+export const StyledLink = styled(Link)`
+    width: 162px;
+    height: 100px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+        text-decoration: none;
+        color: #000;
+        &:hover{
+            color:#FFF;
+        }
+`
+export const AppTitle = styled.h2`
+    width: 100%;
+    height: 70px;
+    border: 10px solid white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 40px;
+    padding: 10px;
+`
+export const NavTitle = styled.h2`
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+export const Content = styled.div`
+    width: 1238px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+`
+export const MainContent = styled.div`
+    
+`
