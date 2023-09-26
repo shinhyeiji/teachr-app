@@ -142,7 +142,7 @@ export const Pm2 = styled.p`
     color: gray;
     margin-right: 70px;
 `
-export const Air = styled.p`
+export const Air = styled.div`
     font-size: 40px;
     font-weight: 700;
     color: gray;

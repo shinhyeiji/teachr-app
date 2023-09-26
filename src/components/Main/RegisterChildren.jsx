@@ -1,6 +1,6 @@
-import * as S from './style/RegisterChildren.style.jsx';
+import * as S from './style/RegisterChildren.style';
 import { useState } from 'react';
-import RegisterChildrenModalPage from './RegisterChildrenModalPage.jsx'
+import RegisterChildrenModalPage from './RegisterChildrenModalPage'
 
 const RegisterChildren = ({ classInfo, setClassInfo }) => {
     const [modalOpen, setModalOpen] = useState(false);

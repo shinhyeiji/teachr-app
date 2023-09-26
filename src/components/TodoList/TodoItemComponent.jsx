@@ -1,4 +1,4 @@
-import * as S from './style/TodoItemComponent.style.jsx';
+import * as S from './style/TodoItemComponent.style';
 
 const TodoItemComponent = ({ id, time, content, isDone, createdDate, onUpdate, onDelete }) => {
     const onChangeCheckbox = () => {

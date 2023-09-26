@@ -1,7 +1,7 @@
-import * as S from './style/Timewatch.style.jsx';
+import * as S from './style/Timewatch.style';
 import { useState } from 'react';
-import StopWatch from '../components/Timewatch/StopWatch.jsx'
-import Timer from '../components/Timewatch/Timer.jsx'
+import StopWatch from '../components/Timewatch/StopWatch'
+import Timer from '../components/Timewatch/Timer'
 
 const Timewatch = () => {
     const [tab, setTab] = useState('스탑워치')

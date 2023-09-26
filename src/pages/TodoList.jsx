@@ -1,8 +1,8 @@
 import * as S from './style/TodoList.style';
 import { useState, useEffect, useRef } from 'react';
-import TodoHeaderComponent from '../components/TodoList/TodoHeaderComponent.jsx';
-import TodoEditorComponent from '../components/TodoList/TodoEditorComponent.jsx';
-import TodoListComponent from '../components/TodoList/TodoListComponent.jsx';
+import TodoHeaderComponent from '../components/TodoList/TodoHeaderComponent';
+import TodoEditorComponent from '../components/TodoList/TodoEditorComponent';
+import TodoListComponent from '../components/TodoList/TodoListComponent';
 
 const TodoList = () => {
     const [currentTime, setCurrentTime] = useState(new Date())

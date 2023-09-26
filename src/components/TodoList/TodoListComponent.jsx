@@ -1,5 +1,5 @@
-import * as S from './style/TodoListComponent.style.jsx';
-import TodoItemComponent from './TodoItemComponent.jsx'
+import * as S from './style/TodoListComponent.style';
+import TodoItemComponent from './TodoItemComponent'
 
 const TodoListComponent = ({ todo, onUpdate, onDelete }) => {
     return(

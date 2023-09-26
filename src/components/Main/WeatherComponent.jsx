@@ -124,7 +124,7 @@ const WeatherComponent = () => {
             <S.Weather>
                 <S.Weather1>
                     <S.TempWrapper>
-                        <span class="material-symbols-outlined" style={{ fontSize: '60px'}}>thermostat</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '60px'}}>thermostat</span>
                         <S.CurrentTemp>{weather.temp}℃</S.CurrentTemp>
                         <S.FeelingTemp>체감: {weather.feels_like}℃</S.FeelingTemp>
                     </S.TempWrapper>
@@ -136,15 +136,15 @@ const WeatherComponent = () => {
                 <S.Line></S.Line>
                 <S.WeatherDiv>
                     <S.Weather2>
-                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'red', opacity:0.5}}>thermometer_add</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'red', opacity:0.5}}>thermometer_add</span>
                         <S.MaxTemp>최대기온: {weather.temp_max}℃</S.MaxTemp>
-                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'blue', opacity:0.5}}>thermometer_loss</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'blue', opacity:0.5}}>thermometer_loss</span>
                         <S.MinTemp>최저기온: {weather.temp_min}℃</S.MinTemp>
-                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'skyblue'}}>cool_to_dry</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'skyblue'}}>cool_to_dry</span>
                         <S.Humidity>습도: {weather.humidity}%</S.Humidity>
                     </S.Weather2>
                     <S.Weather3>
-                        <span class="material-symbols-outlined" style={{ fontSize: '50px', color: 'gray'}}>snowing</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '50px', color: 'gray'}}>snowing</span>
                         <S.Pm2>미세먼지: {pollute.pm2_5}</S.Pm2>
                         <S.Air>{air()}</S.Air>
                     </S.Weather3>

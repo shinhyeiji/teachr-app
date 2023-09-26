@@ -1,4 +1,4 @@
-import * as S from './style/RegisterChildrenModalPage.style.jsx';
+import * as S from './style/RegisterChildrenModalPage.style';
 import { useState, useRef } from 'react';
 
 const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) => {
@@ -42,8 +42,8 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
         setClassInfo({
             원명: formData.kindergarten,
             교실명: formData.className,
-            연령: formData.age,
             교사명: formData.teacher,
+            연령: formData.age,
             유아등록: formData.child,
             우리반명단: children,
         });
@@ -67,6 +67,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                                     name="kindergarten"
                                     value={formData.kindergarten}
                                     onChange={handleChange}
+                                    placeholder="OO유치원"
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
@@ -83,26 +84,11 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                                     name="className"
                                     value={formData.className}
                                     onChange={handleChange}
+                                    placeholder="OO반"
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
                                 <S.TableLineButton onClick={() => pushField('교실명', formData.className)}>
-                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
-                                </S.TableLineButton>
-                            </S.TableLineBox>
-                        </S.TableLine>
-                        <S.TableLine>
-                            <S.TableLineBox>연령</S.TableLineBox>
-                            <S.TableLineBox>
-                                <S.TableLineInput
-                                    type="text"
-                                    name="age"
-                                    value={formData.age}
-                                    onChange={handleChange}
-                                />
-                            </S.TableLineBox>
-                            <S.TableLineBox>
-                                <S.TableLineButton onClick={() => pushField('연령', formData.age)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>
@@ -115,10 +101,28 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                                     name="teacher"
                                     value={formData.teacher}
                                     onChange={handleChange}
+                                    placeholder="김미미"
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
                                 <S.TableLineButton onClick={() => pushField('교사명', formData.teacher)}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                        <S.TableLine>
+                            <S.TableLineBox>연령(만)</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="number"
+                                    name="age"
+                                    value={formData.age}
+                                    onChange={handleChange}
+                                    placeholder="5"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={() => pushField('연령', formData.age)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>
@@ -131,6 +135,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                                     name="child"
                                     value={formData.child}
                                     onChange={handleChange}
+                                    placeholder="김라라"
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>

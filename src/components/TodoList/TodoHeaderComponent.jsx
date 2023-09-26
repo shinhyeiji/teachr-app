@@ -1,4 +1,4 @@
-import * as S from './style/TodoHeaderComponent.style.jsx';
+import * as S from './style/TodoHeaderComponent.style';
 const TodoHeaderComponent = ({ currentTime }) => {
 
     return(

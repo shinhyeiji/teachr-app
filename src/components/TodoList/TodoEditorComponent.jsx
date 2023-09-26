@@ -1,4 +1,4 @@
-import * as S from './style/TodoEditorComponent.style.jsx';
+import * as S from './style/TodoEditorComponent.style';
 import { useRef, useState } from 'react';
 
 const TodoEditorComponent = ({ onCreate }) => {

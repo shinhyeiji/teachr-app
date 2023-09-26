@@ -1,4 +1,4 @@
-import * as S from './style/Timer.style.jsx';
+import * as S from './style/Timer.style';
 import { useState, useEffect } from 'react';
 import useSound from 'use-sound';
 import clock from '../../sounds/clock.mp3'

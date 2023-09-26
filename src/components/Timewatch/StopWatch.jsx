@@ -1,4 +1,4 @@
-import * as S from './style/StopWatch.style.jsx';
+import * as S from './style/StopWatch.style';
 import { useState, useRef } from 'react';
 
 const StopWatch = () => {
