@@ -8,7 +8,8 @@ import TodoList from './TodoList';
 import Document from './Document';
 import TodayPlay from './TodayPlay';
 import Timewatch from './Timewatch';
-import WeatherComponent from '../components/Weather/WeatherComponent.jsx';
+import WeatherComponent from '../components/Main/WeatherComponent.jsx';
+import RegisterChildren from '../components/Main/RegisterChildren.jsx';
 
 const Main = () => {
     const [tab, setTab] = useState('');
@@ -26,6 +27,14 @@ const Main = () => {
         타임워치: <Timewatch />,
         하루일과: <TodayPlay />,
     }
+    const [classInfo, setClassInfo] = useState({
+        원명: '',
+        교실명: '',
+        연령: '',
+        교사명: '',
+        유아등록: '',
+        우리반명단: []
+    })
     return(
         <S.Container>
             <S.AppContent>
@@ -54,7 +63,10 @@ const Main = () => {
                         //     <WeatherComponent />
                         // </div>
                         // )
-                        ? <WeatherComponent />
+                        ? <S.MainWrapper>
+                            <WeatherComponent />
+                            <RegisterChildren classInfo={classInfo} setClassInfo={setClassInfo} />
+                        </S.MainWrapper>
                         : tabComponent[tab]
                         }
                     </S.MainContent>

@@ -40,11 +40,11 @@ export const StyledLink = styled(Link)`
     display: flex;
     align-items: center;
     margin: 20px 0;
-        text-decoration: none;
-        color: #000;
-        &:hover{
-            color:#FFF;
-        }
+    text-decoration: none;
+    color: #000;
+    &:hover{
+        color:#FFF;
+    }
 `
 export const AppTitle = styled.h2`
     width: 100%;
@@ -67,10 +67,14 @@ export const Content = styled.div`
     width: 1238px;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
+    margin: 10px 20px 0 40px;
     padding: 10px;
 `
 export const MainContent = styled.div`
-    
+
+`
+export const MainWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
 `

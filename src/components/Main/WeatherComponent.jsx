@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import * as S from './style/WeatherComponent.style';
+import axios from 'axios';
 
 const WeatherComponent = () => {
     const [latitude, setLatitude] = useState(37.5642135);
@@ -89,19 +89,19 @@ const WeatherComponent = () => {
 
     const air = () => {
         if(pollute.aqi === 1){
-            return <p>공기질: 아주 좋음😎</p>
+            return <S.AirCondition style={{color:'blue'}}>상태: 아주 좋음😎</S.AirCondition>
         }
         else if(pollute.aqi === 2){
-            return <p>공기질: 좋음😀</p>
+            return <S.AirCondition style={{color:'green'}}>상태: 좋음😀</S.AirCondition>
         }
         else if(pollute.aqi === 3){
-            return <p>공기질: 보통😊</p>
+            return <S.AirCondition style={{color:'orange'}}>상태: 보통😊</S.AirCondition>
         }
-        else if(pollute.aqi === 4){
-            return <p>공기질: 나쁨😥</p>
+        else if(pollute.aqi === 4 ){
+            return <S.AirCondition style={{color:'red'}}>상태: 나쁨😥</S.AirCondition>
         }
         else if(pollute.aqi === 5){
-            return <p>공기질: 아주 나쁨😷</p>
+            return <S.AirCondition style={{color:'black'}}>상태: 아주 나쁨😷</S.AirCondition>
         }
     }
   return (
@@ -133,19 +133,23 @@ const WeatherComponent = () => {
                         <S.WeatherImg src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt="" />
                     </S.WeatherWrapper>
                 </S.Weather1>
-                <S.Weather2>
-                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'red', opacity:0.5}}>thermometer_add</span>
-                    <S.MaxTemp>최대기온: {weather.temp_max}℃</S.MaxTemp>
-                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'blue', opacity:0.5}}>thermometer_loss</span>
-                    <S.MinTemp>최저기온: {weather.temp_min}℃</S.MinTemp>
-                    <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'skyblue'}}>cool_to_dry</span>
-                    <S.Humidity>습도: {weather.humidity}%</S.Humidity>
-                </S.Weather2>
-                <S.Weather3>
-                    <span class="material-symbols-outlined" style={{ fontSize: '50px', color: 'gray'}}>snowing</span>
-                    <S.Pm2>미세먼지: {pollute.pm2_5}</S.Pm2>
-                    <S.Air>{air()}</S.Air>
-                </S.Weather3>
+                <S.Line></S.Line>
+                <S.WeatherDiv>
+                    <S.Weather2>
+                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'red', opacity:0.5}}>thermometer_add</span>
+                        <S.MaxTemp>최대기온: {weather.temp_max}℃</S.MaxTemp>
+                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'blue', opacity:0.5}}>thermometer_loss</span>
+                        <S.MinTemp>최저기온: {weather.temp_min}℃</S.MinTemp>
+                        <span class="material-symbols-outlined" style={{ fontSize: '40px', color: 'skyblue'}}>cool_to_dry</span>
+                        <S.Humidity>습도: {weather.humidity}%</S.Humidity>
+                    </S.Weather2>
+                    <S.Weather3>
+                        <span class="material-symbols-outlined" style={{ fontSize: '50px', color: 'gray'}}>snowing</span>
+                        <S.Pm2>미세먼지: {pollute.pm2_5}</S.Pm2>
+                        <S.Air>{air()}</S.Air>
+                    </S.Weather3>
+                </S.WeatherDiv>
+                <S.Line></S.Line>
                 <S.Weather4>
                     <S.City>📌{weather.city}</S.City>
                 </S.Weather4>
