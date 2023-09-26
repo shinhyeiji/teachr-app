@@ -8,7 +8,8 @@ const TodoListComponent = ({ todo, onUpdate, onDelete }) => {
             <S.ListWrapper>
                 {todo.map((it)=>(
                 <TodoItemComponent 
-                    key={it.id} {...it} 
+                    key={it.id}
+                    {...it}
                     onUpdate={onUpdate} 
                     onDelete={onDelete} 
                 />))}

@@ -7,5 +7,5 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 80px;
 `

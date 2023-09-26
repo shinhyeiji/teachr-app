@@ -3,6 +3,7 @@ import * as S from './style/TodoItemComponent.style.jsx';
 const TodoItemComponent = ({ id, time, content, isDone, createdDate, onUpdate, onDelete }) => {
     const onChangeCheckbox = () => {
         onUpdate(id);
+        
     };
     const onClickDelete = () => {
         onDelete(id);

@@ -12,38 +12,12 @@ const TodoList = () => {
         }, 1000);
         return () => clearInterval(intervalTime);
     }, []);
-
-    const mockTodo = [
-        {
-            id:0,
-            isDone: false,
-            time: '9시30분',
-            content:'아침모임',
-            createdDate: new Date().getTime(),
-        },
-        {
-            id:1,
-            isDone: false,
-            time: '10시30분',
-            content:'바깥놀이',
-            createdDate: new Date().getTime(),
-        },
-        {
-            id:2,
-            isDone: false,
-            time: '11시30분',
-            content:'점심준비하기',
-            createdDate: new Date().getTime(),
-        },
-        {
-            id:3,
-            isDone: false,
-            time: '5시30분',
-            content:'퇴근',
-            createdDate: new Date().getTime(),
-        }
-    ]
-    const [todo, setTodo] = useState([]);
+    
+    const savedTodoData = localStorage.getItem('todoData');
+    const initialTodoData = savedTodoData ? JSON.parse(savedTodoData) : [];
+    const [todo, setTodo] = useState(initialTodoData);
+    localStorage.setItem('todoData', JSON.stringify(todo));
+    
     const idRef = useRef(0);
 
     const onCreate = (time, content) => {
@@ -57,7 +31,7 @@ const TodoList = () => {
         setTodo([newItem, ...todo]);
         idRef.current += 1;
     };
-    const onUpdate = (targetId) =>{
+    const onUpdate = (targetId) => {
         setTodo(
             todo.map(
                 (it)=>{
@@ -81,7 +55,7 @@ const TodoList = () => {
         <S.Container>
             <TodoHeaderComponent currentTime={currentTime} />
             <TodoEditorComponent onCreate={onCreate} />
-            <TodoListComponent todo={todo} ouUpdate={onUpdate} onDelete={onDelete} />
+            <TodoListComponent todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
         </S.Container>
         )
 };
