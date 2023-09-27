@@ -1,5 +1,5 @@
 import * as S from './style/RegisterChildrenModalPage.style';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) => {
     const [formData, setFormData] = useState({
@@ -8,6 +8,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
         age: '',
         teacher: '',
         child: '',
+        children: [],
     });
     const [children, setChildren] = useState([]);
     const handleChange = (e) => {
@@ -19,10 +20,15 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
     };
     const handleAddChild = () => {
         if (formData.child) {
+            const updatedClassInfo = {
+                ...classInfo,
+                우리반명단: [...classInfo.우리반명단, formData.child],
+            }
+            // child 추가 시 우리반 정보에도 추가
+            setClassInfo(updatedClassInfo);
             setChildren([...children, formData.child]);
             setFormData({
                 ...formData,
-                child: '',
             });
         }
     };
@@ -38,20 +44,22 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
     const pushField = (field, value) => {
         updateDisplayedInfo(field, value);
     };
-    const saveRegisterModal = () => {
+    const saveRegisterModal = (e) => {
+        e.preventDefault();
         setClassInfo({
             원명: formData.kindergarten,
             교실명: formData.className,
             교사명: formData.teacher,
             연령: formData.age,
             유아등록: formData.child,
-            우리반명단: children,
+            우리반명단: children.sort((a, b) => a.localeCompare(b)), // 문자열로 정렬
         });
         setModalOpen(false);
     };
+    
 
     return (
-        <S.RegisterChildrenModalPage>
+        <S.RegisterChildrenModalPage onSubmit={saveRegisterModal}>
             <S.ModalHead>
                 <S.ModalTitle>🐥우리 반 학급 설정🐥</S.ModalTitle>
             </S.ModalHead>
@@ -172,7 +180,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                 </S.Children>
             </S.RegisterInfo2>
             <S.ButtonDiv>
-                    <S.ModalSave onClick={saveRegisterModal}>저장</S.ModalSave>
+                    <S.ModalSave type="submit">저장</S.ModalSave>
                     <S.ModalOff onClick={offRegisterModal}>닫기</S.ModalOff>
             </S.ButtonDiv>
         </S.RegisterChildrenModalPage>

@@ -26,17 +26,20 @@ const Main = () => {
         연령: '',
         교사명: '',
         유아등록: '',
-        우리반명단: []
+        우리반명단: [],
     };
     const [classInfo, setClassInfo] = useState(initialclassInfoData);
-    const [observe, setObserve] = useState({
-        id: 0,
-        name: '',
-        month: '',
-        date: '',
-        division: '',
-        content: '',
-    });
+    
+    const [observe, setObserve] = useState(
+        classInfo.우리반명단.map((item, index) => ({
+            id: index + 1,
+            name: item,
+            month: new Date().getMonth()+1,
+            date: new Date().getDate(),
+            division: '',
+            content: '',
+        }))
+    );
 
     const tabComponent = {
         '달력': <MonthCalendar />,
