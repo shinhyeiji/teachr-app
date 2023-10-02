@@ -1,5 +1,6 @@
+
 import * as S from './style/RegisterChildrenModalPage.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) => {
     const [formData, setFormData] = useState({
@@ -10,54 +11,108 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
         child: '',
         children: [],
     });
+
     const [children, setChildren] = useState([]);
+
+    // 로컬 스토리지에서 데이터 가져오기
+    useEffect(() => {
+        const savedData = localStorage.getItem('classInfo');
+        if (savedData) {
+            const parsedData = JSON.parse(savedData);
+            setFormData({
+                kindergarten: parsedData.원명 || '',
+                className: parsedData.교실명 || '',
+                age: parsedData.연령 || '',
+                teacher: parsedData.교사명 || '',
+                child: '',
+                children: parsedData.우리반명단 || [],
+            });
+            setChildren(parsedData.우리반명단 || []);
+        }
+    }, []);
+
+    // 로컬 스토리지에 데이터 저장하기
+    useEffect(() => {
+        localStorage.setItem('classInfo', JSON.stringify(classInfo));
+    }, [classInfo]);
+
     const handleChange = (e) => {
+        e.preventDefault();
+
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value,
         });
     };
-    const handleAddChild = () => {
+
+    const handleAddChild = (e) => {
+        e.preventDefault();
         if (formData.child) {
             const updatedClassInfo = {
                 ...classInfo,
                 우리반명단: [...classInfo.우리반명단, formData.child],
-            }
-            // child 추가 시 우리반 정보에도 추가
+            };
             setClassInfo(updatedClassInfo);
-            setChildren([...children, formData.child]);
+
+            // formData 업데이트
             setFormData({
                 ...formData,
+                children: [...formData.children, formData.child],
+                child: '',
             });
         }
     };
+
     const offRegisterModal = () => {
         setModalOpen(false);
     };
+
     const updateDisplayedInfo = (field, value) => {
         setClassInfo({
             ...classInfo,
             [field]: value,
         });
     };
+
     const pushField = (field, value) => {
         updateDisplayedInfo(field, value);
     };
+
+    const handleDeleteChild = (child) => {
+        // '우리반명단'에서 선택한 아이템 제거
+        const updatedClassInfo = {
+            ...classInfo,
+            우리반명단: (classInfo.우리반명단 || []).filter((c) => c !== child),
+        };
+
+        setClassInfo(updatedClassInfo);
+
+        // formData 업데이트
+        const updatedChildren = formData.children.filter((c) => c !== child);
+        setFormData({
+            ...formData,
+            children: updatedChildren,
+        });
+    };
+
     const saveRegisterModal = (e) => {
         e.preventDefault();
+
         setClassInfo({
             원명: formData.kindergarten,
             교실명: formData.className,
             교사명: formData.teacher,
             연령: formData.age,
             유아등록: formData.child,
-            우리반명단: children.sort((a, b) => a.localeCompare(b)), // 문자열로 정렬
+            우리반명단: children.sort((a, b) => a.localeCompare(b)),
         });
+
+        // 로컬 스토리지에 데이터 저장
+        localStorage.setItem('classInfo', JSON.stringify(classInfo));
+        console.log(classInfo);
         setModalOpen(false);
     };
-    
-
     return (
         <S.RegisterChildrenModalPage onSubmit={saveRegisterModal}>
             <S.ModalHead>
@@ -157,6 +212,9 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                 <S.Confirm>
                     <S.ConfirmTitle>우리반 정보 확인</S.ConfirmTitle>
                     <S.ConfirmTable>
+                    <S.ConfirmTableHead></S.ConfirmTableHead>
+                        
+                        <S.ConfirmTableBody>
                         {Object.keys(classInfo).slice(0, 4).map((field, index) => (
                             <S.TableLine2 key={index}>
                                 <S.TableLineInfoBox1>{field}:</S.TableLineInfoBox1>
@@ -165,19 +223,24 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                                 </S.TableLineInfoBox2>
                             </S.TableLine2>
                         ))}
+                        </S.ConfirmTableBody>
                     </S.ConfirmTable>
                 </S.Confirm>
             </S.RegisterInfo1>
             <S.RegisterInfo2>
                 <S.ConfirmTitle>우리반 명단</S.ConfirmTitle>
-                <S.Children>
-                    {children.map((child, index) => (
-                        <S.ChildBox key={index}>
-                            <S.Child>{child}</S.Child>
-                            <S.ChildDelete>X</S.ChildDelete>
-                        </S.ChildBox>
-                    ))}
-                </S.Children>
+                <S.Table>
+                    <S.Children>
+                        {formData.children.map((child, index) => (
+                            <S.ChildBox key={index}>
+                                <S.Child>{child}</S.Child>
+                                <S.ChildDeleteWrapper>
+                                    <S.ChildDelete onClick={() => handleDeleteChild}>X</S.ChildDelete>
+                                </S.ChildDeleteWrapper>
+                            </S.ChildBox>
+                        ))}
+                    </S.Children>
+                </S.Table>
             </S.RegisterInfo2>
             <S.ButtonDiv>
                     <S.ModalSave type="submit">저장</S.ModalSave>
@@ -186,5 +249,4 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
         </S.RegisterChildrenModalPage>
     );
 }
-
 export default RegisterChildrenModalPage;

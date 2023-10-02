@@ -1,269 +1,253 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import * as S from './style/RegisterChildrenModalPage.style';
 
-const Observe = ({ classInfo, observe, setObserve }) => {
-    // 관찰 입력 폼과 관련된 상태 변수
-    const [observeIndex, setObserveIndex] = useState(0); // observeIndex 상태 변수 정의
-    const [observeName, setObserveName] = useState('');
-    const [observeDate, setObserveDate] = useState(new Date().getDate());
-    const [observeDivision, setObserveDivision] = useState('신체운동');
-    const [observeContent, setObserveContent] = useState('');
-    
-    // 학기와 월 선택과 관련된 상태 변수
-    const [currentSemester, setCurrentSemester] = useState('1학기');
-    const semesters = ['1학기', '2학기', '월간'];
-    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
-    const months = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2'];
+const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) => {
+    const [formData, setFormData] = useState({
+        kindergarten: '',
+        className: '',
+        age: '',
+        teacher: '',
+        child: '',
+        children: [],
+    });
 
-    // 학기 변경 핸들러
-    const handleChangeSemester = (semester) => {
-        setCurrentSemester(semester);
+    const loadFromLocalStorage = () => {
+        const savedData = localStorage.getItem('classInfo');
+        if (savedData) {
+            // localStorage에서 데이터를 불러와서 파싱
+            return JSON.parse(savedData);
+        }
+        return {}; // 저장된 데이터가 없으면 빈 객체를 반환
     };
 
-    // 월 변경 핸들러
-    const handleChangeMonth = (e) => {
-        setCurrentMonth(e.target.value);
+    // 컴포넌트가 마운트될 때 localStorage에서 데이터를 불러와서 classInfo 초기화
+    useEffect(() => {
+        const savedData = loadFromLocalStorage();
+        if (savedData) {
+            setClassInfo(savedData);
+        }
+    }, []);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
     };
 
-    // 연령에 따른 발달 영역 배열 설정
-    const age = classInfo.연령;
-    const infantDevelop = ['기본생활', '신체운동', '의사소통', '사회관계', '예술경험', '자연탐구'];
-    const childDevelop = ['신체운동', '의사소통', '사회관계', '예술경험', '자연탐구'];
-    const developArray = age <= 2 ? `*영아발달영역: ${infantDevelop}` : `*유아발달영역: ${childDevelop}`;
-    const handleChangeIndex = (e) => {
-        setObserveName(e.target.value);
-        classInfo.우리반명단.include(observeName) ? classInfo.우리반명단.observeName : ''
-    }
-    // 날짜 변경 핸들러
-    const handleDateChange = (e) => {
-        // 최대 2자까지 입력 허용
-        if (e.target.value.length <= 2) {
-            setObserveDate(e.target.value);
+    const handleAddChild = () => {
+        if (formData.child) {
+            // '우리반명단' 업데이트
+            const updatedClassInfo = {
+                ...classInfo,
+                우리반명단: [...(classInfo.우리반명단 || []), formData.child],
+            };
+
+            // '우리반명단' 업데이트
+            setClassInfo(updatedClassInfo);
+
+            // formData 업데이트
+            setFormData({
+                ...formData,
+                children: [...formData.children, formData.child],
+                child: '',
+            });
         }
     };
 
-    // 발달영역 변경 핸들러
-    const handleDivisionChange = (e) => {
-        setObserveDivision(e.target.value);
+    const offRegisterModal = () => {
+        setModalOpen(false);
     };
 
-    // 내용 변경 핸들러
-    const handleContentChange = (e) => {
-        setObserveContent(e.target.value);
+    const updateDisplayedInfo = (field, value) => {
+        setClassInfo({
+            ...classInfo,
+            [field]: value,
+        });
     };
 
-// 관찰 저장 핸들러
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // 기존 관찰 일지 데이터를 가져옴
-        const savedObserveData = localStorage.getItem('observeData') || '[]';
-        const observeData = JSON.parse(savedObserveData);
+    const pushField = (field, value) => {
+        updateDisplayedInfo(field, value);
+    };
 
-        // 사용자 입력 값으로 관찰 일지 데이터를 업데이트
-        const newObserve = {
-            id: classInfo.우리반명단.map((item, index) => index+1),
-            name: classInfo.우리반명단.map((item) => item),
-            month: currentMonth,
-            date: observeDate,
-            division: observeDivision,
-            content: observeContent,
+    const handleDeleteChild = (child) => {
+        // '우리반명단'에서 선택한 아이템 제거
+        const updatedClassInfo = {
+            ...classInfo,
+            우리반명단: (classInfo.우리반명단 || []).filter((c) => c !== child),
         };
 
-        // 관찰 일지 데이터 중에서 id와 name이 같은 데이터 찾기
-        const existingObserveIndex = observe.findIndex(
-            (item) => item.id === newObserve.id && item.name === newObserve.name
-        );
+        // '우리반명단' 업데이트
+        setClassInfo(updatedClassInfo);
 
-        // 만약 찾았다면 해당 데이터를 업데이트
-        if (existingObserveIndex !== -1) {
-            observe[existingObserveIndex] = newObserve;
-            setObserve([...observe]); // observe 상태 업데이트
-        } else {
-            // 찾지 못했다면 새로운 데이터 추가
-            const updatedObserve = [...observe, newObserve];
-            setObserve([...updatedObserve]); // observe 상태 업데이트
-        }
-        // 관찰 일지 데이터를 localStorage에 저장
-        localStorage.setItem('observeData', JSON.stringify(observeData));
-
-        // 관찰 일지 입력 폼 초기화
-        setObserve([...observe, newObserve]);
-        console.log(observe);
+        // formData 업데이트
+        const updatedChildren = formData.children.filter((c) => c !== child);
+        setFormData({
+            ...formData,
+            children: updatedChildren,
+        });
     };
-        const clickResetObserve = () => {
-            setObserve({
-                id: classInfo.우리반명단.map((item, index) => index+1),
-                name: classInfo.우리반명단.map((item) => item),
-                month: currentMonth,
-                date: 0,
-                division: '',
-                content: '',
-            })
-        }
+
+    const saveToLocalStorage = (data) => {
+        // 데이터를 문자열로 변환하여 localStorage에 저장
+        localStorage.setItem('classInfo', JSON.stringify(data));
+    };
+
+    const saveRegisterModal = (e) => {
+        e.preventDefault();
+
+        // 'classInfo' 업데이트
+        setClassInfo({
+            원명: formData.kindergarten,
+            교실명: formData.className,
+            교사명: formData.teacher,
+            연령: formData.age,
+            유아등록: formData.child,
+            우리반명단: formData.children.sort((a, b) => a.localeCompare(b)),
+        });
+
+        // 모달을 닫음
+        setModalOpen(false);
+
+        // 데이터를 localStorage에 저장
+        saveToLocalStorage({
+            원명: formData.kindergarten,
+            교실명: formData.className,
+            교사명: formData.teacher,
+            연령: formData.age,
+            유아등록: formData.child,
+            우리반명단: formData.children.sort((a, b) => a.localeCompare(b)),
+        });
+    };
 
     return (
-        <div>
-            <div>
-                <div>
-                    <h5>학기별 선택</h5>
-                    {/* 학기별, 월별 선택버튼 */}
-                    <div>
-                        {semesters.map((semester, index) => (
-                            <button
-                                key={`${index}_학기`}
-                                value={semester}
-                                onClick={() => handleChangeSemester(semester)}
-                                className={currentSemester === semester ? 'selected' : ''}
-                            >
-                                {semester}
-                            </button>
+        <S.RegisterChildrenModalPage onSubmit={saveRegisterModal}>
+            <S.ModalHead>
+                <S.ModalTitle>🐥우리 반 학급 설정🐥</S.ModalTitle>
+            </S.ModalHead>
+            <S.RegisterInfo1>
+                <S.Register>
+                    <S.RegisterTitle>우리반 설정</S.RegisterTitle>
+                    <S.RegisterTable>
+                        <S.TableLine>
+                            <S.TableLineBox>원명</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="text"
+                                    name="kindergarten"
+                                    value={formData.kindergarten}
+                                    onChange={handleChange}
+                                    placeholder="OO유치원"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={() => pushField('원명', formData.kindergarten)}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                        <S.TableLine>
+                            <S.TableLineBox>교실명</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="text"
+                                    name="className"
+                                    value={formData.className}
+                                    onChange={handleChange}
+                                    placeholder="OO반"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={() => pushField('교실명', formData.className)}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                        <S.TableLine>
+                            <S.TableLineBox>교사명</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="text"
+                                    name="teacher"
+                                    value={formData.teacher}
+                                    onChange={handleChange}
+                                    placeholder="김미미"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={() => pushField('교사명', formData.teacher)}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                        <S.TableLine>
+                            <S.TableLineBox>연령(만)</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="number"
+                                    name="age"
+                                    value={formData.age}
+                                    onChange={handleChange}
+                                    placeholder="5"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={() => pushField('연령', formData.age)}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                        <S.TableLine>
+                            <S.TableLineBox>유아등록</S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineInput
+                                    type="text"
+                                    name="child"
+                                    value={formData.child}
+                                    onChange={handleChange}
+                                    placeholder="김라라"
+                                />
+                            </S.TableLineBox>
+                            <S.TableLineBox>
+                                <S.TableLineButton onClick={handleAddChild}>
+                                    <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>add</span>
+                                </S.TableLineButton>
+                            </S.TableLineBox>
+                        </S.TableLine>
+                    </S.RegisterTable>
+                </S.Register>
+                <S.Confirm>
+                    <S.ConfirmTitle>우리반 정보 확인</S.ConfirmTitle>
+                    <S.ConfirmTable>
+                        {Object.keys(classInfo).slice(0, 4).map((field, index) => (
+                            <S.TableLine2 key={index}>
+                                <S.TableLineInfoBox1>{field}:</S.TableLineInfoBox1>
+                                <S.TableLineInfoBox2>
+                                    <S.TableLineInfo>{classInfo[field]}</S.TableLineInfo>
+                                </S.TableLineInfoBox2>
+                            </S.TableLine2>
                         ))}
-                        <select name="month" id="month" onChange={handleChangeMonth} value={currentMonth}>
-                            {months.map((month, index) => (
-                                <option key={`${index}_월`} value={month}>
-                                    {month}월
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {developArray}
-                </div>
-                {/* 관찰일지 */}
-                <div>
-                    {/* 학기별 */}
-                    {currentSemester === '1학기' || currentSemester === '2학기' ? (
-                        <div>
-                            <h2>{currentSemester} 명단({observe.index}명)</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>번호</td>
-                                        <td>유아명</td>
-                                        {currentSemester === '1학기'
-                                            ? months.slice(0, 6).map((month, index) => (
-                                                  <td key={`${index}_${currentSemester}_월`}>{month}월</td>
-                                              ))
-                                            : months.slice(6, 12).map((month, index) => (
-                                                  <td key={`${index}_${currentSemester}_월`}>{month}월</td>
-                                              ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {classInfo.우리반명단.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{item}</td>
-                                            {currentSemester === '1학기'
-                                                ? months.slice(0, 6).map((month, index) => (
-                                                      <td key={`${index}_${currentSemester}_${month}월`}>
-                                                          <input type="text" readOnly />
-                                                      </td>
-                                                  ))
-                                                : months.slice(6, 12).map((month, index) => (
-                                                      <td key={`${index}_${currentSemester}_${month}월`}>
-                                                          <input type="text" readOnly />
-                                                      </td>
-                                                  ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    ) : (
-                        // 월간 관찰일지 작성
-                        <form onSubmit={handleSubmit}>
-                            <h2>{classInfo.교실명} {currentMonth}월 명단({observe.index}명)</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>번호</td>
-                                        <td>유아명</td>
-                                        <td>날짜</td>
-                                        <td>발달영역</td>
-                                        <td>내용</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{observeIndex}</td>
-                                        <td>
-                                            <select name="child" id="child" onChange={handleChangeIndex}>
-                                                {classInfo.우리반명단.map((item, index)=>{
-                                                    <option key={index + 1} value="{item}">{item}</option>
-                                                })}
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                placeholder={new Date().getDate()}
-                                                maxLength="2"
-                                                onChange={handleDateChange}
-                                            />일
-                                        </td>
-                                        <td>
-                                            <select 
-                                                name="division" 
-                                                id="division"
-                                                onChange={handleDivisionChange}
-                                            >
-                                                <option value="신체운동">신체운동</option>
-                                                <option value="의사소통">의사소통</option>
-                                                <option value="사회관계">사회관계</option>
-                                                <option value="예술경험">예술경험</option>
-                                                <option value="자연탐구">자연탐구</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input 
-                                                type="text" 
-                                                onChange={handleContentChange}
-                                            />
-                                        </td>
-                                        <td>
-                                            <button type="submit">추가</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table>
-                                    <thead>
-                                        <tr>
-                                            <td>번호</td>
-                                            <td>유아명</td>
-                                            <td>날짜</td>
-                                            <td>발달영역</td>
-                                            <td>내용</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {classInfo.우리반명단.map((item, index) => (
-                                            <tr key={index}>
-                                                <td>{index + 1}</td>
-                                                <td>{item}</td>
-                                                <td>{observe.date}</td>
-                                                <td>{observe.division}</td>
-                                                <td>{observe.content}</td>
-                                                <td>
-                                                    <button onClick={clickResetObserve}>삭제</button>
-                                                </td>
-                                            </tr>
-                                        ))}
-
-                                    </tbody>
-                                </table>
-                        </form>
-
-                        
-                    )}
-
-                </div>
-            </div>
-        </div>
+                    </S.ConfirmTable>
+                </S.Confirm>
+            </S.RegisterInfo1>
+            <S.RegisterInfo2>
+                <S.ConfirmTitle>우리반 명단</S.ConfirmTitle>
+                <S.Children>
+                    {formData.children.map((child, index) => (
+                        <S.ChildBox key={index}>
+                            <S.Child>{child}</S.Child>
+                            <S.ChildDelete onClick={() => handleDeleteChild(child)}>X</S.ChildDelete>
+                        </S.ChildBox>
+                    ))}
+                </S.Children>
+            </S.RegisterInfo2>
+            <S.ButtonDiv>
+                    <S.ModalSave type="submit">저장</S.ModalSave>
+                    <S.ModalOff onClick={offRegisterModal}>닫기</S.ModalOff>
+            </S.ButtonDiv>
+        </S.RegisterChildrenModalPage>
     );
-};
+}
 
-export default Observe;
+export default RegisterChildrenModalPage;

@@ -43,7 +43,7 @@ const Observe = ({ classInfo, observe, setObserve }) => {
     
     const handleNameChange = (e) => {
         const selectedName = e.target.value;
-        const selectedIndex = classInfo.우리반명단.indexOf(selectedName);
+        const selectedIndex = classInfo.우리반명단.indexOf(selectedName)+1;
     
         if (selectedIndex) {
             setIndivisual((prevIndivisual) => ({
@@ -51,7 +51,7 @@ const Observe = ({ classInfo, observe, setObserve }) => {
                 name: selectedName, // 선택된 이름을 업데이트합니다.
             }));
             setObserveName(selectedName); // observeName도 업데이트합니다.
-            setObserveIndex(selectedIndex + 1);
+            setObserveIndex(selectedIndex);
         }
     };
     
@@ -108,16 +108,16 @@ const Observe = ({ classInfo, observe, setObserve }) => {
         });
         setObserveIndex(observeIndex + 1);
     };
-        const clickResetObserve = () => {
+    const clickResetObserve = () => {
         setIndivisual({
-            id: classInfo.우리반명단.map((item, index) => index+1),
-            name: classInfo.우리반명단.map((item) => item),
+            id: observe.length + 1, // 새로운 아이템을 추가하므로 현재 아이템 개수 + 1을 아이디로 설정
+            name: classInfo.우리반명단[0], // 첫 번째 아이의 이름으로 초기화
             month: currentMonth,
             date: 0,
             division: '',
             content: '',
-        })
-    }
+        });
+    };
 
     return (
         <div>
@@ -151,7 +151,7 @@ const Observe = ({ classInfo, observe, setObserve }) => {
                     {/* 학기별 */}
                     {currentSemester === '1학기' || currentSemester === '2학기' ? (
                         <div>
-                            <h2>{currentSemester} 명단({observe.index}명)</h2>
+                            <h2>{currentSemester} 명단({classInfo.우리반명단.length}명)</h2>
                             <table>
                                 <thead>
                                     <tr>
@@ -190,7 +190,7 @@ const Observe = ({ classInfo, observe, setObserve }) => {
                     ) : (
                         // 월간 관찰일지 작성
                         <form onSubmit={handleSubmit}>
-                            <h2>{classInfo.교실명} {currentMonth}월 명단({observe.index}명)</h2>
+                            <h2>{classInfo.교실명} {currentMonth}월 명단({classInfo.우리반명단.length}명)</h2>
                             <table>
                                 <thead>
                                     <tr>
