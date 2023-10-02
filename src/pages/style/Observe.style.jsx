@@ -20,35 +20,6 @@ export const ButtonTitle = styled.h1`
     margin: 20px;
     color: gray;
 `
-export const ButtonWrapper = styled.div`
-    margin: 20px;
-    text-align: right;
-`
-export const SelectButton = styled.button`
-    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-    width: 200px;
-    height: 50px;
-    border: none;
-    margin: 0 20px;
-    font-size: 25px;
-    background-color: ${props => props.active ? '#FFF' : '#f0f0f0'};
-    color: ${props => props.active ? '#FFF' : '#000'};
-    &:hover{
-        background-color: #a2a2a2;
-        color:#FFF;
-        cursor: pointer;
-    }
-`
-export const MonthButton = styled.select`
-    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;    
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    font-size: 25px;
-    margin: 0 20px;
-`
-export const MonthOption = styled.option`
-`
 export const DevelopArray = styled.p`
     font-size: 20px;
     display: flex;
@@ -57,36 +28,6 @@ export const DevelopArray = styled.p`
 export const Context = styled.div`
     display: flex;
     justify-content: center;
-`
-export const Semester = styled.div`
-`
-export const ContextTitle = styled.h2`
-    margin-bottom: 40px;
-`
-export const SemesterTable = styled.table`
-`
-export const SemesterThead = styled.thead`
-    height: 50px;
-    font-size: 25px;
-`
-export const SemesterTheadTr = styled.tr`
-`
-export const SemesterTheadTd = styled.td`
-`
-export const SemesterTbody = styled.tbody`
-    height: 50px;
-    font-size: 25px;
-`
-export const SemesterTbodyTr = styled.tr`
-`
-export const SemesterTbodyTd = styled.td`
-`
-export const Td = styled.td`
-    padding: 0 20px 0 10px;
-`
-export const SemesterInput = styled.input`
-    width: 160px;
-    height: 30px;
 `
 
 export const ObserveForm = styled.form`
