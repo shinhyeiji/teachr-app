@@ -1,4 +1,10 @@
 import { useState } from 'react';
+import * as S from './style/Observe.style';
+import Observe1 from '../components/Observe/Observe1';
+import Observe2 from '../components/Observe/Observe2';
+import ObserveButton from '../components/Observe/ObserveButton';
+import ObserveMonth from '../components/Observe/ObserveMonth';
+
 
 const Observe = ({ classInfo, observe, setObserve }) => {
     // 관찰 입력 폼과 관련된 상태 변수
@@ -120,94 +126,95 @@ const Observe = ({ classInfo, observe, setObserve }) => {
     };
 
     return (
-        <div>
-            <div>
-                <div>
-                    <h5>학기별 선택</h5>
+        <S.Container>
+                <S.HeadWrapper>
+                    <S.ButtonTitle>학기별 선택</S.ButtonTitle>
                     {/* 학기별, 월별 선택버튼 */}
-                    <div>
+                    <S.ButtonWrapper>
                         {semesters.map((semester, index) => (
-                            <button
+                            <S.SelectButton
                                 key={`${index}_학기`}
                                 value={semester}
                                 onClick={() => handleChangeSemester(semester)}
                                 className={currentSemester === semester ? 'selected' : ''}
                             >
                                 {semester}
-                            </button>
+                            </S.SelectButton>
                         ))}
-                        <select name="month" id="month" onChange={handleChangeMonth} value={currentMonth}>
+                        <S.MonthButton name="month" id="month" onChange={handleChangeMonth} value={currentMonth}>
                             {months.map((month, index) => (
-                                <option key={`${index}_월`} value={month}>
+                                <S.MonthOption key={`${index}_월`} value={month}>
                                     {month}월
-                                </option>
+                                </S.MonthOption>
                             ))}
-                        </select>
-                    </div>
+                        </S.MonthButton>
+                    </S.ButtonWrapper>
+                </S.HeadWrapper>
+                <S.DevelopArray>
                     {developArray}
-                </div>
+                </S.DevelopArray>
                 {/* 관찰일지 */}
-                <div>
+                <S.Context>
                     {/* 학기별 */}
                     {currentSemester === '1학기' || currentSemester === '2학기' ? (
-                        <div>
-                            <h2>{currentSemester} 명단({classInfo.우리반명단.length}명)</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>번호</td>
-                                        <td>유아명</td>
+                        <S.Semester>
+                            <S.ContextTitle>{currentSemester} 명단({classInfo.우리반명단.length}명)</S.ContextTitle>
+                            <S.SemesterTable>
+                                <S.SemesterThead>
+                                    <S.SemesterTheadTr>
+                                        <S.SemesterTheadTd>번호</S.SemesterTheadTd>
+                                        <S.Td>유아명</S.Td>
                                         {currentSemester === '1학기'
                                             ? months.slice(0, 6).map((month, index) => (
-                                                  <td key={`${index}_${currentSemester}_월`}>{month}월</td>
+                                                  <S.SemesterTheadTd key={`${index}_${currentSemester}_월`}>{month}월</S.SemesterTheadTd>
                                               ))
                                             : months.slice(6, 12).map((month, index) => (
-                                                  <td key={`${index}_${currentSemester}_월`}>{month}월</td>
+                                                  <S.SemesterTheadTd key={`${index}_${currentSemester}_월`}>{month}월</S.SemesterTheadTd>
                                               ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                    </S.SemesterTheadTr>
+                                </S.SemesterThead>
+                                <S.SemesterTbody>
                                     {classInfo.우리반명단.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{item}</td>
+                                        <S.SemesterTbodyTr key={index}>
+                                            <S.SemesterTbodyTd>{index + 1}</S.SemesterTbodyTd>
+                                            <S.Td>{item}</S.Td>
                                             {currentSemester === '1학기'
                                                 ? months.slice(0, 6).map((month, index) => (
-                                                      <td key={`${index}_${currentSemester}_${month}월`}>
-                                                          <input type="text" readOnly />
-                                                      </td>
+                                                      <S.SemesterTbodyTd key={`${index}_${currentSemester}_${month}월`}>
+                                                          <S.SemesterInput type="text" readOnly />
+                                                      </S.SemesterTbodyTd>
                                                   ))
                                                 : months.slice(6, 12).map((month, index) => (
-                                                      <td key={`${index}_${currentSemester}_${month}월`}>
-                                                          <input type="text" readOnly />
-                                                      </td>
+                                                      <S.SemesterTbodyTd key={`${index}_${currentSemester}_${month}월`}>
+                                                          <S.SemesterInput type="text" readOnly />
+                                                      </S.SemesterTbodyTd>
                                                   ))}
-                                        </tr>
+                                        </S.SemesterTbodyTr>
                                     ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                </S.SemesterTbody>
+                            </S.SemesterTable>
+                        </S.Semester>
                     ) : (
                         // 월간 관찰일지 작성
-                        <form onSubmit={handleSubmit}>
-                            <h2>{classInfo.교실명} {currentMonth}월 명단({classInfo.우리반명단.length}명)</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>번호</td>
-                                        <td>유아명</td>
-                                        <td>날짜</td>
-                                        <td>발달영역</td>
-                                        <td>내용</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{observeIndex}</td>
-                                        <td>
-                                            <select name="name" 
+                        <S.ObserveForm onSubmit={handleSubmit}>
+                            <S.FormTitle>{classInfo.교실명} {currentMonth}월 명단({classInfo.우리반명단.length}명)</S.FormTitle>
+                            <S.FormTable1>
+                                <S.FormThead>
+                                    <S.FormTheadTr>
+                                        <S.FormTheadTd>번호</S.FormTheadTd>
+                                        <S.FormTheadTd>유아명</S.FormTheadTd>
+                                        <S.FormTheadTd>날짜</S.FormTheadTd>
+                                        <S.FormTheadTd>발달영역</S.FormTheadTd>
+                                        <S.FormTheadTd>내용</S.FormTheadTd>
+                                        <S.FormTheadTd></S.FormTheadTd>
+                                        <S.FormTheadTd></S.FormTheadTd>
+                                    </S.FormTheadTr>
+                                </S.FormThead>
+                                <S.FormTbody>
+                                    <S.FormTbodyTr>
+                                        <S.FormTbodyTd>{observeIndex}</S.FormTbodyTd>
+                                        <S.FormTbodyTd>
+                                            <S.SelectName name="name" 
                                             id="name" 
                                             onChange={handleNameChange} 
                                             value={indivisual.name}
@@ -215,76 +222,75 @@ const Observe = ({ classInfo, observe, setObserve }) => {
                                                 {classInfo.우리반명단.map((item, index) => (
                                                     <option key={index + 1} value={item}>{item}</option>
                                                 ))}
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input
+                                            </S.SelectName>
+                                        </S.FormTbodyTd>
+                                        <S.FormTbodyTd>
+                                            <S.DateInput
                                                 type="number"
                                                 name="date"
                                                 placeholder={new Date().getDate()}
                                                 maxLength="2"
                                                 onChange={handleChange}
                                             />일
-                                        </td>
-                                        <td>
-                                            <select 
+                                        </S.FormTbodyTd>
+                                        <S.FormTbodyTd>
+                                            <S.SelectDivision 
                                                 name="division" 
                                                 id="division"
                                                 onChange={handleDivisionChange}
                                                 value={indivisual.division}
                                             >
-                                                <option value="신체운동">신체운동</option>
-                                                <option value="의사소통">의사소통</option>
-                                                <option value="사회관계">사회관계</option>
-                                                <option value="예술경험">예술경험</option>
-                                                <option value="자연탐구">자연탐구</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input 
+                                                <S.OptionDivision value="신체운동">신체운동</S.OptionDivision>
+                                                <S.OptionDivision value="의사소통">의사소통</S.OptionDivision>
+                                                <S.OptionDivision value="사회관계">사회관계</S.OptionDivision>
+                                                <S.OptionDivision value="예술경험">예술경험</S.OptionDivision>
+                                                <S.OptionDivision value="자연탐구">자연탐구</S.OptionDivision>
+                                            </S.SelectDivision>
+                                        </S.FormTbodyTd>
+                                        <S.FormTbodyTd>
+                                            <S.ContentInput 
                                                 type="text" 
                                                 name="content"
                                                 onChange={handleChange}
                                             />
-                                        </td>
-                                        <td>
-                                            <button type="submit">추가</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td>번호</td>
-                                        <td>유아명</td>
-                                        <td>날짜</td>
-                                        <td>발달영역</td>
-                                        <td>내용</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                        </S.FormTbodyTd>
+                                        <S.FormTbodyTd>
+                                            <S.SubmitButton type="submit">추가</S.SubmitButton>
+                                        </S.FormTbodyTd>
+                                    </S.FormTbodyTr>
+                                </S.FormTbody>
+                            </S.FormTable1>
+                            <S.FormTable2>
+                                <S.FormThead>
+                                    <S.FormTheadTr>
+                                        <S.FormTheadTd>번호</S.FormTheadTd>
+                                        <S.FormTbodyTdName>유아명</S.FormTbodyTdName>
+                                        <S.FormTbodyTdDate>날짜</S.FormTbodyTdDate>
+                                        <S.FormTbodyTdDivision>발달영역</S.FormTbodyTdDivision>
+                                        <S.FormTbodyTdContent>내용</S.FormTbodyTdContent>
+                                        <S.FormTheadTd></S.FormTheadTd>
+                                        <S.FormTheadTd></S.FormTheadTd>
+                                    </S.FormTheadTr>
+                                </S.FormThead>
+                                <S.FormTbody>
                                     {classInfo.우리반명단.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{item}</td>
-                                            <td>{observe[index].date}</td>
-                                            <td>{observe[index].division}</td>
-                                            <td>{observe[index].content}</td>
-                                            <td>
-                                                <button onClick={clickResetObserve}>삭제</button>
-                                            </td>
-                                        </tr>
+                                        <S.FormTbodyTr key={index}>
+                                            <S.FormTbodyTd>{index + 1}</S.FormTbodyTd>
+                                            <S.FormTbodyTdName>{item}</S.FormTbodyTdName>
+                                            <S.FormTbodyTdDate>{observe[index].date}</S.FormTbodyTdDate>
+                                            <S.FormTbodyTdDivision>{observe[index].division}</S.FormTbodyTdDivision>
+                                            <S.FormTbodyTdContent>{observe[index].content}</S.FormTbodyTdContent>
+                                            <S.FormTbodyTd>
+                                                <S.DeleteButton onClick={clickResetObserve}>삭제</S.DeleteButton>
+                                            </S.FormTbodyTd>
+                                        </S.FormTbodyTr>
                                     ))}
-                                </tbody>
-                            </table>
-                        </form>
+                                </S.FormTbody>
+                            </S.FormTable2>
+                        </S.ObserveForm>
                     )}
-                </div>
-            </div>
-        </div>
+                </S.Context>
+        </S.Container>
     );
 };
 
