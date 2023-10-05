@@ -64,7 +64,7 @@ const Main = () => {
         '달력': <MonthCalendar />,
         '오늘할일': <TodoList />,
         '놀이기록': <Play />,
-        '유아관찰일지': <Observe classInfo={classInfo} observe={observe} setObserve={setObserve} formData={{ observe: [] }} setFormData={setFormData} />,
+        '유아관찰일지': <Observe classInfo={classInfo} currentMonth={currentMonth} />,
         '아이디어': <Idea />,
         '서류': <Document />,
         '타임워치': <Timewatch />,

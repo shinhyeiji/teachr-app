@@ -58,11 +58,7 @@ const Observe = ({ classInfo, observe, setObserve, formData = { observe: [] }, s
                         // 월간 관찰일지 작성
                         <ObserveMonth 
                             classInfo={classInfo}
-                            observe={observe}
-                            setObserve={setObserve}
                             currentMonth={currentMonth}
-                            formData={{ observe: [] }}
-                            setFormData={setFormData}
                         />
                     )}
                 </S.Context>

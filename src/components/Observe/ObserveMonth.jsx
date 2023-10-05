@@ -1,105 +1,130 @@
 import * as S from './style/ObserveMonth.style.jsx';
 import { useState, useEffect } from 'react';
 
-const ObserveMonth = ({ classInfo, currentMonth, observe, setObserve, formData = { observe: [] }, setFormData }) => {
+const ObserveMonth = ({ classInfo, currentMonth }) => {
     function getLastDayOfMonth(year, month) {
         return new Date(year, month + 1, 0).getDate();
     }
 
-    const [observeIndex, setObserveIndex] = useState('');
-    const [observeName, setObserveName] = useState('');
-    const [observeDate, setObserveDate] = useState('');
-    const [observeDivision, setObserveDivision] = useState('');
-    const [observeContent, setObserveContent] = useState('');
+    const [observeIndex, setObserveIndex] = useState(1);
+    const [observeName, setObserveName] = useState(classInfo.우리반명단[0]);
     const [indivisual, setIndivisual] = useState({
         id: observeIndex,
         name: observeName,
-        date: observeDate,
-        division: observeDivision,
-        content: observeContent,
+        month: new Date().getMonth() + 1,
+        date: new Date().getDate(),
+        division: '신체운동',
+        content: '',
+    });
+    const [observe, setObserve] = useState(() => {
+        const savedObserveData = JSON.parse(localStorage.getItem('observeData')) || [];
+        return savedObserveData;
     });
 
     useEffect(() => {
-        const savedData = localStorage.getItem('observeData');
-        if (savedData) {
-            try {
-                const parsedData = JSON.parse(savedData);
-                // 저장된 데이터를 기반으로 observe 상태 업데이트
-                setObserve(parsedData.observe || []);
-                // 저장된 데이터를 기반으로 formData 상태 업데이트
-                setFormData({
-                    ...formData,
-                    observe: parsedData.observe || []
-                });
-            } catch (error) {
-                console.error("Error parsing observeData from localStorage:", error);
-                // 파싱 에러 시 초기값으로 빈 배열 설정
-                setObserve([]);
-                setFormData({
-                    ...formData,
-                    observe: []
-                });
-            }
-        }
-        console.log(formData.observe);
-    }, []); 
+        localStorage.setItem('observeData', JSON.stringify(observe));
+    }, [observe]);
 
-    const handleChange = (e) => {
+    const handleDateChange = (e) => {
         const { name, value } = e.target;
-        setIndivisual({
-            ...indivisual,
-            [name]: value,
-        })
-    }
+        const lastDayOfMonth = getLastDayOfMonth(new Date().getFullYear(), new Date().getMonth());
+        const parsedValue = parseInt(value, 10);
 
-    const updateDisplayedObserve = () => {
-        const updatedObserve = [...observe];
-        const index = updatedObserve.findIndex(item => item.id === indivisual.id && item.name === indivisual.name);
-        const updatedItem = observe.push({
+        if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= lastDayOfMonth) {
+            setIndivisual((prevIndivisual) => ({
+                ...prevIndivisual,
+                [name]: parsedValue,
+            }));
+        }
+    };
+
+    const handleContentChange = (e) => {
+        const { name, value } = e.target;
+
+        setIndivisual((prevIndivisual) => ({
+            ...prevIndivisual,
+            [name]: value,
+        }));
+    };
+
+    const handleNameChange = (e) => {
+        const selectedName = e.target.value;
+        const selectedIndex = classInfo.우리반명단.indexOf(selectedName) + 1;
+
+        if (selectedIndex) {
+            setIndivisual((prevIndivisual) => ({
+                ...prevIndivisual,
+                name: selectedName,
+            }));
+            setObserveName(selectedName);
+            setObserveIndex(selectedIndex);
+        }
+    };
+
+    const handleDivisionChange = (e) => {
+        const selectedDivision = e.target.value;
+        setIndivisual((prevIndivisual) => ({
+            ...prevIndivisual,
+            division: selectedDivision,
+        }));
+    };
+
+    const handleAddOrUpdate = (e) => {
+        e.preventDefault();
+    
+        // Find the index of the item with the same id and name
+        const existingIndex = observe.findIndex(
+            (item) => item.id === indivisual.id && item.name === indivisual.name
+        );
+    
+        // Create a new observe data
+        const observeData = {
             id: indivisual.id,
             name: indivisual.name,
-            monthsData: {
-                ...updatedObserve[index]?.monthsData, // 안전한 옵셔널 체이닝 연산자 사용
-                [currentMonth]: {
-                    date: indivisual.date,
-                    division: indivisual.division,
-                    content: indivisual.content
-                }
-            }
-        })
-        updatedObserve[index] = updatedItem;
-        setObserve(updatedObserve);
-    }
-    const pushField = (field, value) => {
-        updateDisplayedObserve(field, value);
-        console.log(observe);
-    }
+            month: indivisual.month,
+            date: indivisual.date,
+            division: indivisual.division,
+            content: indivisual.content,
+        };
+    
+        if (existingIndex !== -1) {
+            // If item with the same id and name exists, update it
+            const updatedObserve = [...observe];
+            updatedObserve[existingIndex] = observeData;
+            setObserve(updatedObserve);
+            console.log("Updated:", observeData);
+        } else {
+            // If not, add a new item to the array
+            const updatedObserve = [...observe, observeData];
+            setObserve(updatedObserve);
+            console.log("Added:", observeData);
+        }
+    
+        // Reset the form
+        setIndivisual({
+            id: observeIndex,
+            name: observeName,
+            month: new Date().getMonth() + 1,
+            date: new Date().getDate(),
+            division: '신체운동',
+            content: '',
+        });
+    };
     const saveRegisterObserve = (e) => {
         e.preventDefault();
-            setFormData({
-                ...formData,
-                observe: observe
-            })
-            localStorage.setItem('formData', JSON.stringify(formData));    
-    }
-    const clickResetObserve = (indivisual) => {
+        console.log(observe);
+
+    };
+
+    const clickResetObserve = (index) => {
         const updatedObserve = [...observe];
-        const index = updatedObserve.findIndex(item => item.id ===  indivisual.id && item.name ===  indivisual.name)
-        updatedObserve[index] = {
-            id: indivisual.id,
-            name: indivisual.name,
-            monthsData: {
-                ...updatedObserve[index].monthsData,
-                [currentMonth]: {
-                    date: '',
-                    division: '',
-                    content: ''
-                }
-            }
-        };
-        // 업데이트된 observe 상태를 설정
+        updatedObserve.splice(index, 1);
+
         setObserve(updatedObserve);
-    }
+        localStorage.setItem('observeData', JSON.stringify(updatedObserve));
+    };
+
+
 
     return(
         <S.ObserveForm onSubmit={saveRegisterObserve}>
@@ -118,27 +143,17 @@ const ObserveMonth = ({ classInfo, currentMonth, observe, setObserve, formData =
                 </S.FormThead>
                 <S.FormTbody>
                     <S.FormTbodyTr>
-                        <S.FormTbodyTd>
-                            {classInfo.우리반명단.map((item, index) => {
-                                const observeIndex = observe.findIndex(observedItem => observedItem.name === observeName);
-                                const displayedIndex = observeIndex !== -1 ? observeIndex + 1 : ''; // 해당 이름의 아이가 observe에 존재하면 번호를 표시, 아니면 빈 문자열
-                                return (
-                                    <S.FormTbodyTd
-                                        key={index}
-                                        name="index" 
-                                        id="index" 
-                                        value={item}
-                                    >
-                                        {displayedIndex}
-                                    </S.FormTbodyTd>
-                                );
-                            })}
-                        </S.FormTbodyTd>
+                        <S.FormTbodyTd
+                            name="index" 
+                            id="index" 
+                            value={indivisual.id}
+                        >{observeIndex}</S.FormTbodyTd>
                         <S.FormTbodyTd>
                             <S.SelectName
                                 name="name" 
                                 id="name" 
-                                onChange={handleChange} 
+                                onChange={handleNameChange} 
+                                value={indivisual.name}
                             >
                                 {classInfo.우리반명단.map((item, index) => (
                                     <option key={index + 1} value={item}>{item}</option>
@@ -151,14 +166,16 @@ const ObserveMonth = ({ classInfo, currentMonth, observe, setObserve, formData =
                                 name="date"
                                 placeholder={new Date().getDate()}
                                 maxLength="2"
-                                onChange={handleChange}
+                                onChange={handleDateChange}
+                                value={indivisual.date}
                             />일
                         </S.FormTbodyTd>
                         <S.FormTbodyTd>
                             <S.SelectDivision 
                                 name="division" 
                                 id="division"
-                                onChange={handleChange}
+                                onChange={handleDivisionChange}
+                                value={indivisual.division}
                             >
                                 <S.OptionDivision value="신체운동">신체운동</S.OptionDivision>
                                 <S.OptionDivision value="의사소통">의사소통</S.OptionDivision>
@@ -171,11 +188,12 @@ const ObserveMonth = ({ classInfo, currentMonth, observe, setObserve, formData =
                             <S.ContentInput 
                                 type="text" 
                                 name="content"
-                                onChange={handleChange}
+                                onChange={handleContentChange}
+                                value={indivisual.content}
                             />
                         </S.FormTbodyTd>
                         <S.FormTbodyTd>
-                            <S.SubmitButton onClick={pushField}>추가</S.SubmitButton>
+                            <S.SubmitButton onClick={handleAddOrUpdate}>추가</S.SubmitButton>
                         </S.FormTbodyTd>
                     </S.FormTbodyTr>
                 </S.FormTbody>
@@ -195,19 +213,28 @@ const ObserveMonth = ({ classInfo, currentMonth, observe, setObserve, formData =
                     </S.FormTheadTr>
                 </S.FormThead>
                 <S.FormTbody>
-                    {formData.observe && formData.observe.map((item) => (
-                        <S.FormTbodyTr key={item.id}>
-                            <S.FormTbodyTd>{item.id}</S.FormTbodyTd>
-                            <S.FormTbodyTdName>{item.name}</S.FormTbodyTdName>
-                            <S.FormTbodyTdDate>{item.monthsData?.[currentMonth]?.date}일</S.FormTbodyTdDate>
-                            <S.FormTbodyTdDivision>{item.monthsData?.[currentMonth]?.division}</S.FormTbodyTdDivision>
-                            <S.FormTbodyTdContent>{item.monthsData?.[currentMonth]?.content}</S.FormTbodyTdContent>
-                            <S.FormTbodyTd>
-                                <S.DeleteButton onClick={() => clickResetObserve(item)}>삭제</S.DeleteButton>
-                            </S.FormTbodyTd>
-                        </S.FormTbodyTr>
-                    ))}
-                    </S.FormTbody>
+                {classInfo.우리반명단.map((itemName, index) => {
+                    const observeData = observe.find(item => item.name === itemName);
+                    // observe 배열에서 현재 아이템의 이름과 일치하는 데이터를 찾음
+
+                    if (observeData) {
+                        return (
+                            <S.FormTbodyTr key={index}>
+                                <S.FormTbodyTd>{index + 1}</S.FormTbodyTd>
+                                <S.FormTbodyTdName>{itemName}</S.FormTbodyTdName>
+                                <S.FormTbodyTdDate>{observeData.date}일</S.FormTbodyTdDate>
+                                <S.FormTbodyTdDivision>{observeData.division}</S.FormTbodyTdDivision>
+                                <S.FormTbodyTdContent>{observeData.content}</S.FormTbodyTdContent>
+                                <S.FormTbodyTd>
+                                    <S.DeleteButton onClick={() => clickResetObserve(index)}>삭제</S.DeleteButton>
+                                </S.FormTbodyTd>
+                            </S.FormTbodyTr>
+                        );
+                    }
+
+                    return null; // 데이터가 없으면 렌더링하지 않음
+                })}
+                </S.FormTbody>
             </S.FormTable2>
         </S.ObserveForm>
     )

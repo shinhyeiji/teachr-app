@@ -19,6 +19,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                 teacher: parsedData.교사명 || '',
                 child: '',
                 children: parsedData.우리반명단 || [],
+                observe:[]
             });
             setChildren(parsedData.우리반명단 || []);
         }
