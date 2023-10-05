@@ -1,5 +1,5 @@
 import * as S from './style/Main.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MonthCalendar from './MonthCalendar';
 import Idea from './Idea';
 import Observe from './Observe';
@@ -29,23 +29,42 @@ const Main = () => {
         우리반명단: [],
     };
     const [classInfo, setClassInfo] = useState(initialclassInfoData);
+    const currentMonth = new Date().getMonth() + 1;
     
-    const [observe, setObserve] = useState(
-        classInfo.우리반명단.map((item, index) => ({
-            id: index + 1,
-            name: item,
-            month: new Date().getMonth()+1,
-            date: new Date().getDate(),
-            division: '',
-            content: '',
-        }))
-    );
+    const childrenNames = initialclassInfoData.우리반명단;
+    const [initialObserveData, setInitialObserveData] = useState([]);
+    const [observe, setObserve] = useState(initialObserveData);
+
+    useEffect(() => {
+        const data = classInfo.우리반명단.map((childName, index) => ({
+            id: '',
+            index: index + 1,
+            name: childName,
+            monthsData: {
+                [currentMonth]: {
+                    date: '',
+                    division: '',
+                    content: '',
+                }
+            }
+        }));
+        setInitialObserveData(data);
+    }, [classInfo.우리반명단, currentMonth]);
+    const [formData, setFormData] = useState({
+        kindergarten: initialclassInfoData.원명,
+        className: initialclassInfoData.교실명,
+        age: initialclassInfoData.연령,
+        teacher: initialclassInfoData.교사명,
+        child: '',
+        children: childrenNames,
+        observe: observe
+    });
 
     const tabComponent = {
         '달력': <MonthCalendar />,
         '오늘할일': <TodoList />,
         '놀이기록': <Play />,
-        '유아관찰일지': <Observe classInfo={classInfo} observe={observe} setObserve={setObserve} />,
+        '유아관찰일지': <Observe classInfo={classInfo} observe={observe} setObserve={setObserve} formData={{ observe: [] }} setFormData={setFormData} />,
         '아이디어': <Idea />,
         '서류': <Document />,
         '타임워치': <Timewatch />,
@@ -76,7 +95,12 @@ const Main = () => {
                         {tab === ''
                             ? <S.MainWrapper>
                                 <WeatherComponent />
-                                <RegisterChildren classInfo={classInfo} setClassInfo={setClassInfo} />
+                                <RegisterChildren
+                                    classInfo={classInfo}
+                                    setClassInfo={setClassInfo}
+                                    formData={formData}
+                                    setFormData={setFormData}
+                                />
                             </S.MainWrapper>
                             : tabComponent[tab]
                         }

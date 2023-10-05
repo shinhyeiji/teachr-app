@@ -2,7 +2,7 @@ import * as S from './style/RegisterChildren.style';
 import { useState } from 'react';
 import RegisterChildrenModalPage from './RegisterChildrenModalPage'
 
-const RegisterChildren = ({ classInfo, setClassInfo }) => {
+const RegisterChildren = ({ classInfo, setClassInfo, setObserve, observe, formData, setFormData }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const showRegisterModal = () => {
         setModalOpen(true);
@@ -15,7 +15,15 @@ const RegisterChildren = ({ classInfo, setClassInfo }) => {
                 <S.ModalButton type="button" onClick={showRegisterModal}>학급<br />설정</S.ModalButton>
                     {modalOpen && (
                     <S.Modal>
-                        <RegisterChildrenModalPage setModalOpen={setModalOpen} classInfo={classInfo} setClassInfo={setClassInfo} />
+                        <RegisterChildrenModalPage 
+                            setModalOpen={setModalOpen} 
+                            classInfo={classInfo} 
+                            setClassInfo={setClassInfo}
+                            setObserve={setObserve}
+                            observe={observe}
+                            formData={formData}
+                            setFormData={setFormData}
+                            />
                     </S.Modal>
                     )}
             </S.RegisterLine>

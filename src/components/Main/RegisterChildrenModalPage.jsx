@@ -2,15 +2,7 @@
 import * as S from './style/RegisterChildrenModalPage.style';
 import { useState, useEffect } from 'react';
 
-const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) => {
-    const [formData, setFormData] = useState({
-        kindergarten: '',
-        className: '',
-        age: '',
-        teacher: '',
-        child: '',
-        children: [],
-    });
+const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, formData, setFormData }) => {
 
     const [children, setChildren] = useState([]);
 
@@ -20,6 +12,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
         if (savedData) {
             const parsedData = JSON.parse(savedData);
             setFormData({
+                ...formData,
                 kindergarten: parsedData.원명 || '',
                 className: parsedData.교실명 || '',
                 age: parsedData.연령 || '',
@@ -30,11 +23,11 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
             setChildren(parsedData.우리반명단 || []);
         }
     }, []);
-
     // 로컬 스토리지에 데이터 저장하기
     useEffect(() => {
-        localStorage.setItem('classInfo', JSON.stringify(classInfo));
-    }, [classInfo]);
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
+
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -49,18 +42,22 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
     const handleAddChild = (e) => {
         e.preventDefault();
         if (formData.child) {
-            const updatedClassInfo = {
-                ...classInfo,
-                우리반명단: [...classInfo.우리반명단, formData.child],
-            };
-            setClassInfo(updatedClassInfo);
-
+            // 새로운 아이템 추가 후 정렬
+            setClassInfo(prevClassInfo => ({
+                ...prevClassInfo,
+                우리반명단: [...prevClassInfo.우리반명단, formData.child].sort((a, b) => a.localeCompare(b)),
+            }));
+    
             // formData 업데이트
+            const updatedChildren = [...formData.children, formData.child].sort((a, b) => a.localeCompare(b));
             setFormData({
                 ...formData,
-                children: [...formData.children, formData.child],
+                children: updatedChildren,
                 child: '',
             });
+    
+            // children 상태 업데이트
+            setChildren(updatedChildren);
         }
     };
 
@@ -77,6 +74,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
 
     const pushField = (field, value) => {
         updateDisplayedInfo(field, value);
+        setModalOpen(false);
     };
 
     const handleDeleteChild = (child) => {
@@ -85,29 +83,45 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
             ...classInfo,
             우리반명단: (classInfo.우리반명단 || []).filter((c) => c !== child),
         };
-
-        setClassInfo(updatedClassInfo);
-
+    
+        // classInfo 업데이트
+        setClassInfo({...updatedClassInfo});
+    
         // formData 업데이트
         const updatedChildren = formData.children.filter((c) => c !== child);
         setFormData({
             ...formData,
-            children: updatedChildren,
+            children: updatedChildren.sort((a, b) => a.localeCompare(b)),
         });
+    
+        // children 상태 업데이트
+        setChildren(updatedChildren);
     };
-
+    // const updateObserveState = () => {
+    //     const updatedObserve = [
+    //         ...observe,
+    //         {
+    //             id: observe.length + 1,
+    //             name: formData.child,
+    //             month: new Date().getMonth() + 1,
+    //             date: new Date().getDate(),
+    //             division: '',
+    //             content: '',
+    //         }
+    //     ];
+    //     setObserve(updatedObserve);
+    // };
     const saveRegisterModal = (e) => {
         e.preventDefault();
-
+        // updateObserveState();
         setClassInfo({
             원명: formData.kindergarten,
             교실명: formData.className,
             교사명: formData.teacher,
             연령: formData.age,
-            유아등록: formData.child,
-            우리반명단: children.sort((a, b) => a.localeCompare(b)),
+            유아등록: '',
+            우리반명단: formData.children,
         });
-
         // 로컬 스토리지에 데이터 저장
         localStorage.setItem('classInfo', JSON.stringify(classInfo));
         console.log(classInfo);
@@ -212,17 +226,16 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                 <S.Confirm>
                     <S.ConfirmTitle>우리반 정보 확인</S.ConfirmTitle>
                     <S.ConfirmTable>
-                    <S.ConfirmTableHead></S.ConfirmTableHead>
-                        
+                        <S.ConfirmTableHead></S.ConfirmTableHead>
                         <S.ConfirmTableBody>
-                        {Object.keys(classInfo).slice(0, 4).map((field, index) => (
-                            <S.TableLine2 key={index}>
-                                <S.TableLineInfoBox1>{field}:</S.TableLineInfoBox1>
-                                <S.TableLineInfoBox2>
-                                    <S.TableLineInfo>{classInfo[field]}</S.TableLineInfo>
-                                </S.TableLineInfoBox2>
-                            </S.TableLine2>
-                        ))}
+                            {Object.keys(classInfo).slice(0, 4).map((field, index) => (
+                                <S.TableLine2 key={index}>
+                                    <S.TableLineInfoBox1>{field}:</S.TableLineInfoBox1>
+                                    <S.TableLineInfoBox2>
+                                        <S.TableLineInfo>{classInfo[field]}</S.TableLineInfo>
+                                    </S.TableLineInfoBox2>
+                                </S.TableLine2>
+                            ))}
                         </S.ConfirmTableBody>
                     </S.ConfirmTable>
                 </S.Confirm>
@@ -231,11 +244,11 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo }) =>
                 <S.ConfirmTitle>우리반 명단</S.ConfirmTitle>
                 <S.Table>
                     <S.Children>
-                        {formData.children.map((child, index) => (
+                        {children.map((child, index) => (
                             <S.ChildBox key={index}>
                                 <S.Child>{child}</S.Child>
                                 <S.ChildDeleteWrapper>
-                                    <S.ChildDelete onClick={() => handleDeleteChild}>X</S.ChildDelete>
+                                    <S.ChildDelete onClick={(child) => handleDeleteChild(child)}>X</S.ChildDelete>
                                 </S.ChildDeleteWrapper>
                             </S.ChildBox>
                         ))}

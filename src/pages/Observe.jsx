@@ -5,7 +5,7 @@ import ObserveButton from '../components/Observe/ObserveButton';
 import ObserveMonth from '../components/Observe/ObserveMonth';
 
 
-const Observe = ({ classInfo, observe, setObserve }) => {
+const Observe = ({ classInfo, observe, setObserve, formData = { observe: [] }, setFormData }) => {
 
     // 학기와 월 선택과 관련된 상태 변수
     const [currentSemester, setCurrentSemester] = useState('월간');
@@ -61,6 +61,8 @@ const Observe = ({ classInfo, observe, setObserve }) => {
                             observe={observe}
                             setObserve={setObserve}
                             currentMonth={currentMonth}
+                            formData={{ observe: [] }}
+                            setFormData={setFormData}
                         />
                     )}
                 </S.Context>

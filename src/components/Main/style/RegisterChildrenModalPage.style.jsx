@@ -34,6 +34,8 @@ export const ModalSave = styled.button`
     border: none;
     border-radius: 5px;
     background-color: #fff;
+    font-size: 20px;
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `;
 
 export const ModalOff = styled.button`
@@ -42,6 +44,9 @@ export const ModalOff = styled.button`
     border: none;
     background-color: #fff;
     border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+
 `;
 
 export const RegisterInfo1 = styled.div`
@@ -176,16 +181,15 @@ export const Child = styled.td`
 export const ChildDeleteWrapper = styled.td`
     height: 25px;
     padding: 5px 5px 5px 15px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0 10px 10px 0;
     font-size: 20px;
     background-color: #fff;
 `;
 
 export const ChildDelete = styled.button`
-    width: 25px;
+    width: 30px;
     height: 25px;
-    padding: 5px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px;
     font-size: 20px;
     background-color: #fff;
 `;

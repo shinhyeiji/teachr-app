@@ -31,7 +31,14 @@ export const FormTheadTr = styled.tr`
 export const FormTheadTd = styled.td`
     padding: 0 5px;
 `;
-
+export const SaveButton = styled.button`
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+    width: 90px;
+    height: 35px;
+    border: none;
+    background-color: lightyellow;
+    font-size: 25px;
+`
 export const FormTbody = styled.tbody`
     height: 50px;
     font-size: 25px;
