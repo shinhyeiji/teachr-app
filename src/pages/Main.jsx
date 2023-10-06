@@ -5,7 +5,7 @@ import Idea from './Idea';
 import Observe from './Observe';
 import Play from './Play';
 import TodoList from './TodoList';
-import Document from './Document';
+import CheckList from './CheckList';
 import TodayPlay from './TodayPlay';
 import Timewatch from './Timewatch';
 import WeatherComponent from '../components/Main/WeatherComponent';
@@ -13,7 +13,7 @@ import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
-    const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '서류'}, {category: '타임워치'}, {category: '하루일과'}]
+    const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '체크리스트'}, {category: '타임워치'}, {category: '하루일과'}]
     const tabReset = () => {
         setTab('');
     }
@@ -66,7 +66,7 @@ const Main = () => {
         '놀이기록': <Play />,
         '유아관찰일지': <Observe classInfo={classInfo} currentMonth={currentMonth} />,
         '아이디어': <Idea />,
-        '서류': <Document />,
+        '체크리스트': <CheckList classInfo={classInfo} />,
         '타임워치': <Timewatch />,
         '하루일과': <TodayPlay />,
     }
