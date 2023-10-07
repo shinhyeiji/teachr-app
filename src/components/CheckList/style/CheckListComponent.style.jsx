@@ -67,6 +67,14 @@ export const FormTbodyTdText = styled.td`
     text-align: center;
     padding: 10px;
 `;
+export const fieldSave = styled.button`
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+    width: 220px;
+    height: 35px;
+    border: none;
+    background-color: lightpink;
+    font-size: 25px;
+`
 export const FormTbodyTdContext = styled.td`
     height: 30px;
     font-size: 25px;
@@ -90,22 +98,4 @@ export const DateInput = styled.input`
     border-bottom: 1px solid gray;
     font-size: 25px;
     text-align: center;
-`;
-
-export const SubmitButton = styled.button`
-    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-    width: 90px;
-    height: 35px;
-    border: none;
-    background-color: #f0f0f0;
-    font-size: 25px;
-`;
-
-export const DeleteButton = styled.button`
-    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-    width: 90px;
-    height: 35px;
-    border: none;
-    background-color: #f0f0f0;
-    font-size: 25px;
 `;

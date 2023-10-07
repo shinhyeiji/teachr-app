@@ -5,11 +5,11 @@ import { useState } from 'react';
 
 const CheckList = ({ classInfo }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [checkListData, setCheckListData] = useState([{ items: [] }]);
-    const [savedCheckList, setSavedCheckList] = useState(()=>{
-        const savedCheckListData = JSON.parse(localStorage.getItem('checkListData')) || [];
-        return savedCheckListData;
-    });
+    const [checkListData, setCheckListData] = useState([]);
+    // const [savedCheckList, setSavedCheckList] = useState(()=>{
+    //     const savedCheckListData = JSON.parse(localStorage.getItem('checkListData')) || [];
+    //     return savedCheckListData;
+    // });
 
     // 페이지당 아이템 수
     const itemsPerPage = 1;
@@ -36,11 +36,15 @@ const CheckList = ({ classInfo }) => {
         newCheckListData[pageIndex].items[itemIndex] = value;
         setCheckListData(newCheckListData);
     };
-    const handleSavePage = (e, data) => {
-        e.preventDefault();
-        localStorage.setItem('checkListData', JSON.stringify(data));
-        setSavedCheckList(data);
-    }
+    // const handleSavePage = (e, data) => {
+    //     e.preventDefault();
+    //     if (data) {
+    //         localStorage.setItem('checkListData', JSON.stringify(data));
+    //         setSavedCheckList(data);
+    //     } else {
+    //         console.error('Invalid data to save');
+    //     }
+    // }
     
     return(
         <S.Container>
@@ -63,7 +67,7 @@ const CheckList = ({ classInfo }) => {
                             ▶
                         </S.NextButton>
                     </S.Pagination>
-                    <S.Save onClick={handleSavePage}>CheckList저장</S.Save>
+                    <S.Save>CheckList저장</S.Save>
                     <S.AddButton onClick={handleAddPage}>CheckList추가</S.AddButton>
                 </S.ButtonWrapper>
             </S.Head>
@@ -76,16 +80,16 @@ const CheckList = ({ classInfo }) => {
                 handleSavePage={handleSavePage}
             /> */}
             {/* 현재 페이지의 아이템을 전달하여 체크리스트 컴포넌트 렌더링 */}
-            {checkListData.slice(startIndex, endIndex).map((page, pageIndex) => (
+            {/* {checkListData.slice(startIndex, endIndex).map((page, pageIndex) => ( */}
                 <CheckListComponent 
-                    key={pageIndex}
+                    // key={pageIndex}
                     classInfo={classInfo}
-                    items={page.items}  // 현재 페이지의 아이템을 전달
+                    // items={page.items}  // 현재 페이지의 아이템을 전달
                     currentPage={currentPage}
                     pageCount={pageCount}
-                    onUpdateItem={(itemIndex, value) => updateChecklistItem(pageIndex, itemIndex, value)}
+                    // onUpdateItem={(itemIndex, value) => updateChecklistItem(pageIndex, itemIndex, value)}
                 />
-            ))}
+            {/* ))} */}
         </S.Container>
     )
 }
