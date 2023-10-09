@@ -54,15 +54,15 @@ const CheckListComponent = ({ classInfo, currentPage, pageCount }) => {
         const contextValue = pageData[pageIndex].contexts[index] || '';
         const valueTextValue = pageData[pageIndex].valueTexts[index] || '';
     
-        const dataField = {
-            id: `${currentPage}-${index}`,
-            page: currentPage,
-            field: (currentPage - 1) * 4 + index + 1,
-            month: monthValue,
-            date: dateValue,
-            context: contextValue,
-            info: valueTextValue,
-        };
+        // const dataField = {
+        //     id: `${currentPage}-${index}`,
+        //     page: currentPage,
+        //     field: (currentPage - 1) * 4 + index + 1,
+        //     month: monthValue,
+        //     date: dateValue,
+        //     context: contextValue,
+        //     info: valueTextValue,
+        // };
     
         // pageData 업데이트
         const updatedPageData = [...pageData];
@@ -106,7 +106,7 @@ const CheckListComponent = ({ classInfo, currentPage, pageCount }) => {
         for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
             loadDataFromLocalStorage(pageIndex);
         }
-    }, [currentPage, pageCount, field.length]);
+    }, [currentPage, pageCount, field.length, pageData]);
 
     return (
         <S.FormTable>
