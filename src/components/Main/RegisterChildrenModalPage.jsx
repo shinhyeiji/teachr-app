@@ -6,7 +6,6 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
 
     const [children, setChildren] = useState([]);
 
-    // 로컬 스토리지에서 데이터 가져오기
     useEffect(() => {
         const savedData = localStorage.getItem('classInfo');
         if (savedData) {
@@ -24,7 +23,6 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
             setChildren(parsedData.우리반명단 || []);
         }
     }, []);
-    // 로컬 스토리지에 데이터 저장하기
     useEffect(() => {
         localStorage.setItem('formData', JSON.stringify(formData));
     }, [formData]);
@@ -43,13 +41,11 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
     const handleAddChild = (e) => {
         e.preventDefault();
         if (formData.child) {
-            // 새로운 아이템 추가 후 정렬
             setClassInfo(prevClassInfo => ({
                 ...prevClassInfo,
                 우리반명단: [...prevClassInfo.우리반명단, formData.child].sort((a, b) => a.localeCompare(b)),
             }));
     
-            // formData 업데이트
             const updatedChildren = [...formData.children, formData.child].sort((a, b) => a.localeCompare(b));
             setFormData({
                 ...formData,
@@ -98,23 +94,9 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
         // children 상태 업데이트
         setChildren(updatedChildren);
     };
-    // const updateObserveState = () => {
-    //     const updatedObserve = [
-    //         ...observe,
-    //         {
-    //             id: observe.length + 1,
-    //             name: formData.child,
-    //             month: new Date().getMonth() + 1,
-    //             date: new Date().getDate(),
-    //             division: '',
-    //             content: '',
-    //         }
-    //     ];
-    //     setObserve(updatedObserve);
-    // };
+
     const saveRegisterModal = (e) => {
         e.preventDefault();
-        // updateObserveState();
         setClassInfo({
             원명: formData.kindergarten,
             교실명: formData.className,
@@ -123,7 +105,6 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
             유아등록: '',
             우리반명단: formData.children,
         });
-        // 로컬 스토리지에 데이터 저장
         localStorage.setItem('classInfo', JSON.stringify(classInfo));
         console.log(classInfo);
         setModalOpen(false);

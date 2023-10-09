@@ -19,7 +19,7 @@ const CheckList = ({ classInfo }) => {
     const endIndex = startIndex + itemsPerPage;
     
     // 총 페이지 수 계산
-    const pageCount = checkListData.length;
+    const pageCount = checkListData.length + 1;
     
     // 새로운 페이지 추가 핸들러
     const handleAddPage = (e) => {
@@ -45,6 +45,7 @@ const CheckList = ({ classInfo }) => {
     //         console.error('Invalid data to save');
     //     }
     // }
+
     
     return(
         <S.Container>

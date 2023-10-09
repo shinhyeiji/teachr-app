@@ -13,7 +13,8 @@ import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
-    const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '체크리스트'}, {category: '타임워치'}, {category: '하루일과'}]
+    // const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '체크리스트'}, {category: '타임워치'}, {category: '하루일과'}]
+    const tabList = [{category: '오늘할일'}, {category: '하루일과'}, {category: '타임워치'}, {category: '유아관찰일지'}, {category: '체크리스트'}, ]
     const tabReset = () => {
         setTab('');
     }
@@ -61,11 +62,11 @@ const Main = () => {
     });
 
     const tabComponent = {
-        '달력': <MonthCalendar />,
+        // '달력': <MonthCalendar />,
         '오늘할일': <TodoList />,
-        '놀이기록': <Play />,
+        // '놀이기록': <Play />,
         '유아관찰일지': <Observe classInfo={classInfo} currentMonth={currentMonth} />,
-        '아이디어': <Idea />,
+        // '아이디어': <Idea />,
         '체크리스트': <CheckList classInfo={classInfo} />,
         '타임워치': <Timewatch />,
         '하루일과': <TodayPlay />,

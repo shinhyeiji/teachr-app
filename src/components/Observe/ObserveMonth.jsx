@@ -113,7 +113,6 @@ const ObserveMonth = ({ classInfo, currentMonth }) => {
     const saveRegisterObserve = (e) => {
         e.preventDefault();
         console.log(observe);
-
     };
 
     const clickResetObserve = (index) => {
