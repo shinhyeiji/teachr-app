@@ -5,7 +5,7 @@ import ObserveButton from '../components/Observe/ObserveButton';
 import ObserveMonth from '../components/Observe/ObserveMonth';
 
 
-const Observe = ({ classInfo, observe, setObserve, formData = { observe: [] }, setFormData }) => {
+const Observe = ({ classInfo }) => {
 
     const [currentSemester, setCurrentSemester] = useState('월간');
     const semesters = ['월간', '1학기', '2학기'];

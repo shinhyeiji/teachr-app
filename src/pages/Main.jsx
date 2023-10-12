@@ -1,20 +1,22 @@
 import * as S from './style/Main.style';
 import { useState, useEffect } from 'react';
-import MonthCalendar from './MonthCalendar';
-import Idea from './Idea';
+// import MonthCalendar from './MonthCalendar';
+// import Idea from './Idea';
 import Observe from './Observe';
-import Play from './Play';
+// import Play from './Play';
 import TodoList from './TodoList';
 import CheckList from './CheckList';
 import TodayPlay from './TodayPlay';
 import Timewatch from './Timewatch';
+import RandomGame from './RandomGame.jsx';
+import Quiz from './Quiz.jsx';
 import WeatherComponent from '../components/Main/WeatherComponent';
 import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
     // const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '체크리스트'}, {category: '타임워치'}, {category: '하루일과'}]
-    const tabList = [{category: '오늘할일'}, {category: '하루일과'}, {category: '타임워치'}, {category: '유아관찰일지'}, {category: '체크리스트'}, ]
+    const tabList = [{category: '오늘할일'}, {category: '하루일과'}, {category: '타임워치'}, {category: '유아관찰일지'}, {category: '체크리스트'}, {category: '랜덤뽑기'}, {category: 'QUIZ'} ]
     const tabReset = () => {
         setTab('');
     }
@@ -34,7 +36,7 @@ const Main = () => {
     
     const childrenNames = initialclassInfoData.우리반명단;
     const [initialObserveData, setInitialObserveData] = useState([]);
-    const [observe, setObserve] = useState(initialObserveData);
+    const observe = initialObserveData;
 
     useEffect(() => {
         const data = classInfo.우리반명단.map((childName, index) => ({
@@ -65,13 +67,15 @@ const Main = () => {
         // '달력': <MonthCalendar />,
         '오늘할일': <TodoList />,
         // '놀이기록': <Play />,
-        '유아관찰일지': <Observe classInfo={classInfo} currentMonth={currentMonth} />,
+        '유아관찰일지': <Observe classInfo={classInfo}/>,
         // '아이디어': <Idea />,
         '체크리스트': <CheckList classInfo={classInfo} />,
         '타임워치': <Timewatch />,
         '하루일과': <TodayPlay />,
+        '랜덤뽑기': <RandomGame />,
+        'QUIZ': <Quiz />
     }
-
+  
     return (
         <S.Container>
             <S.AppContent>

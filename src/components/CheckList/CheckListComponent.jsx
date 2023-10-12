@@ -1,5 +1,5 @@
 import * as S from './style/CheckListComponent.style.jsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const CheckListComponent = ({ classInfo, currentPage, pageCount }) => {
     const field = [0, 1, 2, 3];
@@ -53,16 +53,17 @@ const CheckListComponent = ({ classInfo, currentPage, pageCount }) => {
         const dateValue = pageData[pageIndex].dates[index] || '';
         const contextValue = pageData[pageIndex].contexts[index] || '';
         const valueTextValue = pageData[pageIndex].valueTexts[index] || '';
-    
-        // const dataField = {
-        //     id: `${currentPage}-${index}`,
-        //     page: currentPage,
-        //     field: (currentPage - 1) * 4 + index + 1,
-        //     month: monthValue,
-        //     date: dateValue,
-        //     context: contextValue,
-        //     info: valueTextValue,
-        // };
+        
+        // 수정 필요: 데이터 구조를 올바르게 수정하십시오.
+        const dataField = {
+            id: `${currentPage}-${index}`,
+            page: currentPage,
+            field: (currentPage - 1) * 4 + index + 1,
+            month: monthValue,
+            date: dateValue,
+            context: contextValue,
+            info: valueTextValue,
+        };
     
         // pageData 업데이트
         const updatedPageData = [...pageData];
@@ -74,40 +75,30 @@ const CheckListComponent = ({ classInfo, currentPage, pageCount }) => {
     
         // 로컬 스토리지에 데이터 저장
         localStorage.setItem(`pageData-${currentPage}`, JSON.stringify(updatedPageData));
-    
     };
-
-    useEffect(() => {
-        // 페이지가 로드될 때 로컬 스토리지에서 데이터를 검색하여 해당 페이지 및 필드 번호에 해당하는 데이터를 불러옵니다.
-        const loadDataFromLocalStorage = (pageIndex) => {
-            const loadedPageData = {
-                months: Array(field.length).fill(''),
-                dates: Array(field.length).fill(''),
-                contexts: Array(field.length).fill(''),
-                valueTexts: Array(field.length).fill(''),
-            };
-            for (let fieldIndex = 0; fieldIndex < field.length; fieldIndex++) {
-                const index = calculateIndex(fieldIndex);
-                const storedData = localStorage.getItem(`pageData-${currentPage}`);
-                if (storedData) {
-                    const data = JSON.parse(storedData);
-                    loadedPageData.months[index] = data.month;
-                    loadedPageData.dates[index] = data.date;
-                    loadedPageData.contexts[index] = data.context;
-                    loadedPageData.valueTexts[index] = data.info;
-                }
-            }
-            const updatedPageData = [...pageData];
-            updatedPageData[pageIndex] = loadedPageData;
-            setPageData(updatedPageData);
+    const loadDataFromLocalStorage = (pageIndex) => {
+        const loadedPageData = {
+            months: Array(field.length).fill(''),
+            dates: Array(field.length).fill(''),
+            contexts: Array(field.length).fill(''),
+            valueTexts: Array(field.length).fill(''),
         };
-
-        // 모든 페이지에 대한 데이터를 로드합니다.
-        for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
-            loadDataFromLocalStorage(pageIndex);
+        for (let fieldIndex = 0; fieldIndex < field.length; fieldIndex++) {
+            const index = calculateIndex(fieldIndex);
+            // 수정 필요: 로컬 스토리지에서 각 필드에 대한 데이터를 가져오도록 수정하십시오.
+            const storedData = localStorage.getItem(`pageData-${currentPage}-${index}`);
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                loadedPageData.months[index] = data.month;
+                loadedPageData.dates[index] = data.date;
+                loadedPageData.contexts[index] = data.context;
+                loadedPageData.valueTexts[index] = data.info;
+            }
         }
-    }, [currentPage, pageCount, field.length, pageData]);
-
+        const updatedPageData = [...pageData];
+        updatedPageData[pageIndex] = loadedPageData;
+        setPageData(updatedPageData);
+    };
     return (
         <S.FormTable>
             <S.FormThead>
