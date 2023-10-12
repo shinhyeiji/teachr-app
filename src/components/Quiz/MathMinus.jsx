@@ -19,18 +19,31 @@ const MathMinus = () => {
         setNumber1('');
         setNumber2('');
         setNumber3('');
+        setIsAnswer('')
     }
     const handleRandomQuiz1 = () => {
-        setNumber1(Math.ceil(Math.random()*10));
-        setNumber2(Math.ceil(Math.random()*10));
+        const newNumber1 = Math.ceil(Math.random()*10);
+        const newNumber2 = Math.ceil(Math.random()*10);
+        setNumber1(newNumber1 >= newNumber2 ? newNumber1 : newNumber2);
+        setNumber2(newNumber1 >= newNumber2 ? newNumber2 : newNumber1);
+        setNumber3('')
+        setIsAnswer('')
     }
     const handleRandomQuiz2 = () => {
-        setNumber1(Math.ceil(Math.random()*100));
-        setNumber2(Math.ceil(Math.random()*100));
+        const newNumber1 = Math.ceil(Math.random()*100);
+        const newNumber2 = Math.ceil(Math.random()*100);
+        setNumber1(newNumber1 >= newNumber2 ? newNumber1 : newNumber2);
+        setNumber2(newNumber1 >= newNumber2 ? newNumber2 : newNumber1);
+        setNumber3('')
+        setIsAnswer('')
     }
     const handleRandomQuiz3 = () => {
-        setNumber1(Math.ceil(Math.random()*1000));
-        setNumber2(Math.ceil(Math.random()*1000));
+        const newNumber1 = Math.ceil(Math.random()*1000);
+        const newNumber2 = Math.ceil(Math.random()*1000);
+        setNumber1(newNumber1 >= newNumber2 ? newNumber1 : newNumber2);
+        setNumber2(newNumber1 >= newNumber2 ? newNumber2 : newNumber1);
+        setNumber3('')
+        setIsAnswer('')
     }
     return(
         <S.MathMinus>
@@ -61,7 +74,7 @@ const MathMinus = () => {
                     ? <S.WidthWrapper>
                         <S.Width>
                             <S.Number1 type="number" value={number1} onChange={(e)=>{setNumber1(e.target.value)}} />
-                            <S.Symbol>+</S.Symbol>
+                            <S.Symbol>-</S.Symbol>
                             <S.Number2 type="number" value={number2} onChange={(e)=>{setNumber2(e.target.value)}} />
                             <S.Symbol>=</S.Symbol>
                             <S.Number3 type="number" value={number3} onChange={(e)=>{setNumber3(e.target.value)}} />
@@ -79,7 +92,7 @@ const MathMinus = () => {
                         <S.Height>
                             <S.Number4 type="number" value={number1} onChange={(e)=>{setNumber1(e.target.value)}} />
                             <S.Line2>
-                                <S.Symbol>+</S.Symbol>
+                                <S.Symbol>-</S.Symbol>
                                 <S.Number5 type="number" value={number2} onChange={(e)=>{setNumber2(e.target.value)}} />
                             </S.Line2>
                             <S.Line3></S.Line3>
