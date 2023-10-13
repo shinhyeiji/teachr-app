@@ -3,6 +3,7 @@ import * as S from './style/TwentyCame.style.jsx';
 
 const TwentyGame = () => {
     const [counter, setCounter] = useState(20);
+
     const handleCount = (e) => {
         setCounter(counter - 1);
     }
@@ -17,7 +18,10 @@ const TwentyGame = () => {
                     <S.CountNumber>{counter}</S.CountNumber>
                 </S.CountButton>}
             
-            {counter === 0 && (<S.CountButton onClick={handleReset}>정답은?</S.CountButton>)}
+            {counter === 0 && 
+            (<S.CountButton onClick={handleReset}>
+                    <S.CountText>정답은?</S.CountText>
+                </S.CountButton>)}
         </S.CountWrapper>
     )
 }
