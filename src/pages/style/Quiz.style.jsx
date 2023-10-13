@@ -15,7 +15,7 @@ export const HeadWrapper = styled.div`
     margin: 20px 0 0 0;
 `
 export const Title = styled.h1`
-    margin: 20px;
+    margin: 20px 400px 20px 20px;
     color: gray;
 `
 export const TabList = styled.button`

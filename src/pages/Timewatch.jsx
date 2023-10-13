@@ -13,19 +13,22 @@ const Timewatch = () => {
 
     return (
       <S.Container>
-        <S.NavDiv>
-          {tabList.map((item, index) => {
-            return(
-              <S.Nav
-                key={index}
-                onClick={() => setTab(item.category)}
-                active={tab === item.category ? 'active' : ''}
-              >
-                <S.NavTitle>{item.category}</S.NavTitle>
-              </S.Nav>
-            )
-          })}
-        </S.NavDiv>
+        <S.HeadWrapper>
+          <S.Title>알람</S.Title>
+          <S.NavDiv>
+            {tabList.map((item, index) => {
+              return(
+                <S.Nav
+                  key={index}
+                  onClick={() => setTab(item.category)}
+                  active={tab === item.category ? 'active' : ''}
+                >
+                  <S.NavTitle>{item.category}</S.NavTitle>
+                </S.Nav>
+              )
+            })}
+          </S.NavDiv>
+        </S.HeadWrapper>
         <S.Content>
           {tab === tabList[0].tab
           ? <StopWatch />

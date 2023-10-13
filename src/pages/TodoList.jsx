@@ -53,7 +53,10 @@ const TodoList = () => {
     
     return (
         <S.Container>
-            <TodoHeaderComponent currentTime={currentTime} />
+            <S.HeadWrapper>
+                <S.Title>오늘 할 일 📒</S.Title>
+                <TodoHeaderComponent currentTime={currentTime} />
+            </S.HeadWrapper>
             <TodoEditorComponent onCreate={onCreate} />
             <TodoListComponent todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
         </S.Container>

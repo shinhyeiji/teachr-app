@@ -1,5 +1,5 @@
 import * as S from './style/RandomGame.style.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const RandomGame = () => {
     const [participate, setParticipate] = useState(2);
@@ -32,35 +32,32 @@ const RandomGame = () => {
           setKindNames(newKindNames);
           setAmounts(newAmounts);
           setShowTable(true);
+          setClickedCards([])
     }
     const randomGameStart = () => {
         const totalParticipants = participate * per;
         const totalAmounts = amounts.reduce((sum, amount) => sum + amount, 0);
     
-        if(totalAmounts < totalParticipants){
-            alert(`종류별 갯수의 합(${totalAmounts})이 '참가인원(${participate}명) X 1인당 참여횟수(${per}번)=${participate*per}'보다 많아야합니다.`)
+        if (totalAmounts < totalParticipants) {
+            alert(`종류별 갯수의 합(${totalAmounts})이 '참가인원(${participate}명) X 1인당 참여횟수(${per}번)=${participate * per}'보다 많아야합니다.`);
             return;
         }
+    
         setShowTable(false);
     
         const selectedCards = [];
-        const availableCards = [...kindNames]; // 사용 가능한 카드 목록을 복사합니다.
     
-        // 랜덤하게 선택된 카드들을 생성
-        while (selectedCards.length < totalAmounts) {
-            const randomIndex = Math.floor(Math.random() * availableCards.length);
-            selectedCards.push(availableCards[randomIndex]);
-    
-            // 한 줄에 최대 4개의 카드를 표시하도록 설정
-            if (selectedCards.length % 4 === 0) {
-                selectedCards.push('newLine');
+        // 각 종류별로 지정된 갯수만큼 카드를 생성합니다.
+        for (let i = 0; i < kinds; i++) {
+            for (let j = 0; j < amounts[i]; j++) {
+                selectedCards.push(kindNames[i]);
             }
-    
-            // 선택된 카드를 사용 가능한 목록에서 제거
-            availableCards.splice(randomIndex, 1);
         }
-        if(selectedCards[selectedCards.length - 1]){
-            selectedCards.pop();
+    
+        // 섞어줍니다.
+        for (let i = selectedCards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [selectedCards[i], selectedCards[j]] = [selectedCards[j], selectedCards[i]];
         }
         setSelectedCards(selectedCards);
     };
@@ -69,7 +66,13 @@ const RandomGame = () => {
         updatedClickedCards[index] = true; // 해당 인덱스의 카드를 클릭한 상태로 변경
         setClickedCards(updatedClickedCards); // 클릭한 상태 업데이트
     };
-    
+
+    const cardImages = ['/imgs/card1.jpg', '/imgs/card2.jpg', '/imgs/card3.jpg', '/imgs/card4.jpg']
+    const getRandomCardImage = () => {
+        const randomIndex = Math.floor(Math.random() * cardImages.length);
+        return cardImages[randomIndex];
+    }
+
     return(
         <S.Container>
             <S.HeadWrapper>
@@ -163,7 +166,7 @@ const RandomGame = () => {
                                     onClick={() => handleCardClick(index)} // 클릭 이벤트 핸들러를 전달
                                 >
                                     <S.Back>{card}</S.Back>
-                                    <S.Front>
+                                    <S.Front imageUrl={getRandomCardImage()}>
                                         <S.FrontText>{index + 1}</S.FrontText>
                                     </S.Front>
                                 </S.CardInner>

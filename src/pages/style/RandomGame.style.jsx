@@ -166,36 +166,35 @@ export const CardInner = styled.div`
         css`
             transform: rotateY(180deg);
         `}
-
 `;
 export const Back = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #F0F0F0;
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3); 
-    font-size: 18px;
+    font-size: 50px;
     color: #000;
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    background-image: url('/imgs/card5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 `
 export const Front = styled.div`
     width: 250px;
     height: 320px;
     margin-right: 30px;
-    background-color: #3498db;
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: #fff;
+    align-items: flex-start;
     backface-visibility: hidden;
-    background-image: url('/imgs/weatherbackground.png');
+    background-image: url(${props => props.imageUrl});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -203,4 +202,6 @@ export const Front = styled.div`
 export const FrontText = styled.p`
     font-size: 50px;
     font-weight: 700;
+    color: gray;
+    font-size: 30px;
 `

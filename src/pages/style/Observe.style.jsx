@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1218px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-left: 80px;
+    width: 1238px;
+    height: 810px;
+    padding: 20px;
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const HeadWrapper = styled.div`
     width: 100%;

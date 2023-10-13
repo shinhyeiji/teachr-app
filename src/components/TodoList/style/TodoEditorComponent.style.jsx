@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const EditorWrapper = styled.div`
     width: 100%;
+    margin-top: 20px;
 `
 export const EditorTitle = styled.h4`
     height: 20px;
@@ -23,7 +24,7 @@ export const AddTimeInput = styled.input`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const AddTodoInput = styled.input`
-    width: 600px;
+    width: 800px;
     height: 60px;
     margin-right: 10px;
     padding-left: 20px;

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1440px;
+    width: 1238px;
     height: 810px;
     padding: 20px;
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const HeadWrapper = styled.div`
     width: 100%;
@@ -11,7 +12,7 @@ export const HeadWrapper = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
-    margin: 20px 0 0 0;
+    margin: 20px 0;
 `
 export const Title = styled.h1`
     margin: 20px;

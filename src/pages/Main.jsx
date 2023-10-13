@@ -15,8 +15,7 @@ import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
-    // const tabList = [{category: '달력'}, {category: '오늘할일'}, {category: '놀이기록'}, {category: '유아관찰일지'}, {category: '아이디어'}, {category: '체크리스트'}, {category: '타임워치'}, {category: '하루일과'}]
-    const tabList = [{category: '오늘할일'}, {category: '하루일과'}, {category: '타임워치'}, {category: '유아관찰일지'}, {category: '체크리스트'}, {category: '랜덤뽑기'}, {category: 'QUIZ'} ]
+    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '알람'}, {category: '유아관찰일지'}, {category: '체크리스트'}, {category: '랜덤뽑기'}, {category: 'QUIZ'} ]
     const tabReset = () => {
         setTab('');
     }
@@ -64,13 +63,10 @@ const Main = () => {
     });
 
     const tabComponent = {
-        // '달력': <MonthCalendar />,
-        '오늘할일': <TodoList />,
-        // '놀이기록': <Play />,
+        '오늘 할 일': <TodoList />,
         '유아관찰일지': <Observe classInfo={classInfo}/>,
-        // '아이디어': <Idea />,
         '체크리스트': <CheckList classInfo={classInfo} />,
-        '타임워치': <Timewatch />,
+        '알람': <Timewatch />,
         '하루일과': <TodayPlay />,
         '랜덤뽑기': <RandomGame />,
         'QUIZ': <Quiz />

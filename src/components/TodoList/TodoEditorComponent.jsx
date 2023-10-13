@@ -28,7 +28,6 @@ const TodoEditorComponent = ({ onCreate }) => {
     }
     return(
         <S.EditorWrapper>
-            <S.EditorTitle>오늘 할 일 작성하기✏️</S.EditorTitle>
             <S.AddTodo>
                 <S.AddTimeInput
                     ref={inputRef}
@@ -43,7 +42,7 @@ const TodoEditorComponent = ({ onCreate }) => {
                     onKeyDown={onKeyDown}
                     placeholder="오늘은 얼마나 많은 일이...>_<"
                 />
-                <S.AddTodoButton onClick={onSubmit}>추가😭</S.AddTodoButton>
+                <S.AddTodoButton onClick={onSubmit}>추가</S.AddTodoButton>
             </S.AddTodo>
         </S.EditorWrapper>
     )

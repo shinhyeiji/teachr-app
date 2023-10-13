@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
 export const Todoheader = styled.div`
-    width: 100%;
+    width: 80%;
     text-align: left;
-`
-export const Title = styled.h2`
-    font-size: 40px;
-    height: 30px;
 `
 export const Current = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     gap: 40px;
 `
 export const Date = styled.h1`
