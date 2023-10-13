@@ -9,6 +9,7 @@ const RandomGame = () => {
     const [amounts, setAmounts] = useState([]);
     const [showTable, setShowTable] = useState(true);
     const [selectedCards, setSelectedCards] = useState([]);
+    const [clickedCards, setClickedCards] = useState([])
 
     const handleKindSetUp = () => {
         if (participate <= 1) {
@@ -35,23 +36,39 @@ const RandomGame = () => {
     const randomGameStart = () => {
         const totalParticipants = participate * per;
         const totalAmounts = amounts.reduce((sum, amount) => sum + amount, 0);
-
+    
         if(totalAmounts < totalParticipants){
             alert(`종류별 갯수의 합(${totalAmounts})이 '참가인원(${participate}명) X 1인당 참여횟수(${per}번)=${participate*per}'보다 많아야합니다.`)
             return;
         }
         setShowTable(false);
-
-        const selectedCards = [];
-
-        // 랜덤하게 선택된 카드들을 생성
-        while (selectedCards.length < totalParticipants) {
-          const randomIndex = Math.floor(Math.random() * kindNames.length);
-          selectedCards.push(kindNames[randomIndex]);
-        }
     
+        const selectedCards = [];
+        const availableCards = [...kindNames]; // 사용 가능한 카드 목록을 복사합니다.
+    
+        // 랜덤하게 선택된 카드들을 생성
+        while (selectedCards.length < totalAmounts) {
+            const randomIndex = Math.floor(Math.random() * availableCards.length);
+            selectedCards.push(availableCards[randomIndex]);
+    
+            // 한 줄에 최대 4개의 카드를 표시하도록 설정
+            if (selectedCards.length % 4 === 0) {
+                selectedCards.push('newLine');
+            }
+    
+            // 선택된 카드를 사용 가능한 목록에서 제거
+            availableCards.splice(randomIndex, 1);
+        }
+        if(selectedCards[selectedCards.length - 1]){
+            selectedCards.pop();
+        }
         setSelectedCards(selectedCards);
-      };
+    };
+    const handleCardClick = (index) => {
+        const updatedClickedCards = [...clickedCards];
+        updatedClickedCards[index] = true; // 해당 인덱스의 카드를 클릭한 상태로 변경
+        setClickedCards(updatedClickedCards); // 클릭한 상태 업데이트
+    };
     
     return(
         <S.Container>
@@ -100,7 +117,7 @@ const RandomGame = () => {
                             <S.Td2>종류</S.Td2>
                             <S.Td3>갯수</S.Td3>
                             <S.Td4>
-                                <S.SetUpButton onClick={randomGameStart}>시작하기</S.SetUpButton>
+                                <S.StartButton onClick={randomGameStart}>시작하기</S.StartButton>
                             </S.Td4>
                         </S.Tr1>
                     </S.SetUpTableHead>
@@ -108,10 +125,10 @@ const RandomGame = () => {
                     {kindNames.map((name, index) => (
                         <S.Tr2 key={index}>
                             <S.Td1>
-                                <p>{index + 1}</p>
+                                <S.TdIndex>{index + 1}</S.TdIndex>
                             </S.Td1>
                             <S.Td2>
-                                <input
+                                <S.TdKind
                                     type="text"
                                     value={name}
                                     onChange={(e) => {
@@ -122,7 +139,7 @@ const RandomGame = () => {
                                 />
                             </S.Td2>
                             <S.Td3>
-                                <input
+                                <S.TdAmount
                                     type="number"
                                     value={amounts[index]}
                                     onChange={(e) => {
@@ -138,14 +155,21 @@ const RandomGame = () => {
                     </S.SetUpTableBody>
                 </S.SetUpTable>)}
                 {!showTable && (
-                    <div>
+                    <S.CardDiv>
                         {selectedCards.map((card, index) => (
-                            <div key={index}>
-                                <div>{index + 1}</div>
-                                <div>{card}</div>
-                            </div>
+                            <S.Card key={index}>
+                                <S.CardInner
+                                    clicked={clickedCards[index]} // 해당 카드의 클릭 상태를 전달
+                                    onClick={() => handleCardClick(index)} // 클릭 이벤트 핸들러를 전달
+                                >
+                                    <S.Back>{card}</S.Back>
+                                    <S.Front>
+                                        <S.FrontText>{index + 1}</S.FrontText>
+                                    </S.Front>
+                                </S.CardInner>
+                            </S.Card>
                         ))}
-                    </div>
+                    </S.CardDiv>
                 )}
             </S.ContentWrapper>
         </S.Container>

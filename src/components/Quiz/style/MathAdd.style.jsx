@@ -176,11 +176,9 @@ export const Answer1 = styled.p`
     width: 1100px;
     height: 10px;
     font-size: 400px;
-
 `
 export const Answer2 = styled.p`
     width: 300px;
     height: 200px;
     font-size: 400px;
-
 `
