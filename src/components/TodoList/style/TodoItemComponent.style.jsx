@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const TodoItem = styled.div`
-    width: 97%;
     height: 60px;
     padding: 10px 0;
     display: flex;
@@ -23,7 +22,7 @@ export const Time = styled.div`
     text-align: center;
 `
 export const Content = styled.div`
-    width: 700px;
+    width: 870px;
     text-align: left;
 `
 export const ButtonDiv = styled.div`

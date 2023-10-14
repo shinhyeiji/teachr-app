@@ -17,7 +17,7 @@ export const AddTimeInput = styled.input`
     width: 200px;
     height: 60px;
     font-size: 25px;
-    border: 5px solid #1f93ff;
+    border: 5px solid #999fff;
     border-right: none;
     border-radius: 10px 0 0 10px;
     text-align: center;
@@ -29,7 +29,7 @@ export const AddTodoInput = styled.input`
     margin-right: 10px;
     padding-left: 20px;
     font-size: 25px;
-    border: 5px solid #1f93ff;
+    border: 5px solid #999fff;
     border-radius: 0 10px 10px 0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
@@ -37,9 +37,11 @@ export const AddTodoButton = styled.button`
     width: 175px;
     height: 70px;
     font-size: 35px;
-    background-color: #1f93ff;
+    background-color: #999fff;
     border: none;
     color: #FFF;
     border-radius: 10px;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+    cursor: pointer;
+
 `

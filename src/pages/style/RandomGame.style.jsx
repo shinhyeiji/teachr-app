@@ -12,6 +12,7 @@ export const HeadWrapper = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0 0;
 `
 export const Title = styled.h1`
@@ -56,7 +57,6 @@ export const SetUp3 = styled.div`
 
 `
 export const SetUpText = styled.p`
-
 `
 export const SetUpInput = styled.input`
     width: 60px;
@@ -71,7 +71,8 @@ export const SetUpButton = styled.button`
     font-size: 25px;
     text-align: center;
     border: none;
-    background-color: lightblue;
+    background-color: #999fff;
+    color: #fff;
     cursor: pointer;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
@@ -129,21 +130,22 @@ export const TdAmount = styled.input`
     text-align: right;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
-export const StartButton = styled.button`\
+export const StartButton = styled.button`
     width: 120px;
     height: 40px;
     font-size: 25px;
     text-align: center;
     border: none;
-    background-color: lightblue;
+    background-color: #999fff;
+    color: #fff;
     cursor: pointer;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const CardDiv = styled.div`
-    max-width: 1238px; /* 부모 컴포넌트인 Container의 너비에 맞춰 최대 너비 설정 */
-    width: 100%; /* 최대 너비에 맞춰 가로 길이 100%로 설정 */
+    max-width: 1238px;
+    width: 100%;
     display: flex;
-    flex-wrap: wrap; /* 자식 요소가 여러 줄에 걸쳐 표시될 수 있도록 설정 */
+    flex-wrap: wrap;
     justify-content: center;
 `
 
@@ -154,18 +156,14 @@ export const Card = styled.div`
     margin-bottom: 20px;
     perspective: 1000px;
 `
+
 export const CardInner = styled.div`
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 1s;
     box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3); 
-
-    ${(props) =>
-        props.clicked &&
-        css`
-            transform: rotateY(180deg);
-        `}
+    transform: rotateY(${props => (props.clicked ? '180deg' : '0deg')});
 `;
 export const Back = styled.div`
     width: 100%;
@@ -194,11 +192,15 @@ export const Front = styled.div`
     justify-content: center;
     align-items: flex-start;
     backface-visibility: hidden;
-    background-image: url(${props => props.imageUrl});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-`
+    ${(props) =>
+        props.imageUrl &&
+        css`
+            background-image: url(${props.imageUrl});
+        `}
+`;
 export const FrontText = styled.p`
     font-size: 50px;
     font-weight: 700;

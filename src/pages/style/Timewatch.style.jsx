@@ -12,6 +12,7 @@ export const HeadWrapper = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0 0;
 `
 export const Title = styled.h1`
@@ -27,16 +28,15 @@ export const NavDiv = styled.div`
 `
 export const Nav = styled.div`
   width: 200px;
-  height: 70px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px;
-  border-radius: 10px;
-  background-color: ${props => props.active ? '#F66' : '#F99'};
+  background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
   color: ${props => props.active ? '#FFF' : '#000'};
   &:hover{
-      background-color: #F66;
+      background-color: #999fff;
       color:#FFF;
       cursor: pointer;
   }

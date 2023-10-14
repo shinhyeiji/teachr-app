@@ -19,12 +19,12 @@ export const DirectionButton = styled.button`
     height: 50px;
     margin-right: 10px;
     line-height: 10px;
-    background-color:  ${props => props.active ? '#a2a2a2' : '#f0f0f0'};
+    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
     border-radius: 10px;
     border: 5px solid #f0f0f0;
     color: ${props => props.active ? '#FFF' : '#000'};
     &:hover{
-        background-color: #a2a2a2;
+        background-color: #999fff;
         color:#FFF;
         cursor: pointer;
     }
@@ -138,20 +138,21 @@ export const ButtonWrapper = styled.div`
     display: flex;
 `
 export const ConfirmButton = styled.button`
-font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-width: 80px;
-height: 50px;
-margin-right: 10px;
-line-height: 10px;
-background-color: #f0f0f0;
-border-radius: 10px;
-border: 5px solid #f0f0f0;
-color: #000;
-&:hover{
-    background-color: #a2a2a2;
-    color:#FFF;
-    cursor: pointer;
-}
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    line-height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    border: 5px solid #f0f0f0;
+    color: #000;
+    font-weight: 700;
+    &:hover{
+        background-color: #999fff;
+        color:#FFF;
+        cursor: pointer;
+    }
 `
 export const ResetButton = styled.button`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
@@ -163,8 +164,9 @@ export const ResetButton = styled.button`
     border-radius: 10px;
     border: 5px solid #f0f0f0;
     color: #000;
+    font-weight: 700;
     &:hover{
-        background-color: #a2a2a2;
+        background-color: #999fff;
         color:#FFF;
         cursor: pointer;
     }

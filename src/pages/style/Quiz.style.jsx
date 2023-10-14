@@ -12,6 +12,7 @@ export const HeadWrapper = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0 0;
 `
 export const Title = styled.h1`
@@ -28,10 +29,10 @@ export const TabList = styled.button`
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    background-color: ${props => props.active ? '#a2a2a2' : '#f0f0f0'};
+    background-color: ${props => props.active ? '#999fff' : '#f0f0f0'};
     color: ${props => props.active ? '#FFF' : '#000'};
     &:hover{
-        background-color: #a2a2a2;
+        background-color: #999fff;
         color:#FFF;
         cursor: pointer;
     }

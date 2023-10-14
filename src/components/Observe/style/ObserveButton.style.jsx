@@ -11,10 +11,10 @@ export const SelectButton = styled.button`
     border: none;
     margin: 0 20px;
     font-size: 25px;
-    background-color: ${props => props.active ? '#a2a2a2' : '#f0f0f0'};
+    background-color: ${props => props.active ? '#999fff' : '#f0f0f0'};
     color: ${props => props.active ? '#FFF' : '#000'};
     &:hover{
-        background-color: #a2a2a2;
+        background-color: #999fff;
         color:#FFF;
         cursor: pointer;
     }

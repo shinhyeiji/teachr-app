@@ -69,9 +69,9 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
         });
     };
 
-    const pushField = (field, value) => {
+    const pushField = (field, value, e) => {
+        e.preventDefault();
         updateDisplayedInfo(field, value);
-        setModalOpen(false);
     };
 
     const handleDeleteChild = (child) => {
@@ -130,7 +130,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
-                                <S.TableLineButton onClick={() => pushField('원명', formData.kindergarten)}>
+                                <S.TableLineButton onClick={(e) => pushField('원명', formData.kindergarten, e)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>
@@ -147,7 +147,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
-                                <S.TableLineButton onClick={() => pushField('교실명', formData.className)}>
+                                <S.TableLineButton onClick={(e) => pushField('교실명', formData.className, e)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>
@@ -164,7 +164,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
-                                <S.TableLineButton onClick={() => pushField('교사명', formData.teacher)}>
+                                <S.TableLineButton onClick={(e) => pushField('교사명', formData.teacher, e)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>
@@ -181,7 +181,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                                 />
                             </S.TableLineBox>
                             <S.TableLineBox>
-                                <S.TableLineButton onClick={() => pushField('연령', formData.age)}>
+                                <S.TableLineButton onClick={(e) => pushField('연령', formData.age, e)}>
                                     <span className="material-symbols-outlined" style={{ fontSize: '15px', fontWeight: 700 }}>done</span>
                                 </S.TableLineButton>
                             </S.TableLineBox>

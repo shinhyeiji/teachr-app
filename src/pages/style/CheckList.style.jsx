@@ -12,6 +12,7 @@ export const Head = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0 0 0;
 `
 export const Title = styled.h1`

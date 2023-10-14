@@ -12,13 +12,13 @@ export const HeadWrapper = styled.div`
     display: flex;
     border-bottom: 5px solid #f0f0f0;
     justify-content: space-between;
+    align-items: center;
     margin: 20px 0;
 `
 export const Title = styled.h1`
     margin: 20px;
     color: gray;
 `
-
 export const AddPlay = styled.div`
     display: flex;
     justify-content: center;
@@ -27,17 +27,22 @@ export const AddPlay = styled.div`
 export const PlayInput = styled.input`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     width: 300px;
-    height: 50px;
+    height: 42px;
     font-size: 25px;
     text-align: center;
     margin-right: 3px;
+    border: 5px solid #999fff;
+    background-color: #fff;
 `;
 export const AddButton = styled.button`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     width: 100px;
-    height: 55px;
+    height: 52px;
     font-size: 25px;
     text-align: center;
+    border: none;
+    background-color: #999fff;
+    color: #fff;
 `;
 export const PlayWrapper = styled.div`
     width: 100%;
@@ -66,10 +71,11 @@ export const DeleteButton = styled.button`
 `
 export const Content = styled.div`
     width: 100%;
-    height: 620px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 `
 export const LeftButton = styled.button`
     width: 50px;

@@ -21,13 +21,13 @@ export const NavDiv = styled.div`
 export const Nav = styled.div`
     width: 200px;
     height: 100px;
-    background-color: ${props => props.active ? '#a2a2a2' : '#f0f0f0'};
-    border: 1px solid #FFF;
+    background-color: ${props => props.active ? '#999fff;' : '#f0f0f0'};
+    border: 1px solid #fff;
     border-radius: 10px;
-    color: ${props => props.active ? '#FFF' : '#000'};
+    color: ${props => props.active ? '#fff' : '#000'};
     &:hover{
-        background-color: #a2a2a2;
-        color:#FFF;
+        background-color: #999fff;;
+        color: #fff;
         cursor: pointer;
     }
 `

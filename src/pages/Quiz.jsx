@@ -5,7 +5,7 @@ import MathMinus from '../components/Quiz/MathMinus.jsx';
 import TwentyGame from '../components/Quiz/TwentyGame.jsx';
 
 const Quiz = () => {
-    const [quizTab, setQuizTab] = useState('')
+    const [quizTab, setQuizTab] = useState('더하기')
     const quizList = [{category: '더하기'}, {category: '빼기'}, {category: '스무고개'}]
     const quizComponent = {
         '더하기' : <MathAdd />,

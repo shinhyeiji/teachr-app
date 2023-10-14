@@ -1,5 +1,5 @@
 import * as S from './style/RandomGame.style.jsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const RandomGame = () => {
     const [participate, setParticipate] = useState(2);

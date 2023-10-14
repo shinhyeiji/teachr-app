@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 // import MonthCalendar from './MonthCalendar';
 // import Idea from './Idea';
 import Observe from './Observe';
-// import Play from './Play';
+import Play from './Play';
 import TodoList from './TodoList';
 import CheckList from './CheckList';
 import TodayPlay from './TodayPlay';
@@ -15,7 +15,7 @@ import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
-    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '알람'}, {category: '유아관찰일지'}, {category: '체크리스트'}, {category: '랜덤뽑기'}, {category: 'QUIZ'} ]
+    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '유아관찰일지'}, {category: '체크리스트'} ]
     const tabReset = () => {
         setTab('');
     }
@@ -25,8 +25,8 @@ const Main = () => {
     : {
         원명: '',
         교실명: '',
-        연령: '',
         교사명: '',
+        연령: '',
         유아등록: '',
         우리반명단: [],
     };
@@ -55,8 +55,8 @@ const Main = () => {
     const [formData, setFormData] = useState({
         kindergarten: initialclassInfoData.원명,
         className: initialclassInfoData.교실명,
-        age: initialclassInfoData.연령,
         teacher: initialclassInfoData.교사명,
+        age: initialclassInfoData.연령,
         child: '',
         children: childrenNames,
         observe: observe
@@ -64,12 +64,13 @@ const Main = () => {
 
     const tabComponent = {
         '오늘 할 일': <TodoList />,
-        '유아관찰일지': <Observe classInfo={classInfo}/>,
-        '체크리스트': <CheckList classInfo={classInfo} />,
         '알람': <Timewatch />,
         '하루일과': <TodayPlay />,
+        '활동': <Play />,
         '랜덤뽑기': <RandomGame />,
-        'QUIZ': <Quiz />
+        'QUIZ': <Quiz />,
+        '유아관찰일지': <Observe classInfo={classInfo}/>,
+        '체크리스트': <CheckList classInfo={classInfo} />,
     }
   
     return (

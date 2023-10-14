@@ -11,6 +11,6 @@ export const Current = styled.div`
     gap: 40px;
 `
 export const Date = styled.h1`
-    font-size: 50px;
-    color: #1f93ff;
+    font-size: 35px;
+    color: #999fff;
 `
