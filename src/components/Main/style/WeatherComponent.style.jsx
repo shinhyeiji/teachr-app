@@ -162,6 +162,7 @@ export const City = styled.div`
     padding: 5px 10px;
     background-color: #f0f0f0;
     border-radius: 10px;
+    text-decoration: none;
 `
 
 

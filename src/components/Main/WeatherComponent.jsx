@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './style/WeatherComponent.style';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const WeatherComponent = () => {
     const [latitude, setLatitude] = useState(37.5642135);
@@ -151,14 +152,11 @@ const WeatherComponent = () => {
                 </S.WeatherDiv>
                 <S.Line></S.Line>
                 <S.Weather4>
-                    <S.City>📌{weather.city}</S.City>
+                    <S.City as={Link} to="https://www.weather.go.kr/w/index.do">📌{weather.city}</S.City>
                 </S.Weather4>
-
             </S.Weather>
         )
         }
-
-      
     </S.WeatherComponent>
   );
 };

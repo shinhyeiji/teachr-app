@@ -35,7 +35,13 @@ export const SoundButton = styled.button`
     border-radius: 10px;
     font-size: 25px;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
+    color: ${props => props.active ? '#FFF' : '#000'};
+    &:hover{
+        background-color: #999fff;
+        color:#FFF;
+        cursor: pointer;
+    }
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const HandleWrapper = styled.div`

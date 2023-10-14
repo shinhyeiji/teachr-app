@@ -6,6 +6,7 @@ const ObserveSemester = ({ currentSemester, classInfo, months }) => {
     return(
         <S.Semester>
             <S.ContextTitle>{currentSemester} 명단({classInfo.우리반명단.length}명)</S.ContextTitle>
+            {classInfo.우리반명단.length >= 1 && (
             <S.SemesterTable>
                 <S.SemesterThead>
                     <S.SemesterTheadTr>
@@ -40,6 +41,7 @@ const ObserveSemester = ({ currentSemester, classInfo, months }) => {
                     ))}
                 </S.SemesterTbody>
             </S.SemesterTable>
+            )}
         </S.Semester>
     )
 }
