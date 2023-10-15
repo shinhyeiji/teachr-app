@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as S from './style/WeatherComponent.style';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ const WeatherComponent = () => {
     const [longitude, setLongitude] = useState(126.9779692);
     const [currentTime, setCurrentTime] = useState(new Date());
     const [pollute, setPollute] = useState({aqi: '0', pm2_5: '0'});
-    let watchId = null;
+    const watchIdRef = useRef(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -16,14 +16,14 @@ const WeatherComponent = () => {
       }, 1000);
   
     if (navigator.geolocation) {
-      watchId = navigator.geolocation.watchPosition(updateLocation);
+        watchIdRef.current = navigator.geolocation.watchPosition(updateLocation);
     } else {
       alert('이 브라우저에서는 Geolocation이 지원되지 않습니다.');
     }
     return () => {
         clearInterval(intervalId);
-        if (watchId) {
-            navigator.geolocation.clearWatch(watchId);
+        if (watchIdRef.current) {
+            navigator.geolocation.clearWatch(watchIdRef.current);
         }
     };
   }, []);

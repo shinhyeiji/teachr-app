@@ -2,20 +2,22 @@ import * as S from './style/Main.style';
 import { useState, useEffect } from 'react';
 // import MonthCalendar from './MonthCalendar';
 // import Idea from './Idea';
-import Observe from './Observe';
+// import Observe from './Observe';
 import Play from './Play';
 import TodoList from './TodoList';
-import CheckList from './CheckList';
+// import CheckList from './CheckList';
 import TodayPlay from './TodayPlay';
 import Timewatch from './Timewatch';
 import RandomGame from './RandomGame.jsx';
 import Quiz from './Quiz.jsx';
+import Memo from './Memo.jsx';
 import WeatherComponent from '../components/Main/WeatherComponent';
 import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
     const [tab, setTab] = useState('');
-    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '유아관찰일지'}, {category: '체크리스트'} ]
+    // const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '메모장'}, {category: '유아관찰일지'}, {category: '체크리스트'} ]
+    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '하루 메모장'}]
     const tabReset = () => {
         setTab('');
     }
@@ -64,13 +66,15 @@ const Main = () => {
 
     const tabComponent = {
         '오늘 할 일': <TodoList />,
+        '메모장': <Memo />,
         '알람': <Timewatch />,
         '하루일과': <TodayPlay />,
         '활동': <Play />,
         '랜덤뽑기': <RandomGame />,
         'QUIZ': <Quiz />,
-        '유아관찰일지': <Observe classInfo={classInfo}/>,
-        '체크리스트': <CheckList classInfo={classInfo} />,
+        '하루 메모장': <Memo />,
+        // '유아관찰일지': <Observe classInfo={classInfo}/>,
+        // '체크리스트': <CheckList classInfo={classInfo} />,
     }
   
     return (
@@ -80,17 +84,17 @@ const Main = () => {
                     <S.StyledLink onClick={tabReset}>
                         <S.AppTitle>혜지's<br />유치원생활</S.AppTitle>
                     </S.StyledLink>
-                    {tabList.map((item, index) => {
-                        return (
-                            <S.Nav
-                                key={index}
-                                onClick={() => setTab(item.category)}
-                                active={tab === item.category ? 'active' : ''}
-                            >
-                                <S.NavTitle>{item.category}</S.NavTitle>
-                            </S.Nav>
-                        )
-                    })}
+                        {tabList.map((item, index) => {
+                            return (
+                                <S.Nav
+                                    key={index}
+                                    onClick={() => setTab(item.category)}
+                                    active={tab === item.category ? 'active' : ''}
+                                >
+                                    <S.NavTitle>{item.category}</S.NavTitle>
+                                </S.Nav>
+                            )
+                        })}
                 </S.NavDiv>
                 <S.Content>
                     <S.MainContent>
