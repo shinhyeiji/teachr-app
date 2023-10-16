@@ -21,7 +21,7 @@ export const NavDiv = styled.div`
 export const Nav = styled.div`
     width: 200px;
     height: 100px;
-    background-color: ${props => props.active ? '#999fff;' : '#f0f0f0'};
+    background-color: ${props => props.active ? '#999fff' : '#f0f0f0'};
     border: 1px solid #fff;
     border-radius: 10px;
     color: ${props => props.active ? '#fff' : '#000'};

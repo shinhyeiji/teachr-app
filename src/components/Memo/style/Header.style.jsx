@@ -15,21 +15,20 @@ export const Title = styled.h1`
     color: gray;
 `
 export const HeadButton = styled.div`
+    width: 400px;
     padding: 20px 0;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e2e2e2;
+    justigy-content: space-around;
 `
 export const HeadLeft = styled.div`
     width: 25%;
-    justify-content: flex-start;
+
 `
 export const HeadTitle = styled.div`
     width: 50%;
     font-size: 25px;
-    justify-content: center;
 `
 export const HeadRight = styled.div`
     width: 25%;
-    justify-content: flex-end;
 `

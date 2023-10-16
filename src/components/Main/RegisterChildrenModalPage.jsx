@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, formData, setFormData }) => {
 
     const [children, setChildren] = useState([]);
-
+    
     useEffect(() => {
         const savedData = localStorage.getItem('classInfo');
         if (savedData) {
@@ -22,7 +22,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
             });
             setChildren(parsedData.우리반명단 || []);
         }
-    }, []);
+    }, [formData, setFormData]);
     useEffect(() => {
         localStorage.setItem('formData', JSON.stringify(formData));
     }, [formData]);
