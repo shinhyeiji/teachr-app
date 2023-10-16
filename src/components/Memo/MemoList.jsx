@@ -25,14 +25,14 @@ const MemoList = ({ data }) => {
         copyList.sort(compare);
         setSortedData(copyList);
         console.log(sortedData);
-    }, [data, sortType]);
+    }, [data, sortType, sortedData]);
 
 
     const onChangeSortType = (e) => {
         setSortType(e.target.value);
     }
     const onClickNew = () => {
-        navigate("/new");
+        navigate("/memo/new");
     }
 
     return(

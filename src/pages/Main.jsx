@@ -1,5 +1,6 @@
 import * as S from './style/Main.style';
 import { useState, useEffect } from 'react';
+import {useNavigate } from 'react-router-dom';
 // import MonthCalendar from './MonthCalendar';
 // import Idea from './Idea';
 // import Observe from './Observe';
@@ -15,11 +16,14 @@ import WeatherComponent from '../components/Main/WeatherComponent';
 import RegisterChildren from '../components/Main/RegisterChildren';
 
 const Main = () => {
+    const navigate = useNavigate();
     const [tab, setTab] = useState('');
     // const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '메모장'}, {category: '유아관찰일지'}, {category: '체크리스트'} ]
-    const tabList = [{category: '오늘 할 일'}, {category: '하루일과'}, {category: '활동'}, {category: '알람'}, {category: '랜덤뽑기'}, {category: 'QUIZ'}, {category: '하루 메모장'}]
-    const tabReset = () => {
+    const tabList = [{category: '오늘 할 일', path: '/todo'}, {category: '하루일과', path: '/today'}, {category: '활동', path: '/active'}, {category: '알람', path: '/clock'}, {category: '랜덤뽑기', path: '/card'}, {category: 'QUIZ', path: '/quiz'}, {category: '하루 메모장', path: '/memo'}]
+    const tabReset = async () => {
         setTab('');
+        await new Promise((resolve) => setTimeout(resolve, 0)); // 비동기 대기
+        navigate('/');
     }
     const savedclassInfoData = localStorage.getItem('classInfoData');
     const initialclassInfoData = savedclassInfoData
@@ -88,7 +92,10 @@ const Main = () => {
                             return (
                                 <S.Nav
                                     key={index}
-                                    onClick={() => setTab(item.category)}
+                                    onClick={() => {
+                                        setTab(item.category);
+                                        navigate(item.path);
+                                    }}
                                     active={tab === item.category ? 'active' : ''}
                                 >
                                     <S.NavTitle>{item.category}</S.NavTitle>

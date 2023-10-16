@@ -12,7 +12,6 @@ export const MenuWrapper = styled.div`
 export const MenuHead = styled.div`
     width: 100%;    
     display: flex;
-    
 `
 export const LeftCol = styled.div`
     flex-grow: 1;
@@ -22,7 +21,7 @@ export const SelectMenu = styled.select`
     margin-right: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #ececec;
+    background-color: #f0f0f0;
     padding: 21px 20px;
     cursor: pointer;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
@@ -37,12 +36,13 @@ export const RightCol = styled.div`
     margin-right: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #f0f0f0;
+    background-color: #999fff;
     padding: 10px 20px;
     font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
 `
 export const ListWrapper = styled.div`
 

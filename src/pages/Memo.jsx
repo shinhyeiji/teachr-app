@@ -1,13 +1,10 @@
 import * as S from './style/Memo.style.jsx';
 import React, { useReducer, useRef, useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
-// import { Routes, Route, Link, useSearchParams } from "react-router-dom";
 import Home from '../components/Memo/Home.jsx';
 import New from '../components/Memo/New.jsx';
 import Diary from '../components/Memo/Diary.jsx';
 import Edit from '../components/Memo/Edit.jsx';
-import Header from '../components/Memo/Header.jsx';
-import Button from '../components/Memo/Button.jsx';
 
 function reducer (state, action) {
     switch(action.type){
@@ -63,8 +60,6 @@ export const MemoStateContext = React.createContext();
 export const MemoDispatchContext = React.createContext();
 
 const Memo = () => {
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // console.log(searchParams.get("sort"));
     const [isDataLoaded, setIsDataLoaded] = useState(false);
     const [data, dispatch] = useReducer(reducer, []);
     const idRef = useRef(0);
@@ -117,44 +112,18 @@ const Memo = () => {
                 }}
             >
                 <S.Container>
-                    {/* <Header
-                        title={"Home"}
-                        leftChild={
-                            <Button
-                                type="positive"
-                                text={"긍정 버튼"}
-                                onClick={()=>{
-                                    alert("positive button");
-                                }}
-                            />}
-                        rightChild={
-                            <Button
-                                type="negative"
-                                text={"부정 버튼"}
-                                onClick={()=>{
-                                    alert("negative button");
-                                }}
-                            />}
-                    /> */}
                     {
                         !isDataLoaded 
                         ? (<div>데이터를 불러오는 중입니다...</div>) 
                         : (
                             <Routes>
-                                <Route path="/home" element={<Home />} />
-                                <Route path="/new" element={<New />} />
-                                <Route path="/diary/:id" element={<Diary />} />
-                                <Route path="/edit/:id" element={<Edit />} />
+                                <Route path="/memo" element={<Home />} />
+                                <Route path="/memo/new" element={<New />} />
+                                <Route path="/memo/diary/:id" element={<Diary />} />
+                                <Route path="/memo/edit/:id" element={<Edit />} />
                             </Routes>
                         )
                     }
-
-                    {/* <S.LinkWrap>
-                        <Link to={"/home"}>Home</Link>
-                        <Link to={"/new"}>New</Link>
-                        <Link to={"/diary"}>Diary</Link>
-                        <Link to={"/edit"}>edit</Link>
-                    </S.LinkWrap> */}
                 </S.Container>
             </MemoDispatchContext.Provider>
         </MemoStateContext.Provider>
