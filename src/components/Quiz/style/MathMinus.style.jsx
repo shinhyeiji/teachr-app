@@ -8,6 +8,7 @@ export const MathMinus = styled.div`
     justify-content: flex-start;
     align-items: center;
     margin-top: 50px;
+
 `
 export const DirectionButtonWrapper = styled.div`
     width: 100%;
@@ -41,6 +42,7 @@ export const Width = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    z-index: 1000;
 `
 export const Number1 = styled.input`
     width: 300px;
@@ -125,6 +127,7 @@ export const AnswerLine1 =  styled.div`
     justify-content: flex-end;
     align-items: flex-end;
     position: absolute;
+    z-index: 999;
 `
 export const AnswerLine2 =  styled.div`
     width: 500px;

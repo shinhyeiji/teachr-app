@@ -178,7 +178,7 @@ export const Back = styled.div`
     color: #000;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-image: url('/imgs/card5.jpg');
+    background-image: url('/public/imgs/card5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
