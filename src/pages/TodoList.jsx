@@ -54,7 +54,7 @@ const TodoList = () => {
     return (
         <S.Container>
             <S.HeadWrapper>
-                <S.Title>오늘 할 일 📒</S.Title>
+                <S.Title>오늘 할 일</S.Title>
                 <TodoHeaderComponent currentTime={currentTime} />
             </S.HeadWrapper>
             <TodoEditorComponent onCreate={onCreate} />

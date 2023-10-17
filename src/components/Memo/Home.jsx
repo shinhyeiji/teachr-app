@@ -1,5 +1,5 @@
+import React, { useState, useContext, useEffect } from 'react';
 import * as S from './style/Home.style.jsx';
-import { useState, useContext, useEffect } from 'react';
 import Button from './Button.jsx';
 import Header from './Header.jsx';
 import { MemoStateContext } from '../../pages/Memo.jsx';
@@ -7,38 +7,47 @@ import { getMonthRangeByDate } from './util.jsx';
 import MemoList from './MemoList.jsx';
 
 const Home = () => {
-    const data = useContext(MemoStateContext);
+    const memoData = useContext(MemoStateContext);
     const [pivotDate, setPivotDate] = useState(new Date());
-    // 필터링한 메모를 저장할  state
-    const [filteredDate, setFilteredDate] = useState([]); 
-    const headerTitle = `${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`
-    // 한 달 뒤로 업데이트
-    const onIncreaseMonth = () => {
-        setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1));
+    const [selectedMonth, setSelectedMonth] = useState(pivotDate.getMonth() + 1);
+    const [filteredMemoData, setFilteredMemoData] = useState([]);
+    const headerTitle = `${pivotDate.getFullYear()}년 ${selectedMonth}월`;
+
+    const increaseMonth = () => {
+        const nextMonth = new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1);
+        setPivotDate(nextMonth);
+        setSelectedMonth(nextMonth.getMonth() + 1);
     };
-    // 한 달 전으로 업데이트
-    const onDecreaseMonth = () => {
-        setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1));
-    }
+
+    const decreaseMonth = () => {
+        const prevMonth = new Date(pivotDate.getFullYear(), pivotDate.getMonth() - 1);
+        setPivotDate(prevMonth);
+        setSelectedMonth(prevMonth.getMonth() + 1);
+    };
+
     useEffect(() => {
-        if(data.length >= 1){
+        if (memoData.length >= 1) {
             const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
-            setFilteredDate(
-                data.filter((it) => beginTimeStamp <= it.date && it.date <= endTimeStamp)
-            );
+            const filteredData = memoData.filter((memo) => {
+                const memoMonth = new Date(memo.date).getMonth() + 1;
+                return memoMonth === selectedMonth && beginTimeStamp <= memo.date && memo.date <= endTimeStamp;
+            });
+            setFilteredMemoData(filteredData);
         } else {
-            setFilteredDate([])
+            setFilteredMemoData([]);
         }
-    }, [data, pivotDate])
-    return(
+    }, [memoData, pivotDate, selectedMonth]);
+
+    return (
         <S.Content>
             <Header
                 title={headerTitle}
-                leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
-                rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
+                leftChild={<Button text={"<"} onClick={decreaseMonth} />}
+                rightChild={<Button text={">"} onClick={increaseMonth} />}
             />
-            <MemoList data={data} />
+            <MemoList data={filteredMemoData} selectedMonth={selectedMonth} />
         </S.Content>
-    )
-}
+    );
+};
+
 export default Home;

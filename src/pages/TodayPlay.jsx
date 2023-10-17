@@ -40,7 +40,7 @@ const TodayPlay = () => {
         }
     }, []);
     const saveToLocaleStorage = (playItems) => {
-        localStorage.setItem('toayPlay', JSON.stringify(playItems));
+        localStorage.setItem('todayPlay', JSON.stringify(playItems));
     }
 
     const handleAddPlay= (e) => {
@@ -57,10 +57,9 @@ const TodayPlay = () => {
     }
     
     const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && !e.shiftKey) {
             handleAddPlay(e);
         }
-
     };
     const handleDeletePlay = (index) => {
         const updatedPlay = todayPlay.filter((_, i) => i !== index);
@@ -80,7 +79,7 @@ const TodayPlay = () => {
             <S.HeadWrapper>
                 <S.Title>오늘의 하루일과</S.Title>
                 <S.AddPlay>
-                    <S.PlayInput type="text" onChange={handleChangeText}  onKeyPress={handleKeyPress} value={changeText} />
+                    <S.PlayInput type="text" onChange={handleChangeText} onKeyDown={handleKeyPress} value={changeText} />
                     <S.AddButton onClick={handleAddPlay}>추가</S.AddButton>
                 </S.AddPlay>
             </S.HeadWrapper>

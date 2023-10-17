@@ -28,6 +28,7 @@ export const HeadLeft = styled.div`
 export const HeadTitle = styled.div`
     width: 50%;
     font-size: 25px;
+    font-weight: 700;
 `
 export const HeadRight = styled.div`
     width: 25%;

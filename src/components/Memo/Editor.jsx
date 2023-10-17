@@ -1,17 +1,18 @@
 import * as S from './style/Editor.style.jsx';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getFormattedDate, weatherList } from './util';
 import Button from './Button.jsx';
 import WeatherItem from './WeatherItem.jsx';
 
 
-const Editor = ({ initData, onSubmit}) => {
+const Editor = ({id, date, content, weatherId, onSubmit}) => {
     const navigate = useNavigate();
     const [memo, setMemo]= useState({
-        date: getFormattedDate(new Date()),
-        emotionId: 3,
-        content: "",
+        id: id,
+        date: getFormattedDate(new Date(parseInt(date))),
+        weatherId: weatherId,
+        content: content,
     });
     
     const handleOnGoBack = () => {
@@ -24,30 +25,23 @@ const Editor = ({ initData, onSubmit}) => {
             date: e.target.value,
         });
     };
-    const handleChangeWeather = useCallback((weatherId) => {
-        setMemo((memo) => ({
+    const handleChangeWeather = (weatherId) => {
+        setMemo({
             ...memo,
             weatherId,
-        }));
-        }, []);
+        });
+    };
     const handleChangeContent = (e) => {
         setMemo({
             ...memo,
             content: e.target.value,
         });
     };
-    useEffect(() => {
-        if(initData){
-            setMemo({
-                ...initData,
-                date: getFormattedDate(new Date(parseInt(initData.date))),
-            });
-        }
-    }, [initData]);
+
     const handleSubmit = () => {
+        // onSubmit 함수를 호출하여 데이터를 전달합니다.
         onSubmit(memo);
     };
-
 
     return(
         <S.Editor>

@@ -7,20 +7,19 @@ import { getWeatherImgById } from './util.jsx';
 const MemoItem = ({ id, weatherId, content, date }) => {
     const navigate = useNavigate();
     const goDetail = () => {
-        navigate(`/memo/diary/${id}`);
-    }
+        navigate(`/memo/diary/${id}`, { state: { weatherId, content, date } });
+    };
+
     const goEdit = () => {
-        navigate(`/memo/edit/${id}`)
-    }
+        navigate(`/memo/edit/${id}`, { state: { weatherId, content, date } });
+    };
+    
     return(
         <S.MemoItem>
-            <S.WeatherImgDiv
-                onClick={goDetail}
-                className={["img_section", `img_section_${weatherId}`].join(" ")}
-            >
+            <S.WeatherImgDiv onClick={goDetail}>
                 <S.WeatherImg alt={`weather${weatherId}`} src={getWeatherImgById(weatherId)} />
             </S.WeatherImgDiv>
-            <S.InfoSection>
+            <S.InfoSection onClick={goDetail}>
                 <S.DateWrapper>
                     {new Date(parseInt(date)).toLocaleDateString()}
                 </S.DateWrapper>

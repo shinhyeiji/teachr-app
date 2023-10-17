@@ -1,31 +1,18 @@
 import * as S from './style/MemoList.style.jsx';
-import { useState, useEffect } from 'react';
+import { useState,  useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button.jsx';
 import MemoItem from './MemoItem.jsx';
+import { MemoStateContext } from '../../pages/Memo.jsx';
 
 const sortOptionList = [
     {value: "latest", name: "최신순"},
     {value: "oldest", name: "오래된 순"},
 ]
-const MemoList = ({ data }) => {
+const MemoList = ({ data, selectedMonth }) => {
     const navigate = useNavigate();
     const [sortType, setSortType] = useState("latest");
-    const [sortedData, setSortedData] = useState([]);
-
-    useEffect(() => {
-        const compare = (a, b) => {
-            if(sortType === "latest") {
-                return Number(b.date) - Number(a.date)
-            } else {
-                return Number(a.date) - Number(b.date)
-            }
-        }
-        const copyList = JSON.parse(JSON.stringify(data));
-        copyList.sort(compare);
-        setSortedData(copyList);
-        console.log(sortedData);
-    }, [data, sortType, sortedData]);
+    const dataByMonth = useContext(MemoStateContext);
 
 
     const onChangeSortType = (e) => {
@@ -34,6 +21,14 @@ const MemoList = ({ data }) => {
     const onClickNew = () => {
         navigate("/memo/new");
     }
+    const sortedMemos = dataByMonth[selectedMonth] ? [...dataByMonth[selectedMonth]] : [];
+    sortedMemos.sort((a, b) => {
+        if (sortType === "latest") {
+            return Number(b.date) - Number(a.date);
+        } else {
+            return Number(a.date) - Number(b.date);
+        }
+    });
 
     return(
         <S.MemoList>
@@ -51,19 +46,21 @@ const MemoList = ({ data }) => {
                     <S.RightCol>
                         Memo List
                     </S.RightCol>
-                        <Button 
-                            type={"positive"} 
-                            text={"새 메모 작성"}
-                            onClick={onClickNew}
-                        />
+                    <Button type={"positive"} text={"새 메모 작성"} onClick={onClickNew} />
                 </S.MenuHead>
                 <S.ListWrapper>
-                    {sortedData.map((it) => (
-                        <MemoItem key={it.id} {...it}/>
-                    ))}
+                {sortedMemos.map((memo) => (
+                    <MemoItem
+                        key={memo.id}
+                        id={memo.id}
+                        weatherId={memo.weatherId}
+                        content={memo.content}
+                        date={memo.date}
+                    />
+                ))}
                 </S.ListWrapper>
             </S.MenuWrapper>
-        </S.MemoList>
+        </S.MemoList>    
     )
 }
 export default MemoList

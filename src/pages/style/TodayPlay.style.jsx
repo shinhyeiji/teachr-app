@@ -24,7 +24,7 @@ export const AddPlay = styled.div`
     justify-content: center;
     height: 50px;
 `
-export const PlayInput = styled.input`
+export const PlayInput = styled.textarea`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     width: 300px;
     height: 42px;
@@ -120,4 +120,5 @@ export const TodayPlayWrapper = styled.div`
 export const TodayPlay = styled.p`
     font-size: 250px;
     padding-bottom: 100px;
+    white-space: pre-wrap;
 `

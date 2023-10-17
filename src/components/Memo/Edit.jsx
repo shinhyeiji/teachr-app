@@ -1,6 +1,6 @@
 import * as S from './style/Edit.style.jsx';
 import { useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import useDiary from '../../hooks/UseDiary.jsx';
 import { MemoDispatchContext } from '../../pages/Memo.jsx';
 import Button from './Button.jsx';
@@ -13,6 +13,10 @@ const Edit = () => {
     const { id } = useParams();
     const data = useDiary(id);
     const { onUpdate, onDelete } = useContext(MemoDispatchContext);
+    const location = useLocation();
+    const { state } = location;
+    const { date, weatherId, content } = state;
+    
     const onClickDelete = () => {
         if(window.confirm("메모를 정말 삭제할까요? 다시 복구되지 않아요!")){
             onDelete(id);
@@ -22,10 +26,9 @@ const Edit = () => {
     const goBack = () => {
         navigate(-1);
     };
-    const onSubmit = (data) => {
+    const onSubmit = (memo) => {
         if(window.confirm("메모를 정말 수정할까요?")){
-            const { date, content, weatherId } = data;
-            onUpdate(id, date, content, weatherId);
+            onUpdate(memo.id, memo.date, memo.content, memo.weatherId);
             navigate("/memo", { replace: true });
         }
     }
@@ -40,7 +43,7 @@ const Edit = () => {
                     leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
                     rightChild={<Button type={"negative"} text={"삭제하기"} onClick={onClickDelete} />}
                 />
-                <Editor initData={data} onSubmit={onSubmit} />
+                <Editor id={id} date={date} weatherId={weatherId} content={content} onSubmit={onSubmit} />
             </S.Edit>
         )
     }

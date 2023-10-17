@@ -22,7 +22,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
             });
             setChildren(parsedData.우리반명단 || []);
         }
-    }, [formData, setFormData]);
+    }, []);
     useEffect(() => {
         localStorage.setItem('formData', JSON.stringify(formData));
     }, [formData]);
@@ -230,7 +230,7 @@ const RegisterChildrenModalPage = ({ setModalOpen, setClassInfo, classInfo, form
                             <S.ChildBox key={index}>
                                 <S.Child>{child}</S.Child>
                                 <S.ChildDeleteWrapper>
-                                    <S.ChildDelete onClick={(child) => handleDeleteChild(child)}>X</S.ChildDelete>
+                                <S.ChildDelete onClick={(e) => handleDeleteChild(child, e)}>X</S.ChildDelete>
                                 </S.ChildDeleteWrapper>
                             </S.ChildBox>
                         ))}
