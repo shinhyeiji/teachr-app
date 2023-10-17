@@ -9,7 +9,7 @@ const WeatherComponent = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [pollute, setPollute] = useState({aqi: '0', pm2_5: '0'});
     const watchIdRef = useRef(null);
-
+    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
   useEffect(() => {
     const intervalId = setInterval(() => {
         setCurrentTime(new Date());
@@ -110,7 +110,7 @@ const WeatherComponent = () => {
         <S.Date>
             <S.DateTitle>오늘은</S.DateTitle>
             <S.DateContent>
-                <S.CurrentDate>{currentTime.toLocaleDateString()}</S.CurrentDate>
+                <S.CurrentDate>{currentTime.getFullYear()}년 {currentTime.getMonth() + 1}월 {currentTime.getDate()}일 {daysOfWeek[currentTime.getDay()]}요일</S.CurrentDate>
                 <br />
                 <S.CurrentTime>{currentTime.toLocaleTimeString()}</S.CurrentTime>
             </S.DateContent>
@@ -125,9 +125,9 @@ const WeatherComponent = () => {
             <S.Weather>
                 <S.Weather1>
                     <S.TempWrapper>
-                        <span className="material-symbols-outlined" style={{ fontSize: '60px'}}>thermostat</span>
-                        <S.CurrentTemp>{weather.temp}℃</S.CurrentTemp>
-                        <S.FeelingTemp>체감: {weather.feels_like}℃</S.FeelingTemp>
+                        <span className="material-symbols-outlined" style={{ fontSize: '80px'}}>thermostat</span>
+                        <S.CurrentTemp>현재 {weather.temp}℃</S.CurrentTemp>
+                        <S.FeelingTemp>체감온도: {weather.feels_like}℃</S.FeelingTemp>
                     </S.TempWrapper>
                     <S.WeatherWrapper>
                         <S.WeatherText>{weather.desc}</S.WeatherText>
