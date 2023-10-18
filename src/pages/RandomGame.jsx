@@ -66,7 +66,7 @@ const RandomGame = () => {
         setClickedCards(updatedClickedCards);
     };
 
-    const cardImages = ['/imgs/card1.jpg', '/imgs/card2.jpg', '/imgs/card3.jpg', '/imgs/card4.jpg']
+    const cardImages = ['/public/imgs/card1.jpg', '/public/imgs/card2.jpg', '/public/imgs/card3.jpg', '/public/imgs/card4.jpg']
     const getRandomCardImage = () => {
         const randomIndex = Math.floor(Math.random() * cardImages.length);
         return cardImages[randomIndex];

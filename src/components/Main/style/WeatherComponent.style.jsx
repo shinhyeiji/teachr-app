@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const WeatherComponent = styled.div`
     width: 1200px;
     height: 700px;
-    background-image: url('/imgs/weatherbackground.png');
+    background-image: url('/public/imgs/weatherbackground.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

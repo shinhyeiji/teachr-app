@@ -55,7 +55,7 @@ export const weatherList = [
     {
         id: 5,
         name: "눈",
-        img: <S.WeatherImg5 alt="눈" src="./public/imgs/weather5.png" />,
+        img: <S.WeatherImg5 alt="눈" src="/public/imgs/weather5.png" />,
     },
 ]
 export const getMonthRangeByDate = (date) => {
