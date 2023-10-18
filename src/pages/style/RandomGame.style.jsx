@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-width: 1200px;
-height: 810px;
-padding: 20px 0;
+    width: 1200px;
+    height: 810px;
+    padding: 20px 0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const HeadWrapper = styled.div`
@@ -178,7 +178,7 @@ export const Back = styled.div`
     color: #000;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-image: url('/public/imgs/card5.jpg');
+    background-image: url('/imgs/card5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

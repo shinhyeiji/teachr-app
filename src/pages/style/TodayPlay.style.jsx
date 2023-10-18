@@ -112,7 +112,7 @@ export const TodayPlayWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/public/imgs/PlayBG.png');
+    background-image: url('/imgs/PlayBG.png');
     background-size: cover;
     background-position: center;
     background-color: ${getRandomColor()};
