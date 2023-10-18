@@ -48,14 +48,12 @@ const RandomGame = () => {
     
         const selectedCards = [];
     
-        // 각 종류별로 지정된 갯수만큼 카드를 생성합니다.
         for (let i = 0; i < kinds; i++) {
             for (let j = 0; j < amounts[i]; j++) {
                 selectedCards.push(kindNames[i]);
             }
         }
     
-        // 섞어줍니다.
         for (let i = selectedCards.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [selectedCards[i], selectedCards[j]] = [selectedCards[j], selectedCards[i]];
@@ -64,8 +62,8 @@ const RandomGame = () => {
     };
     const handleCardClick = (index) => {
         const updatedClickedCards = [...clickedCards];
-        updatedClickedCards[index] = true; // 해당 인덱스의 카드를 클릭한 상태로 변경
-        setClickedCards(updatedClickedCards); // 클릭한 상태 업데이트
+        updatedClickedCards[index] = true;
+        setClickedCards(updatedClickedCards);
     };
 
     const cardImages = ['/public/imgs/card1.jpg', '/public/imgs/card2.jpg', '/public/imgs/card3.jpg', '/public/imgs/card4.jpg']

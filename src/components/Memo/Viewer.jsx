@@ -6,7 +6,6 @@ const Viewer = ({ date, content, weatherId }) => {
     console.log(weatherItem);
 
     if (!weatherItem) {
-        // weatherItem이 없는 경우 예외 처리
         return (
             <S.Viewer>
                 <S.ViewerSection>

@@ -39,7 +39,6 @@ const Editor = ({id, date, content, weatherId, onSubmit}) => {
     };
 
     const handleSubmit = () => {
-        // onSubmit 함수를 호출하여 데이터를 전달합니다.
         onSubmit(memo);
     };
 

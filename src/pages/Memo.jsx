@@ -40,10 +40,7 @@ function reducer(state = initialState, action){
     }
 }
 
-// props drilling없이 useContext를 이용해 업데이트 함수를 꺼내쓸 수 있음.
-// State값을 공급하기 위한 객체
 export const MemoStateContext = React.createContext();
-// State를 업데이트 하는 함수
 export const MemoDispatchContext = React.createContext();
 
 const Memo = () => {

@@ -55,10 +55,9 @@ export const weatherList = [
     {
         id: 5,
         name: "눈",
-        img: <S.WeatherImg5 alt="눈" src="/public/imgs/weather5.png" />,
+        img: <S.WeatherImg5 alt="눈" src="./public/imgs/weather5.png" />,
     },
 ]
-// 해당 월의 가장 빠른 시간과 가장 늦은 시간의 타임스탬프값을 구해 반환함.
 export const getMonthRangeByDate = (date) => {
     const beginTimeStamp = new Date(date.getFullYear(), date.getMonth(), 1).getTime();
     const endTimeStamp = new Date(date.getFullYear(), date.getMonth() + 1, 0, 23, 59, 59).getTime();
