@@ -5,6 +5,8 @@ import Home from '../components/Memo/Home.jsx';
 import New from '../components/Memo/New.jsx';
 import Diary from '../components/Memo/Diary.jsx';
 import Edit from '../components/Memo/Edit.jsx';
+import { setPageTitle } from '../util.jsx';
+
 
 const initialState = localStorage.getItem("memo") ? JSON.parse(localStorage.getItem("memo")) : [];
 
@@ -95,6 +97,7 @@ const Memo = () => {
     }, [data]);
 
     useEffect(() => {
+        setPageTitle("HappyDay :: Today Memo")
         const rawData = localStorage.getItem("memo");
         if (rawData) {
             const localData = JSON.parse(rawData);

@@ -1,5 +1,6 @@
 import * as S from './style/TodayPlay.style.jsx';
 import { useState, useEffect } from 'react';
+import { setPageTitle } from '../util.jsx';
 
 const TodayPlay = () => {
     const [changeText, setChangeText] = useState('')
@@ -34,6 +35,8 @@ const TodayPlay = () => {
     }
 
     useEffect(() => {
+        setPageTitle("HappyDay :: Today Play")
+
         const storedPlay = JSON.parse(localStorage.getItem('todayPlay'));
         if(storedPlay){
             setTodayPlay(storedPlay);

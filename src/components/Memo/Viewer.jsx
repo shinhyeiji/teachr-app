@@ -1,5 +1,5 @@
 import * as S from './style/Viewer.style.jsx';
-import { weatherList } from './util.jsx';
+import { weatherList } from '../../util.jsx';
 
 const Viewer = ({ date, content, weatherId }) => {
     const weatherItem = weatherList.find((it) => it.id === weatherId);

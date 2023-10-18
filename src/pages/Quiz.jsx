@@ -1,8 +1,9 @@
 import * as S from './style/Quiz.style.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MathAdd from '../components/Quiz/MathAdd.jsx';
 import MathMinus from '../components/Quiz/MathMinus.jsx';
 import TwentyGame from '../components/Quiz/TwentyGame.jsx';
+import { setPageTitle } from '../util.jsx';
 
 const Quiz = () => {
     const [quizTab, setQuizTab] = useState('더하기')
@@ -12,7 +13,9 @@ const Quiz = () => {
         '빼기' : <MathMinus />,
         '스무고개' : <TwentyGame />,
     }
-
+    useEffect(() => {
+        setPageTitle("HappyDay :: Quiz")
+    }, [])
     return(
         <S.Container>
             <S.HeadWrapper>

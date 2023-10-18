@@ -74,8 +74,8 @@ export const TempWrapper = styled.div`
     gap: 5px;
 `
 export const CurrentTemp = styled.p`
-    margin: 0 40px 0 10px;
-    font-size: 80px;
+    margin: 0 30px 0 10px;
+    font-size: 75px;
     font-weight: 700;
 `
 export const FeelingTemp = styled.p`

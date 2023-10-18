@@ -3,7 +3,7 @@ import * as S from './style/Home.style.jsx';
 import Button from './Button.jsx';
 import Header from './Header.jsx';
 import { MemoStateContext } from '../../pages/Memo.jsx';
-import { getMonthRangeByDate } from './util.jsx';
+import { getMonthRangeByDate } from '../../util.jsx';
 import MemoList from './MemoList.jsx';
 
 const Home = () => {

@@ -64,7 +64,7 @@ export const NavTitle = styled.h2`
     align-items: center;
 `
 export const Content = styled.div`
-    width: 1238px;
+    width: 1200px;
     height: 100%;
     display: flex;
     align-items: flex-start;

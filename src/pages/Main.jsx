@@ -1,5 +1,5 @@
 import * as S from './style/Main.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {useNavigate } from 'react-router-dom';
 import Play from './Play';
 import TodoList from './TodoList';
@@ -9,6 +9,7 @@ import RandomGame from './RandomGame.jsx';
 import Quiz from './Quiz.jsx';
 import Memo from './Memo.jsx';
 import WeatherComponent from '../components/Main/WeatherComponent';
+import { setPageTitle } from '../util.jsx';
 
 const Main = () => {
     const navigate = useNavigate();
@@ -38,7 +39,9 @@ const Main = () => {
         'QUIZ': <Quiz />,
         '하루 메모장': <Memo />,
     }
-  
+    useEffect(() => {
+        setPageTitle("HappyDay :: Weather")
+    }, [])
     return (
         <S.Container>
             <S.AppContent>

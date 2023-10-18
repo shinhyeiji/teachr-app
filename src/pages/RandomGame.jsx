@@ -1,5 +1,6 @@
 import * as S from './style/RandomGame.style.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { setPageTitle } from '../util.jsx';
 
 const RandomGame = () => {
     const [participate, setParticipate] = useState(2);
@@ -72,6 +73,9 @@ const RandomGame = () => {
         const randomIndex = Math.floor(Math.random() * cardImages.length);
         return cardImages[randomIndex];
     }
+    useEffect(() => {
+        setPageTitle("HappyDay :: Random Game")
+    }, [])
 
     return(
         <S.Container>

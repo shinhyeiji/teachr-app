@@ -1,11 +1,17 @@
 import * as S from './style/Play.style.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { setPageTitle } from '../util.jsx';
+
 
 const Play = () => {
     const [lines, setLines] = useState([]);
     const handleLinePlus = () => {
         setLines([...lines, <S.ContentLine key={lines.length} type="text" />])
     }
+    useEffect(() => {
+        setPageTitle("HappyDay :: Active Title")
+    }, []);
+    
     return(
         <S.Container>
             <S.HeadWrapper>

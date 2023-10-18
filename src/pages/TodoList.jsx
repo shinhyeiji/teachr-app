@@ -3,10 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 import TodoHeaderComponent from '../components/TodoList/TodoHeaderComponent';
 import TodoEditorComponent from '../components/TodoList/TodoEditorComponent';
 import TodoListComponent from '../components/TodoList/TodoListComponent';
+import { setPageTitle } from '../util.jsx';
 
 const TodoList = () => {
     const [currentTime, setCurrentTime] = useState(new Date())
     useEffect(()=>{
+        setPageTitle("HappyDay :: To Do List")
         const intervalTime = setInterval(()=>{
             setCurrentTime(new Date());
         }, 1000);
@@ -50,7 +52,7 @@ const TodoList = () => {
     const onDelete = (targetId) => {
         setTodo(todo.filter((it) => it.id !== targetId));
     };
-    
+
     return (
         <S.Container>
             <S.HeadWrapper>

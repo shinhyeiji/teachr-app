@@ -3,8 +3,9 @@ import Editor from './Editor.jsx';
 import Button from "./Button.jsx";
 import Header from "./Header.jsx";
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { MemoDispatchContext } from '../../pages/Memo.jsx';
+import { setPageTitle } from '../../util.jsx';
 
 const New = () => {
     const { onCreate } = useContext(MemoDispatchContext);
@@ -17,6 +18,9 @@ const New = () => {
         onCreate(date, content, weatherId);
         navigate("/memo", { replace: true });
     };
+    useEffect(() => {
+        setPageTitle("HappyDay :: New Memo")
+    }, [])
 
     return(
         <S.New>

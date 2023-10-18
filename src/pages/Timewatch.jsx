@@ -1,7 +1,8 @@
 import * as S from './style/Timewatch.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StopWatch from '../components/Timewatch/StopWatch'
 import Timer from '../components/Timewatch/Timer'
+import { setPageTitle } from '../util.jsx';
 
 const Timewatch = () => {
     const [tab, setTab] = useState('스탑워치')
@@ -10,7 +11,9 @@ const Timewatch = () => {
         스탑워치: <StopWatch />,
         타이머: <Timer />,
     }
-
+    useEffect(() => {
+      setPageTitle("HappyDay :: Timer")
+    }, [])
     return (
       <S.Container>
         <S.HeadWrapper>

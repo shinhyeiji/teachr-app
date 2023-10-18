@@ -1,12 +1,12 @@
 import * as S from './style/Edit.style.jsx';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import useDiary from '../../hooks/UseDiary.jsx';
 import { MemoDispatchContext } from '../../pages/Memo.jsx';
 import Button from './Button.jsx';
 import Header from './Header.jsx';
 import Editor from './Editor.jsx';
-
+import { setPageTitle } from '../../util.jsx';
 
 const Edit = () => {
     const navigate = useNavigate();
@@ -32,7 +32,9 @@ const Edit = () => {
             navigate("/memo", { replace: true });
         }
     }
-
+    useEffect(() => {
+        setPageTitle("HappyDay :: Memo Edit")
+    }, [])
     if(!data) {
         return <S.Edit>일기를 불러오고 있습니다...</S.Edit>;
     } else {

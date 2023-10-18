@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1238px;
+    width: 1200px;
     height: 810px;
-    padding: 20px;
+    padding: 20px 0;
     font-family: 'Jua', cursive;
 `
 export const HeadWrapper = styled.div`
@@ -21,7 +21,8 @@ export const Title = styled.h1`
     color: gray;
 `
 export const Content = styled.div`
-    width: 1238px;
+    width: 1200px;
+    height: 810px;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -30,6 +31,7 @@ export const Date = styled.div`
     display: flex;
     align-items: center;
     height: 70px;
+    padding-right: 20px;
 `
 export const DateInput = styled.input`
     width: 200px;
@@ -69,7 +71,7 @@ export const PlayButton = styled.button`
     border: none;
 `
 export const PlayContent = styled.div`
-    width: 1238px;
+    width: 1200px;
     display: flex;
     flex-direction: column;
 `

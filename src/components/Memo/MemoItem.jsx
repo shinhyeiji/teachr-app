@@ -1,8 +1,7 @@
 import * as S from './style/MemoItem.style.jsx';
 import React from 'react';
 import { useNavigate } from  'react-router-dom';
-import { getWeatherImgById } from './util.jsx';
-// import UseDiary from '../../hooks/UseDiary.jsx';
+import { getWeatherImgById } from '../../util.jsx';
 
 const MemoItem = ({ id, weatherId, content, date }) => {
     const navigate = useNavigate();

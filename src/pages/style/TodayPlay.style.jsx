@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 1238px;
+    width: 1200px;
     height: 810px;
-    padding: 20px;
+    padding: 20px 0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
 `
 export const HeadWrapper = styled.div`
@@ -27,7 +27,7 @@ export const AddPlay = styled.div`
 export const PlayInput = styled.textarea`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     width: 300px;
-    height: 42px;
+    height: 38px;
     font-size: 25px;
     text-align: center;
     margin-right: 3px;

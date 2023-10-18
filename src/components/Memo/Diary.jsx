@@ -1,10 +1,11 @@
 import * as S from './style/Diary.style.jsx';
+import { useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import useDiary from '../../hooks/UseDiary.jsx';
 import Button from "./Button.jsx";
 import Header from "./Header.jsx";
 import Viewer from "./Viewer.jsx";
-import { getFormattedDate } from './util.jsx'
+import { getFormattedDate, setPageTitle } from '../../util.jsx'
 
 const Diary = () => {
     const { id } = useParams();
@@ -21,9 +22,12 @@ const Diary = () => {
     };
 
     const title = `${getFormattedDate(new Date(Number(date)))} 기록`
+    
+    useEffect(() => {
+        setPageTitle("HappyDay :: Memo View")
+    }, [])
 
     if (!state) {
-        // state가 없는 경우에 대한 예외 처리
         return (
             <S.Diary>
                 <Header 

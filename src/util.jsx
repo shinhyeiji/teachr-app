@@ -1,4 +1,4 @@
-import * as S  from './style/util.style.jsx';
+import * as S  from './components/Memo/style/util.style.jsx';
 
 export const getWeatherImgById = (weatherId) => {
     const targetWeatherId = String(weatherId);
@@ -63,4 +63,9 @@ export const getMonthRangeByDate = (date) => {
     const beginTimeStamp = new Date(date.getFullYear(), date.getMonth(), 1).getTime();
     const endTimeStamp = new Date(date.getFullYear(), date.getMonth() + 1, 0, 23, 59, 59).getTime();
     return { beginTimeStamp, endTimeStamp };
+}
+
+export const setPageTitle = (title) => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerText = title;
 }

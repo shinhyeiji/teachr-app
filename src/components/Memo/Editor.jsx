@@ -1,7 +1,7 @@
 import * as S from './style/Editor.style.jsx';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getFormattedDate, weatherList } from './util';
+import { getFormattedDate, weatherList } from '../../util.jsx';
 import Button from './Button.jsx';
 import WeatherItem from './WeatherItem.jsx';
 
