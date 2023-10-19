@@ -1,6 +1,6 @@
-import * as S from './style/Play.style.jsx';
+import * as S from './style/Play.style';
 import { useState, useEffect } from 'react';
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 
 const Play = () => {

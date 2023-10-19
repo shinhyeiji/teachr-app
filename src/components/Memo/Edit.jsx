@@ -1,12 +1,12 @@
-import * as S from './style/Edit.style.jsx';
+import * as S from './style/Edit.style';
 import { useContext, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import useDiary from '../../hooks/UseDiary.jsx';
-import { MemoDispatchContext } from '../../pages/Memo.jsx';
-import Button from './Button.jsx';
-import Header from './Header.jsx';
-import Editor from './Editor.jsx';
-import { setPageTitle } from '../../util.jsx';
+import useDiary from '../../hooks/UseDiary';
+import { MemoDispatchContext } from '../../pages/Memo';
+import Button from './Button';
+import Header from './Header';
+import Editor from './Editor';
+import { setPageTitle } from '../../util';
 
 const Edit = () => {
     const navigate = useNavigate();

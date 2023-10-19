@@ -1,6 +1,6 @@
-import * as S from './style/RandomGame.style.jsx';
+import * as S from './style/RandomGame.style';
 import { useState, useEffect } from 'react';
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 const RandomGame = () => {
     const [participate, setParticipate] = useState(2);

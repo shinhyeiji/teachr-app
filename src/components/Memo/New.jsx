@@ -1,11 +1,11 @@
-import * as S from './style/New.style.jsx';
-import Editor from './Editor.jsx';
-import Button from "./Button.jsx";
-import Header from "./Header.jsx";
+import * as S from './style/New.style';
+import Editor from './Editor';
+import Button from "./Button";
+import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import { MemoDispatchContext } from '../../pages/Memo.jsx';
-import { setPageTitle } from '../../util.jsx';
+import { MemoDispatchContext } from '../../pages/Memo';
+import { setPageTitle } from '../../util';
 
 const New = () => {
     const { onCreate } = useContext(MemoDispatchContext);

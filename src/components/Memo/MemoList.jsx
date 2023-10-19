@@ -1,9 +1,9 @@
-import * as S from './style/MemoList.style.jsx';
+import * as S from './style/MemoList.style';
 import { useState,  useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from './Button.jsx';
-import MemoItem from './MemoItem.jsx';
-import { MemoStateContext } from '../../pages/Memo.jsx';
+import Button from './Button';
+import MemoItem from './MemoItem';
+import { MemoStateContext } from '../../pages/Memo';
 
 const sortOptionList = [
     {value: "latest", name: "최신순"},

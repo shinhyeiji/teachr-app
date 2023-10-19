@@ -1,4 +1,4 @@
-import * as S from './style/WeatherItem.style.jsx';
+import * as S from './style/WeatherItem.style';
 import React from 'react';
 
 const WeatherItem = ({ id, img, name, onClick, isSelected }) => {

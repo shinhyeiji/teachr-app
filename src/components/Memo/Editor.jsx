@@ -1,9 +1,9 @@
-import * as S from './style/Editor.style.jsx';
+import * as S from './style/Editor.style';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getFormattedDate, weatherList } from '../../util.jsx';
-import Button from './Button.jsx';
-import WeatherItem from './WeatherItem.jsx';
+import { getFormattedDate, weatherList } from '../../util';
+import Button from './Button';
+import WeatherItem from './WeatherItem';
 
 
 const Editor = ({id, date, content, weatherId, onSubmit}) => {

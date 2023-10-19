@@ -1,4 +1,4 @@
-import * as S from './style/Header.style.jsx';
+import * as S from './style/Header.style';
 
 const Header = ({ title, leftChild, rightChild }) => {
     return(

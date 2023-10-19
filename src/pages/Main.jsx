@@ -5,11 +5,11 @@ import Play from './Play';
 import TodoList from './TodoList';
 import TodayPlay from './TodayPlay';
 import Timewatch from './Timewatch';
-import RandomGame from './RandomGame.jsx';
-import Quiz from './Quiz.jsx';
-import Memo from './Memo.jsx';
+import RandomGame from './RandomGame';
+import Quiz from './Quiz';
+import Memo from './Memo';
 import WeatherComponent from '../components/Main/WeatherComponent';
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 const Main = () => {
     const navigate = useNavigate();

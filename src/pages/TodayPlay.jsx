@@ -1,6 +1,6 @@
-import * as S from './style/TodayPlay.style.jsx';
+import * as S from './style/TodayPlay.style';
 import { useState, useEffect } from 'react';
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 const TodayPlay = () => {
     const [changeText, setChangeText] = useState('')

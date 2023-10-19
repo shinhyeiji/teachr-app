@@ -1,4 +1,4 @@
-import * as S from './style/MathAdd.style.jsx';
+import * as S from './style/MathAdd.style';
 import { useState } from 'react';
 
 const MathAdd = () => {

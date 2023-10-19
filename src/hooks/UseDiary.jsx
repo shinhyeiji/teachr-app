@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MemoStateContext } from '../pages/Memo.jsx'
+import { MemoStateContext } from '../pages/Memo'
 
 const UseDiary = (id) => {
     const data = useContext(MemoStateContext);

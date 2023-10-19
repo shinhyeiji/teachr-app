@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import * as S from './style/Home.style.jsx';
-import Button from './Button.jsx';
-import Header from './Header.jsx';
-import { MemoStateContext } from '../../pages/Memo.jsx';
-import { getMonthRangeByDate } from '../../util.jsx';
-import MemoList from './MemoList.jsx';
+import * as S from './style/Home.style';
+import Button from './Button';
+import Header from './Header';
+import { MemoStateContext } from '../../pages/Memo';
+import { getMonthRangeByDate } from '../../util';
+import MemoList from './MemoList';
 
 const Home = () => {
     const memoData = useContext(MemoStateContext);

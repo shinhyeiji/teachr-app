@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as S from './style/TwentyCame.style.jsx';
+import * as S from './style/TwentyCame.style';
 
 const TwentyGame = () => {
     const [counter, setCounter] = useState(20);

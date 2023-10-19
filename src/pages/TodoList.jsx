@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import TodoHeaderComponent from '../components/TodoList/TodoHeaderComponent';
 import TodoEditorComponent from '../components/TodoList/TodoEditorComponent';
 import TodoListComponent from '../components/TodoList/TodoListComponent';
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 const TodoList = () => {
     const [currentTime, setCurrentTime] = useState(new Date())

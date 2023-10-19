@@ -1,7 +1,7 @@
-import * as S from './style/MemoItem.style.jsx';
+import * as S from './style/MemoItem.style';
 import React from 'react';
 import { useNavigate } from  'react-router-dom';
-import { getWeatherImgById } from '../../util.jsx';
+import { getWeatherImgById } from '../../util';
 
 const MemoItem = ({ id, weatherId, content, date }) => {
     const navigate = useNavigate();

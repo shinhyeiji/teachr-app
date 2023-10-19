@@ -1,4 +1,4 @@
-import * as S from './style/Button.style.jsx';
+import * as S from './style/Button.style';
 
 const Button = ({text, type, onClick}) => {
     const btnType = ["positive", "negative"].includes(type) ? type : "default";

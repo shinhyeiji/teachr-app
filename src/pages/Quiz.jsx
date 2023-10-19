@@ -1,9 +1,9 @@
-import * as S from './style/Quiz.style.jsx';
+import * as S from './style/Quiz.style';
 import { useState, useEffect } from 'react';
-import MathAdd from '../components/Quiz/MathAdd.jsx';
-import MathMinus from '../components/Quiz/MathMinus.jsx';
-import TwentyGame from '../components/Quiz/TwentyGame.jsx';
-import { setPageTitle } from '../util.jsx';
+import MathAdd from '../components/Quiz/MathAdd';
+import MathMinus from '../components/Quiz/MathMinus';
+import TwentyGame from '../components/Quiz/TwentyGame';
+import { setPageTitle } from '../util';
 
 const Quiz = () => {
     const [quizTab, setQuizTab] = useState('더하기')

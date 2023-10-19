@@ -2,7 +2,7 @@ import * as S from './style/Timewatch.style';
 import { useState, useEffect } from 'react';
 import StopWatch from '../components/Timewatch/StopWatch'
 import Timer from '../components/Timewatch/Timer'
-import { setPageTitle } from '../util.jsx';
+import { setPageTitle } from '../util';
 
 const Timewatch = () => {
     const [tab, setTab] = useState('스탑워치')

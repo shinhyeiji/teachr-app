@@ -1,11 +1,11 @@
-import * as S from './style/Memo.style.jsx';
+import * as S from './style/Memo.style';
 import React, { useReducer, useRef, useEffect, useState, useMemo } from 'react';
 import { Routes, Route } from "react-router-dom";
-import Home from '../components/Memo/Home.jsx';
-import New from '../components/Memo/New.jsx';
-import Diary from '../components/Memo/Diary.jsx';
-import Edit from '../components/Memo/Edit.jsx';
-import { setPageTitle } from '../util.jsx';
+import Home from '../components/Memo/Home';
+import New from '../components/Memo/New';
+import Diary from '../components/Memo/Diary';
+import Edit from '../components/Memo/Edit';
+import { setPageTitle } from '../util';
 
 
 const initialState = localStorage.getItem("memo") ? JSON.parse(localStorage.getItem("memo")) : [];

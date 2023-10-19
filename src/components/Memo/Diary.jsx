@@ -1,11 +1,11 @@
-import * as S from './style/Diary.style.jsx';
+import * as S from './style/Diary.style';
 import { useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import useDiary from '../../hooks/UseDiary.jsx';
-import Button from "./Button.jsx";
-import Header from "./Header.jsx";
-import Viewer from "./Viewer.jsx";
-import { getFormattedDate, setPageTitle } from '../../util.jsx'
+import useDiary from '../../hooks/UseDiary';
+import Button from "./Button";
+import Header from "./Header";
+import Viewer from "./Viewer";
+import { getFormattedDate, setPageTitle } from '../../util'
 
 const Diary = () => {
     const { id } = useParams();
