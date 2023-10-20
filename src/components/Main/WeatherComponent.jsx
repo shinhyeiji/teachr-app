@@ -73,7 +73,6 @@ const WeatherComponent = () => {
             const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&lang=kr&appid=${apiKey}&units=metric`
             const response = await axios.get(url);
             const data = response.data;
-            console.log(data);
             setPollute({
                 aqi: data.list[0].main.aqi, 
                 pm2_5: data.list[0].components.pm2_5

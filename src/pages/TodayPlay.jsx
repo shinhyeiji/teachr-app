@@ -14,15 +14,10 @@ const TodayPlay = () => {
     const totalSlides = todayPlay.length;
 
     const colors = [
-        // 연한 핑크 계열
         '#FFD1DC', '#FFB6C1', '#FFC0CB', '#FF69B4',
-        // 연한 노랑 계열
         '#FFFACD', '#FFECB3', '#FAFAD2', '#FFFFE0',
-        // 연한 녹색 계열
         '#98FB98', '#90EE90', '#B0E57C', '#ADFF2F',
-        // 연한 파랑 계열
         '#AFEEEE', '#ADD8E6', '#B0C4DE', '#87CEEB',
-        // 연한 보라 계열
         '#E6E6FA', '#D8BFD8', '#DDA0DD', '#BA55D3'
     ];
     const getRandomColor = () => {

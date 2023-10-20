@@ -25,7 +25,7 @@ const Main = () => {
     ]
     const tabReset = async () => {
         setTab('');
-        await new Promise((resolve) => setTimeout(resolve, 0)); // 비동기 대기
+        await new Promise((resolve) => setTimeout(resolve, 0));
         navigate('/');
     }
     

@@ -53,8 +53,7 @@ const RandomGame = () => {
                 selectedCards.push(kindNames[i]);
             }
         }
-    
-        // 배열을 섞는 함수
+
         const shuffleArray = (array) => {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -63,7 +62,6 @@ const RandomGame = () => {
             return array;
         };
     
-        // selectedCards 배열을 섞어 shuffledCards 변수에 할당
         const shuffledCards = shuffleArray(selectedCards);
         setSelectedCards(shuffledCards);
     };

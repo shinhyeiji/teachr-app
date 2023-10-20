@@ -10,7 +10,6 @@ const Timer = () => {
     const [currentTime, setCurrentTime] = useState('');
     const [isRunning, setIsRunning] = useState(false);
     const [selectedBellIndex, setSelectedBellIndex] = useState(0);
-    const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
     const sounds = [clock, schoolbell1, schoolbell2];
     const [endSound] = useSound(sounds[selectedBellIndex]);
 
@@ -51,7 +50,6 @@ const Timer = () => {
 
     const handleBellSelect = (index) => {
         setSelectedBellIndex(index);
-        setSelectedButtonIndex(index)
     };
 
     return (
@@ -59,7 +57,7 @@ const Timer = () => {
             <S.TimerTitle>타이머</S.TimerTitle>
             <S.TimerContent>
                 <S.SoundWrapper>
-                {sounds.map((sound, index) => (
+                    {sounds.map((sound, index) => (
                         <S.SoundButton
                             key={index} 
                             onClick={() => handleBellSelect(index)}
@@ -83,4 +81,5 @@ const Timer = () => {
         </S.TimerWrapper>
     )
 }
+
 export default Timer;

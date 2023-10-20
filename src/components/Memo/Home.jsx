@@ -10,8 +10,7 @@ const Home = () => {
     const memoData = useContext(MemoStateContext);
     const [pivotDate, setPivotDate] = useState(new Date());
     const [selectedMonth, setSelectedMonth] = useState(pivotDate.getMonth() + 1);
-    const [filteredMemoData, setFilteredMemoData] = useState([]);
-    const headerTitle = `${pivotDate.getFullYear()}년 ${selectedMonth}월`;
+    const [filteredData, setFilteredData] = useState([]);
 
     const increaseMonth = () => {
         const nextMonth = new Date(pivotDate.getFullYear(), pivotDate.getMonth() + 1);
@@ -32,20 +31,20 @@ const Home = () => {
                 const memoMonth = new Date(memo.date).getMonth() + 1;
                 return memoMonth === selectedMonth && beginTimeStamp <= memo.date && memo.date <= endTimeStamp;
             });
-            setFilteredMemoData(filteredData);
+            setFilteredData(filteredData);
         } else {
-            setFilteredMemoData([]);
+            setFilteredData([]);
         }
     }, [memoData, pivotDate, selectedMonth]);
 
     return (
         <S.Content>
             <Header
-                title={headerTitle}
+                title={`${pivotDate.getFullYear()}년 ${selectedMonth}월`}
                 leftChild={<Button text={"<"} onClick={decreaseMonth} />}
                 rightChild={<Button text={">"} onClick={increaseMonth} />}
             />
-            <MemoList selectedMonth={selectedMonth} />
+            <MemoList memoData={filteredData} selectedMonth={selectedMonth} />
         </S.Content>
     );
 };
