@@ -27,7 +27,7 @@ const MemoItem = ({ id, weatherId, content, date }) => {
                 </S.ContentWrapper>
             </S.InfoSection>
             <S.ButtonSection>
-                <S.Button onClick={goEdit} text="수정하기">수정하기</S.Button>
+                <S.Button onClick={goEdit}>수정하기</S.Button>
             </S.ButtonSection>
         </S.MemoItem>
     )

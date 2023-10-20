@@ -19,9 +19,9 @@ export const DirectionButton = styled.button`
     height: 50px;
     margin-right: 10px;
     line-height: 10px;
-    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
     border-radius: 10px;
     border: 5px solid #f0f0f0;
+    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
     color: ${props => props.active ? '#FFF' : '#000'};
     &:hover{
         background-color: #999fff;

@@ -14,16 +14,5 @@ export const Button = styled.button`
         color:#FFF;
         cursor: pointer;
     }
-    .Button_default{
-        background-color: #ececec;
-        color: black;
-    }
-    .Button_positive{
-        background-color: #64c964;
-        color: white;
-    }
-    .Button_negative{
-        background-color: #fd565f;
-        color: white;
-    }
+
 `

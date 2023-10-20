@@ -6,7 +6,7 @@ const WeatherItem = ({ id, img, name, onClick, isSelected }) => {
         onClick(id);
     }
     return(
-        <S.Weather onClick={handleOnClick} active={isSelected}>
+        <S.Weather onClick={handleOnClick} active={isSelected ? 'active' : ''}>
             {img}
             <S.WeatherText>{name}</S.WeatherText>
         </S.Weather>

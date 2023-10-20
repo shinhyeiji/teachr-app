@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MemoStateContext } from '../pages/Memo'
+import { MemoStateContext } from '../pages/Memo';
 
 const UseDiary = (id) => {
     const data = useContext(MemoStateContext);
@@ -14,10 +14,10 @@ const UseDiary = (id) => {
                 setDiary(matchDiary);
             } else {
                 alert("메모가 존재하지 않습니다.");
-                navigate("/memo", { replace: true});
+                navigate("/memo", { replace: true });
             }
         }
-    }, [id, data, navigate])
+    }, [id, data, navigate]);
 
     return diary;
 }

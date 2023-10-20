@@ -3,42 +3,49 @@ import { useState } from 'react';
 
 const MathAdd = () => {
     const [direction, setDirection] = useState('가로');
-    const directionTabList = [{category: '가로'}, {category: '세로'}]
+    const directionTabList = [{ category: '가로' }, { category: '세로' }];
     const [number1, setNumber1] = useState('');
     const [number2, setNumber2] = useState('');
     const [number3, setNumber3] = useState('');
     const [isAnswer, setIsAnswer] = useState(false);
 
-    const answer = parseInt(number1) + parseInt(number2);
-
     const handleAddNumber = () => {
-        const result = parseInt(number3) === answer ? 'O' : 'X';
+        const num1 = parseInt(number1, 10) || 0;
+        const num2 = parseInt(number2, 10) || 0;
+        const num3 = parseInt(number3, 10) || 0;
+        const answer = num1 + num2;
+
+        const result = num3 === answer ? 'O' : 'X';
         setIsAnswer(result);
-    }
+    };
+
     const handleReset = () => {
         setNumber1('');
         setNumber2('');
         setNumber3('');
-        setIsAnswer('')
-    }
+        setIsAnswer('');
+    };
+
     const handleRandomQuiz1 = () => {
-        setNumber1(Math.ceil(Math.random()*10));
-        setNumber2(Math.ceil(Math.random()*10));
-        setNumber3('')
-        setIsAnswer('')
-    }
+        setNumber1(Math.ceil(Math.random() * 10));
+        setNumber2(Math.ceil(Math.random() * 10));
+        setNumber3('');
+        setIsAnswer('');
+    };
+
     const handleRandomQuiz2 = () => {
-        setNumber1(Math.ceil(Math.random()*100));
-        setNumber2(Math.ceil(Math.random()*100));
-        setNumber3('')
-        setIsAnswer('')
-    }
+        setNumber1(Math.ceil(Math.random() * 100));
+        setNumber2(Math.ceil(Math.random() * 100));
+        setNumber3('');
+        setIsAnswer('');
+    };
+
     const handleRandomQuiz3 = () => {
-        setNumber1(Math.ceil(Math.random()*1000));
-        setNumber2(Math.ceil(Math.random()*1000));
-        setNumber3('')
-        setIsAnswer('')
-    }
+        setNumber1(Math.ceil(Math.random() * 1000));
+        setNumber2(Math.ceil(Math.random() * 1000));
+        setNumber3('');
+        setIsAnswer('');
+    };
     return(
         <S.MathAdd>
             <S.DirectionButtonWrapper>

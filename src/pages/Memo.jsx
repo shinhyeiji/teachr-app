@@ -117,18 +117,16 @@ const Memo = () => {
                 }}
             >
                 <S.Container>
-                    {
-                        !isDataLoaded 
-                        ? (<div>데이터를 불러오는 중입니다...</div>) 
-                        : (
-                            <Routes>
-                                <Route path="/memo" element={<Home />} />
-                                <Route path="/memo/new" element={<New />} />
-                                <Route path="/memo/diary/:id" element={<Diary />} />
-                                <Route path="/memo/edit/:id" element={<Edit />} />
-                            </Routes>
-                        )
-                    }
+                    {!isDataLoaded ? (
+                        <div>데이터를 불러오는 중입니다...</div>
+                    ) : (
+                        <Routes>
+                            <Route path="/memo" element={<Home />} />
+                            <Route path="/memo/new" element={<New />} />
+                            <Route path="/memo/diary/:id" element={<Diary />} />
+                            <Route path="/memo/edit/:id" element={<Edit />} />
+                        </Routes>
+                    )}
                 </S.Container>
             </MemoDispatchContext.Provider>
         </MemoStateContext.Provider>

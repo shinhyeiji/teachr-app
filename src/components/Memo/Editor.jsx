@@ -81,7 +81,7 @@ const Editor = ({id, date, content, weatherId, onSubmit}) => {
             </S.EditorDiary>
             <S.EditorSuccess>
                 <Button text={"취소하기"} onClick={handleOnGoBack} />
-                <Button text={"작성완료"} type={"positive"} onClick={handleSubmit} />
+                <Button text={"작성완료"} onClick={handleSubmit} />
             </S.EditorSuccess>
         </S.Editor>
     )

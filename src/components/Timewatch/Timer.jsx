@@ -62,7 +62,7 @@ const Timer = () => {
                 {sounds.map((sound, index) => (
                         <S.SoundButton
                             key={index} 
-                            active={selectedButtonIndex === index}
+                            active={selectedButtonIndex === index ? 'true' : 'false'} // 문자열로 변환하여 전달
                             onClick={() => handleBellSelect(index)}
                         >
                             {`벨 ${index + 1}`}

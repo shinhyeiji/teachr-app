@@ -1,4 +1,4 @@
-import * as S  from './components/Memo/style/util.style';
+import * as S  from './util.style';
 
 export const getWeatherImgById = (weatherId) => {
     const targetWeatherId = String(weatherId);

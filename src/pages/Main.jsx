@@ -41,7 +41,8 @@ const Main = () => {
     }
     useEffect(() => {
         setPageTitle("HappyDay :: Weather")
-    }, [])
+        console.log("Current Tab:", tab);
+    }, [tab])
     return (
         <S.Container>
             <S.AppContent>

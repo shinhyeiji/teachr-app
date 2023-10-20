@@ -1,14 +1,13 @@
 import * as S from './style/Button.style';
 
-const Button = ({text, type, onClick}) => {
-    const btnType = ["positive", "negative"].includes(type) ? type : "default";
+const Button = ({text, onClick}) => {
     return(
-            <S.Button 
-                className={["Button", `Button_${btnType}`].join(" ")} 
-                onClick={onClick}
-            >
-                {text}
-            </S.Button>
+        <S.Button 
+            text={text}
+            onClick={onClick}
+        >
+            {text}
+        </S.Button>
     )
 }
 

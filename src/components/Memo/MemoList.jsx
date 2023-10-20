@@ -46,7 +46,7 @@ const MemoList = ({ data, selectedMonth }) => {
                     <S.RightCol>
                         Memo List
                     </S.RightCol>
-                    <Button type={"positive"} text={"새 메모 작성"} onClick={onClickNew} />
+                    <Button text={"새 메모 작성"} onClick={onClickNew} />
                 </S.MenuHead>
                 <S.ListWrapper>
                 {sortedMemos.map((memo) => (

@@ -43,7 +43,7 @@ const Edit = () => {
                 <Header 
                     title={"일기 수정하기"}
                     leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
-                    rightChild={<Button type={"negative"} text={"삭제하기"} onClick={onClickDelete} />}
+                    rightChild={<Button text={"삭제하기"} onClick={onClickDelete} />}
                 />
                 <Editor id={id} date={date} weatherId={weatherId} content={content} onSubmit={onSubmit} />
             </S.Edit>

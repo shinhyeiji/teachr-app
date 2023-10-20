@@ -5,9 +5,10 @@ const TwentyGame = () => {
     const [counter, setCounter] = useState(20);
 
     const handleCount = (e) => {
+        e.preventDefault();
         setCounter(counter - 1);
     }
-    const handleReset = (e) => {
+    const handleReset = () => {
         setCounter(20);
     }
     return(
