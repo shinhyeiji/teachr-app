@@ -29,16 +29,17 @@ export const TabList = styled.button`
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    background-color: ${props => props.active ? '#999fff' : '#f0f0f0'};
-    color: ${props => props.active ? '#FFF' : '#000'};
+    background-color: #f0f0f0;
+    color: #000;
     &:hover{
         background-color: #999fff;
-        color:#FFF;
+        color: #FFF;
         cursor: pointer;
     }
-`
+`;
+
 export const Tab = styled.h1`
     font-size: 25px;
     display: flex;
     justify-content: flex-end;
-`
+`;

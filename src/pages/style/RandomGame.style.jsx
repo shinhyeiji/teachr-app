@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 1200px;
@@ -161,9 +161,9 @@ export const CardInner = styled.div`
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 0.6s ease;
     box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3); 
-    transform: rotateY(${props => (props.clicked ? '180deg' : '0deg')});
+    transform: ${props => (props.clicked ? 'rotateY(180deg)' : 'rotateY(0deg)')};
 `;
 export const Back = styled.div`
     width: 100%;
@@ -178,7 +178,7 @@ export const Back = styled.div`
     color: #000;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-image: url('/public/imgs/card5.jpg');
+    background-image: url('/imgs/card5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -191,15 +191,11 @@ export const Front = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    background-image: url('/imgs/card1.jpg');
     backface-visibility: hidden;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    ${(props) =>
-        props.imageUrl &&
-        css`
-            background-image: url(${props.imageUrl});
-        `}
 `;
 export const FrontText = styled.p`
     font-size: 50px;

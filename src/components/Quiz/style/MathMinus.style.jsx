@@ -22,8 +22,8 @@ export const DirectionButton = styled.button`
     line-height: 10px;
     border-radius: 10px;
     border: 5px solid #f0f0f0;
-    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
-    color: ${props => props.active ? '#FFF' : '#000'};
+    background-color: #f0f0f0;
+    color:  #000;
     &:hover{
         background-color: #999fff;
         color:#FFF;
@@ -142,7 +142,7 @@ export const ButtonWrapper = styled.div`
 `
 export const ConfirmButton = styled.button`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-    width: 80px;
+    width: 100px;
     height: 50px;
     margin-right: 10px;
     line-height: 10px;
@@ -151,6 +151,7 @@ export const ConfirmButton = styled.button`
     border: 5px solid #f0f0f0;
     color: #000;
     font-weight: 700;
+    font-size: 20px;
     &:hover{
         background-color: #999fff;
         color:#FFF;
@@ -159,7 +160,7 @@ export const ConfirmButton = styled.button`
 `
 export const ResetButton = styled.button`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-    width: 80px;
+    width: 100px;
     height: 50px;
     margin-right: 10px;
     line-height: 10px;
@@ -168,6 +169,7 @@ export const ResetButton = styled.button`
     border: 5px solid #f0f0f0;
     color: #000;
     font-weight: 700;
+    font-size: 20px;
     &:hover{
         background-color: #999fff;
         color:#FFF;

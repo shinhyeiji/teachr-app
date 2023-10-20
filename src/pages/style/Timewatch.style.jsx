@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   width: 1200px;
@@ -27,20 +27,21 @@ export const NavDiv = styled.div`
   justify-content: center;
 `
 export const Nav = styled.div`
-  width: 200px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
-  color: ${props => props.active ? '#FFF' : '#000'};
-  &:hover{
-      background-color: #999fff;
-      color:#FFF;
-      cursor: pointer;
-  }
-`
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: #f0f0f0;
+    color: #000;
+    &:hover {
+        background-color: #999fff;
+        color: #FFF;
+        cursor: pointer;
+    }
+
+`;
 export const NavTitle = styled.h3`
   font-size: 30px;
   text-align: center;

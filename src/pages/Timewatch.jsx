@@ -24,7 +24,6 @@ const Timewatch = () => {
                           <S.Nav
                             key={index}
                             onClick={() => setTab(item.category)}
-                            active={tab === item.category ? 'true' : 'false'} // 문자열로 변환하여 전달
                           >
                             <S.NavTitle>{item.category}</S.NavTitle>
                           </S.Nav>

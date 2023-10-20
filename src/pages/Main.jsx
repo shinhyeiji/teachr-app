@@ -41,7 +41,6 @@ const Main = () => {
     }
     useEffect(() => {
         setPageTitle("HappyDay :: Weather")
-        console.log("Current Tab:", tab);
     }, [tab])
     return (
         <S.Container>
@@ -58,7 +57,6 @@ const Main = () => {
                                         setTab(item.category);
                                         navigate(item.path);
                                     }}
-                                    active={tab === item.category ? 'active' : ''}
                                 >
                                     <S.NavTitle>{item.category}</S.NavTitle>
                                 </S.Nav>

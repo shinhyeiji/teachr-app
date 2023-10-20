@@ -54,7 +54,6 @@ const MathAdd = () => {
                         <S.DirectionButton
                             key={index}
                             onClick={() => setDirection(item.category)}
-                            active={direction === item.category ? 'active' : ''}
                         >
                             <S.Direction>{item.category}</S.Direction>
                         </S.DirectionButton>

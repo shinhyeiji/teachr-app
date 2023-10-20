@@ -45,7 +45,7 @@ const Home = () => {
                 leftChild={<Button text={"<"} onClick={decreaseMonth} />}
                 rightChild={<Button text={">"} onClick={increaseMonth} />}
             />
-            <MemoList data={filteredMemoData} selectedMonth={selectedMonth} />
+            <MemoList selectedMonth={selectedMonth} />
         </S.Content>
     );
 };

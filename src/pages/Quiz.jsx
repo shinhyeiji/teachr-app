@@ -25,7 +25,6 @@ const Quiz = () => {
                         <S.TabList
                             key={index}
                             onClick={() => setQuizTab(item.category)}
-                            active={quizTab === item.category ? 'true' : 'false'}
                         >
                             <S.Tab>{item.category}</S.Tab>
                         </S.TabList>

@@ -63,7 +63,6 @@ const WeatherComponent = () => {
                 icon: data.weather[0].icon,
                 loading: false,
             });
-            console.log(data)
         } catch (error) {
             console.log(error);
         }

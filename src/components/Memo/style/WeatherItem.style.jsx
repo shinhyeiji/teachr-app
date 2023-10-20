@@ -6,7 +6,7 @@ export const Weather = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: ${props => props.active ? '5px solid lightblue' : '5px solid transparent'};
+    border:  ${({ active }) => active ? '5px solid lightblue' : '5px solid transparent'};
     cursor: pointer;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     font-weight: 700;

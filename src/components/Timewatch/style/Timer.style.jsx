@@ -6,14 +6,15 @@ export const TimerWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`
+`;
 
 export const TimerTitle = styled.h2`
     width: 100%;
     margin-left: 130px;
     font-size: 50px;
     text-align: center;
-`
+`;
+
 export const TimerContent = styled.div`
     width: 100%;
     display: flex;
@@ -21,13 +22,15 @@ export const TimerContent = styled.div`
     justify-content: center;
     height: 0;
     gap: 200px;
-`
+`;
+
 export const SoundWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
     margin-top: 100px;
-`
+`;
+
 export const SoundButton = styled.button`
     width: 80px;
     height: 100px;
@@ -35,31 +38,35 @@ export const SoundButton = styled.button`
     border-radius: 10px;
     font-size: 25px;
     text-align: center;
-    background-color:  ${props => props.active ? '#999fff' : '#f0f0f0'};
-    color: ${props => props.active ? '#FFF' : '#000'};
-    &:hover{
+    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
+    background-color: #f0f0f0;
+    color: #000;
+    &:hover {
         background-color: #999fff;
-        color:#FFF;
+        color: #FFF;
         cursor: pointer;
     }
-    font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-`
+`;
+
 export const HandleWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    alilgn-items: center;
+    align-items: center;
     height: 700px;
-`
+`;
+
 export const CurrentTime = styled.div`
     height: 400px;
     margin-bottom: 20px;
     font-size: 400px;
     color: #f66;
-`
+`;
+
 export const TimerOption = styled.div`
     height: 200px;
-`
+`;
+
 export const TimerInput = styled.input`
     height: 50px;
     margin-bottom: 10px;
@@ -68,9 +75,10 @@ export const TimerInput = styled.input`
     font-size: 30px;
     text-align: center;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-`
-export const ButtonDiv = styled.div`
-`
+`;
+
+export const ButtonDiv = styled.div``;
+
 export const StartButton = styled.button`
     width: 80px;
     height: 80px;
@@ -81,7 +89,8 @@ export const StartButton = styled.button`
     text-align: center;
     background-color: #f0f0f0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-`
+`;
+
 export const StopButton = styled.button`
     width: 80px;
     height: 80px;
@@ -92,7 +101,8 @@ export const StopButton = styled.button`
     text-align: center;
     background-color: #f0f0f0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-`
+`;
+
 export const ResetButton = styled.button`
     width: 80px;
     height: 80px;
@@ -103,4 +113,4 @@ export const ResetButton = styled.button`
     text-align: center;
     background-color: #f0f0f0;
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
-`
+`;

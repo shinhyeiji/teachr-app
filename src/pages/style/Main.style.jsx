@@ -21,16 +21,18 @@ export const NavDiv = styled.div`
 export const Nav = styled.div`
     width: 200px;
     height: 100px;
-    background-color: ${props => props.active ? '#999fff' : '#f0f0f0'};
     border: 1px solid #fff;
     border-radius: 10px;
-    color: ${props => props.active ? '#fff' : '#000'};
+    background-color: #f0f0f0;
+    color: #000;
     &:hover{
-        background-color: #999fff;;
+        background-color: #999fff;
         color: #fff;
         cursor: pointer;
     }
-`
+`;
+
+
 export const StyledLink = styled(Link)`
     width: 162px;
     height: 100px;
@@ -43,9 +45,9 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     color: #000;
     &:hover{
-        color:#FFF;
+        color: #fff;
     }
-`
+`;
 export const AppTitle = styled.h2`
     width: 100%;
     height: 70px;

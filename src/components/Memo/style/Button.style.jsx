@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -14,5 +14,9 @@ export const Button = styled.button`
         color:#FFF;
         cursor: pointer;
     }
-
 `
+const ForwardedButton = styled(({ text, ...props }) => <Button {...props}>{text}</Button>)`
+    shouldForwardProp: prop => !['text'].includes(prop),
+`;
+
+export { ForwardedButton as Button };

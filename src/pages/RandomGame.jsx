@@ -54,11 +54,18 @@ const RandomGame = () => {
             }
         }
     
-        for (let i = selectedCards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [selectedCards[i], selectedCards[j]] = [selectedCards[j], selectedCards[i]];
-        }
-        setSelectedCards(selectedCards);
+        // 배열을 섞는 함수
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        };
+    
+        // selectedCards 배열을 섞어 shuffledCards 변수에 할당
+        const shuffledCards = shuffleArray(selectedCards);
+        setSelectedCards(shuffledCards);
     };
     const handleCardClick = (index) => {
         const updatedClickedCards = [...clickedCards];
@@ -66,11 +73,6 @@ const RandomGame = () => {
         setClickedCards(updatedClickedCards);
     };
 
-    const cardImages = ['/public/imgs/card1.jpg', '/public/imgs/card2.jpg', '/public/imgs/card3.jpg', '/public/imgs/card4.jpg']
-    const getRandomCardImage = () => {
-        const randomIndex = Math.floor(Math.random() * cardImages.length);
-        return cardImages[randomIndex];
-    }
     useEffect(() => {
         setPageTitle("HappyDay :: Random Game")
     }, [])
@@ -164,11 +166,11 @@ const RandomGame = () => {
                         {selectedCards.map((card, index) => (
                             <S.Card key={index}>
                                 <S.CardInner
-                                    clicked={clickedCards[index]} // 해당 카드의 클릭 상태를 전달
-                                    onClick={() => handleCardClick(index)} // 클릭 이벤트 핸들러를 전달
+                                    clicked={clickedCards[index] ? 'true' : ''}
+                                    onClick={() => handleCardClick(index)}
                                 >
                                     <S.Back>{card}</S.Back>
-                                    <S.Front imageUrl={getRandomCardImage()}>
+                                    <S.Front>
                                         <S.FrontText>{index + 1}</S.FrontText>
                                     </S.Front>
                                 </S.CardInner>

@@ -9,7 +9,7 @@ const sortOptionList = [
     {value: "latest", name: "최신순"},
     {value: "oldest", name: "오래된 순"},
 ]
-const MemoList = ({ data, selectedMonth }) => {
+const MemoList = ({ selectedMonth }) => {
     const navigate = useNavigate();
     const [sortType, setSortType] = useState("latest");
     const dataByMonth = useContext(MemoStateContext);
