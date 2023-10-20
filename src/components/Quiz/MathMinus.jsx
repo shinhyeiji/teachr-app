@@ -9,8 +9,6 @@ const MathMinus = () => {
     const [number3, setNumber3] = useState('');
     const [isAnswer, setIsAnswer] = useState(false);
 
-    const answer = parseInt(number1) - parseInt(number2);
-
     const handleAddNumber = () => {
         const num1 = parseInt(number1) || 0;
         const num2 = parseInt(number2) || 0;
