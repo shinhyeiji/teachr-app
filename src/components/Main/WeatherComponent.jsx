@@ -84,7 +84,7 @@ const WeatherComponent = () => {
     }
     fetchWeather();
     pollute();
-  }, [latitude, longitude]); 
+  }, [latitude, longitude]);
 
     const air = () => {
         if(pollute.aqi === 1){
