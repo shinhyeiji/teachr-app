@@ -8,7 +8,7 @@ const RandomGame = () => {
     const [kinds, setKinds] = useState(2);
     const [kindNames, setKindNames] = useState([]);
     const [amounts, setAmounts] = useState([]);
-    const [showTable, setShowTable] = useState(true);
+    const [showTable, setShowTable] = useState(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [clickedCards, setClickedCards] = useState([])
 
