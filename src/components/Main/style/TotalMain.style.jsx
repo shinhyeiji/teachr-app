@@ -3,10 +3,7 @@ import styled from 'styled-components';
 export const TotalMain = styled.div`
     width: 1200px;
     height: 700px;
-    background-image: url('/imgs/weatherbackground.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
     display: flex;
     flex-direction: column;
     justift-content: center;
@@ -24,11 +21,15 @@ export const Date = styled.div`
     align-items: flex-end;
     margin-top: 20px;
     margin-bottom: 80px;
+    background-image: url('/imgs/weatherbackground.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 `
 export const DateTitle = styled.h2`
     width: 23%;
     font-size: 100px;
-    color: #a3a3a3;
+    color: #fff;
     margin: 30px 0 0 30px;
 `
 export const DateContent = styled.div`
