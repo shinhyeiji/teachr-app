@@ -38,7 +38,7 @@ export const DateContent = styled.div`
 
 `
 export const CurrentDate = styled.span`
-    width:  68%;
+    width: 68%;
     font-size: 50px;
     font-weight: 700;
 `
@@ -79,14 +79,14 @@ export const DivContent1 = styled.div`
 `
 export const DivContent2 = styled.div`
     width: 90%;
-    height: 100%;
+    min-height: 500px;
     border: 5px solid #a1d3d2;
     border-radius: 10px;
     font-size: 40px;
 `
 export const DivContent3 = styled.div`
     width: 90%;
-    height: 100%;
+    min-height: 500px;
     border: 5px solid #ffceec;
     border-radius: 10px;
     font-size: 40px;
