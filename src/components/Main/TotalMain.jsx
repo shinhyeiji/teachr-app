@@ -33,14 +33,14 @@ const TotalMain = () => {
 
     return (
         <S.TotalMain>
-            <S.Date>
+            <S.Title>
                 <S.DateTitle>오늘은</S.DateTitle>
                 <S.DateContent>
                     <S.CurrentDate>{currentTime.getFullYear()}년 {currentTime.getMonth() + 1}월 {currentTime.getDate()}일 {daysOfWeek[currentTime.getDay()]}요일</S.CurrentDate>
                     <br />
                     <S.CurrentTime>{currentTime.toLocaleTimeString()}</S.CurrentTime>
                 </S.DateContent>
-            </S.Date>
+            </S.Title>
             <S.Content>
                 <S.Div>
                     <S.DivTitle1 src="/imgs/mainlabel1.png" />

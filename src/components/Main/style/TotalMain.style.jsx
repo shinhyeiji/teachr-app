@@ -2,25 +2,22 @@ import styled from 'styled-components';
 
 export const TotalMain = styled.div`
     width: 1200px;
-    height: 700px;
-
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justift-content: center;
+    justify-content:flex-start;
     align-items: center;
-    padding: 50px 0;
     border-radius: 10px;
-    gap: 30px;
 `
-export const Date = styled.div`
+export const Title = styled.div`
     width: 100%;
-    height: 90px;
     display: flex;
     flex-direction: row;
     justift-content: space-around;
     align-items: flex-end;
-    margin-top: 20px;
-    margin-bottom: 80px;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
     background-image: url('/imgs/weatherbackground.png');
     background-size: cover;
     background-position: center;
@@ -28,25 +25,25 @@ export const Date = styled.div`
 `
 export const DateTitle = styled.h2`
     width: 23%;
-    font-size: 100px;
+    font-size: 90px;
     color: #fff;
-    margin: 30px 0 0 30px;
+    margin: 10px 0 0 50px;
 `
 export const DateContent = styled.div`
     width: 77%;
     text-align: right;
-    margin: 40px 40px 0 0;
+    margin-right: 40px;
     display: flex;
     align-items: flex-end;
 
 `
 export const CurrentDate = styled.span`
     width:  68%;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
 `
 export const CurrentTime = styled.span`
-    width:  32%;
+    width: 32%;
     font-size: 50px;
     font-weight: 700;
     color:  gray;
@@ -54,7 +51,7 @@ export const CurrentTime = styled.span`
 export const Content = styled.div`
     width: 1200px;
     height: 810px;
-    padding: 20px 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,7 +72,7 @@ export const DivTitle3 = styled.img`
 `
 export const DivContent1 = styled.div`
     width: 90%;
-    height: 100%;
+    min-height: 500px;
     border: 5px solid #ffde59;
     border-radius: 10px;
     font-size: 40px;
