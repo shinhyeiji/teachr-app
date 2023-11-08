@@ -37,7 +37,7 @@ export const PlayInput = styled.textarea`
 export const AddButton = styled.button`
     font-family: 'Gamja Flower', 'Hi Melody', 'Jua', cursive;
     width: 100px;
-    height: 52px;
+    height: 50px;
     font-size: 25px;
     text-align: center;
     border: none;

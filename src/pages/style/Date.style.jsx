@@ -22,7 +22,7 @@ export const Title = styled.h1`
 `
 export const Des = styled.h1`
     font-size: 20px;
-    color: #a0a0a0;
+    color: #999fff;
 `
 export const Content = styled.div`
     width: 1200px;

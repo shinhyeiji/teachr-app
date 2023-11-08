@@ -1,14 +1,11 @@
-import * as S from './style/TodoEditorComponent.style';
+import * as S from './style/PromiseEditorComponent.style.jsx';
 import { useRef, useState } from 'react';
 
-const TodoEditorComponent = ({ onCreate }) => {
+const PromiseEditorComponent = ({ onCreate }) => {
     const [ content, setContent ] = useState('');
     const [ time, setTime ] = useState('');
     const inputRef = useRef();
 
-    const onChangeTime = (e) => {
-        setTime(e.target.value)
-    }
     const onChangeContent = (e) =>{
         setContent(e.target.value)
     }
@@ -28,23 +25,17 @@ const TodoEditorComponent = ({ onCreate }) => {
     }
     return(
         <S.EditorWrapper>
-            <S.AddTodo>
-                <S.AddTimeInput
-                    ref={inputRef}
-                    value={time}
-                    onChange={onChangeTime}
-                    placeholder="실행시간"
-                />
-                <S.AddTodoInput
+            <S.AddPromise>
+                <S.AddPromiseInput
                     ref={inputRef}
                     value={content}
                     onChange={onChangeContent}
                     onKeyDown={onKeyDown}
-                    placeholder="오늘 해야 할 일을 추가하세요."
+                    placeholder="오늘의 약속을 추가하세요."
                 />
-                <S.AddTodoButton onClick={onSubmit}>추가</S.AddTodoButton>
-            </S.AddTodo>
+                <S.AddPromiseButton onClick={onSubmit}>추가</S.AddPromiseButton>
+            </S.AddPromise>
         </S.EditorWrapper>
     )
 }
-export default TodoEditorComponent;
+export default PromiseEditorComponent;

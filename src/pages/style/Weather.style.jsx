@@ -23,7 +23,7 @@ export const Title = styled.h1`
 export const WeatherSite = styled.h1`
     text-decoration: none;
     font-size: 20px;
-    color: #a0a0a0;
+    color: #999fff;
     font-weight: 700;
 `
 export const Content = styled.div`

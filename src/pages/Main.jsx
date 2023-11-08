@@ -11,6 +11,7 @@ import Weather from './Weather';
 import ChildTeacher from './ChildTeacher';
 import Quiz from './Quiz';
 import Memo from './Memo';
+import PromiseComponent from './PromiseComponent.jsx';
 import WeatherComponent from '../components/Main/WeatherComponent';
 import { setPageTitle } from '../util';
 
@@ -20,11 +21,12 @@ const Main = () => {
     const tabList = [
         {category: '오늘 할 일', path: '/todo'}, 
         {category: '하루 메모장', path: '/memo'},
+        {category: '꼬마선생님', path: '/childteacher'}, 
         {category: '오늘의 날짜', path: '/date'},
         {category: '오늘의 날씨', path: '/weather'},
         {category: '하루일과', path: '/today'}, 
-        {category: '꼬마선생님', path: '/childteacher'}, 
-        {category: '활동', path: '/active'}, 
+        {category: '오늘의 약속', path: '/promise'}, 
+        {category: '알림장', path: '/active'}, 
         {category: '알람', path: '/clock'}, 
         {category: '랜덤뽑기', path: '/card'}, 
         {category: 'QUIZ', path: '/quiz'}
@@ -38,17 +40,18 @@ const Main = () => {
     const tabComponent = {
         '오늘 할 일': <TodoList />,
         '하루 메모장': <Memo />,
+        '꼬마선생님': <ChildTeacher />,
         '오늘의 날짜': <Date />,
         '오늘의 날씨': <Weather />,
         '하루일과': <TodayPlay />,
-        '꼬마선생님': <ChildTeacher />,
-        '활동': <Play />,
+        '오늘의 약속': <PromiseComponent />,
+        '알림장': <Play />,
         '알람': <Timewatch />,
         '랜덤뽑기': <RandomGame />,
         'QUIZ': <Quiz />,
     }
     useEffect(() => {
-        setPageTitle("HappyDay :: Weather")
+        setPageTitle("HappyDay :: Main")
     }, [tab])
     return (
         <S.Container>
