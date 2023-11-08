@@ -4,7 +4,7 @@ import PromiseItemComponent from './PromiseItemComponent.jsx'
 const PromiseListComponent = ({ promise, onUpdate, onDelete }) => {
     return(
         <S.PromiseList>
-            <S.ListTitle>바른생활 어린이가 되자^--^</S.ListTitle>
+            <S.ListTitle>우리는 바른생활 어린이♥</S.ListTitle>
             <S.ListWrapper>
                 {promise.map((it)=>(
                 <PromiseItemComponent 

@@ -9,9 +9,11 @@ export const PromiseItem = styled.div`
     font-size: 80px;
     text-align: left;
     gap: 20px;
-    border-top: 5px dotted #f0f0f0;
+    border-bottom: 5px dotted #f0f0f0;
 `
 export const CheckboxDiv = styled.div`
+    display: flex;
+    align-items: center;
 `
 export const Checkbox = styled.input`
     width: 50px;
@@ -19,10 +21,11 @@ export const Checkbox = styled.input`
 `;
 export const Content = styled.div`
     width: 1000px;
-    text-align: left;
+    text-align: center;
 `
 export const ButtonDiv = styled.div`
-
+    display: flex;
+    align-items: center;
 `
 export const Button = styled.button`
     width: 100px;

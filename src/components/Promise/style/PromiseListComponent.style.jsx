@@ -6,8 +6,14 @@ export const PromiseList = styled.div`
     flex-direction: column;
     align-items: flex-end;
 `
-export const ListTitle = styled.h4`
+export const ListTitle = styled.p`
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
     font-size: 20px;
+    background-color: #999fff; 
+    text-align: right;
+    color: #fff;
 `
 export const ListWrapper = styled.div`
     display: flex;

@@ -71,7 +71,6 @@ const TodayPlay = () => {
         setCurrentSlide((prevSlide) => (prevSlide === totalSlides - 1 ? 0 : prevSlide + 1));
     }
 
-
     return(
         <S.Container>
             <S.HeadWrapper>

@@ -26,19 +26,19 @@ const Weather = () => {
     }, []);
 
     const weathers = {
-        '맑음': '/public/imgs/weather1.png',
-        '흐림': '/public/imgs/weather2.png',
-        '비': '/public/imgs/weather3.png',
-        '바람': '/public/imgs/weather4.png',
-        '눈': '/public/imgs/weather5.png'
+        '맑음': '/imgs/weather1.png',
+        '흐림': '/imgs/weather2.png',
+        '비': '/imgs/weather3.png',
+        '바람': '/imgs/weather4.png',
+        '눈': '/imgs/weather5.png'
     };
 
     const pollutions = {
-        '아주 좋음': '/public/imgs/greate.png',
-        '좋음': '/public/imgs/good.png',
-        '보통': '/public/imgs/normal.png',
-        '나쁨': '/public/imgs/bad.png',
-        '아주 나쁨': '/public/imgs/mask.png'
+        '아주 좋음': '/imgs/greate.png',
+        '좋음': '/imgs/good.png',
+        '보통': '/imgs/normal.png',
+        '나쁨': '/imgs/bad.png',
+        '아주 나쁨': '/imgs/mask.png'
     };
 
     const handleWeatherClick = (weather) => {

@@ -12,7 +12,7 @@ import ChildTeacher from './ChildTeacher';
 import Quiz from './Quiz';
 import Memo from './Memo';
 import PromiseComponent from './PromiseComponent.jsx';
-import WeatherComponent from '../components/Main/WeatherComponent';
+import TotalMain from '../components/Main/TotalMain';
 import { setPageTitle } from '../util';
 
 const Main = () => {
@@ -78,7 +78,7 @@ const Main = () => {
                     <S.MainContent>
                         {tab === ''
                             ? <S.MainWrapper>
-                                <WeatherComponent />
+                                <TotalMain />
                             </S.MainWrapper>
                             : tabComponent[tab]
                         }

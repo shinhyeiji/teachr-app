@@ -1,5 +1,5 @@
 import * as S from './style/PromiseComponent.style.jsx';
-import { useState,  useRef } from 'react';
+import { useState, useRef } from 'react';
 import PromiseEditorComponent from '../components/Promise/PromiseEditorComponent.jsx';
 import PromiseListComponent from '../components/Promise/PromiseListComponent.jsx';
 
@@ -42,7 +42,6 @@ const PromiseComponent = () => {
     const onDelete = (targetId) => {
         setPromise(promise.filter((it) => it.id !== targetId));
     };
-
     return (
         <S.Container>
             <S.HeadWrapper>
