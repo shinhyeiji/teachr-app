@@ -18,7 +18,7 @@ export const Title = styled.div`
     border-radius: 10px;
     padding-bottom: 15px;
     margin-bottom: 40px;
-    background-image: url('/imgs/weatherbackground.png');
+    background-image: url('public/imgs/weatherbackground.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

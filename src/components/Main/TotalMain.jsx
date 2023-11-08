@@ -43,7 +43,7 @@ const TotalMain = () => {
             </S.Title>
             <S.Content>
                 <S.Div>
-                    <S.DivTitle1 src="/imgs/mainlabel1.png" />
+                    <S.DivTitle1 src="public/imgs/mainlabel1.png" />
                     <S.DivContent1>
                         {storedNames.length > 0 && storedNames.map((name, index) => (
                             <p key={index}>{name}</p>
@@ -51,7 +51,7 @@ const TotalMain = () => {
                     </S.DivContent1>
                 </S.Div>
                 <S.Div>
-                <S.DivTitle2 src="/imgs/mainlabel2.png" />
+                <S.DivTitle2 src="public/imgs/mainlabel2.png" />
                     <S.DivContent2>
                         {promiseData.length > 0 && promiseData.map((promise, index) => (
                             <p key={index}>{promise.content}</p>
@@ -59,7 +59,7 @@ const TotalMain = () => {
                     </S.DivContent2>
                 </S.Div>
                 <S.Div>
-                <S.DivTitle3 src="/imgs/mainlabel3.png" />
+                <S.DivTitle3 src="public/imgs/mainlabel3.png" />
                     <S.DivContent3>
                         {todayPlay.length > 0 && todayPlay.map((activity, index) => (
                             <p key={index}>{activity.text}</p>
