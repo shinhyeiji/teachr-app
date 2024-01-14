@@ -80,21 +80,23 @@ const TodayPlay = () => {
                     <S.AddButton onClick={handleAddPlay}>추가</S.AddButton>
                 </S.AddPlay>
             </S.HeadWrapper>
-            <S.PlayWrapper>
-                {todayPlay.map((item, index) => (
-                    <S.Play key={index} color={item.color}>
-                        <S.PlayText>{item.text}</S.PlayText>
-                        <S.DeleteButton onClick={() => handleDeletePlay(index)}>X</S.DeleteButton>
-                    </S.Play>
-                ))}
-            </S.PlayWrapper>
-            <S.Content>
-                <S.LeftButton onClick={handlePrevSlide}>◀</S.LeftButton>
-                <S.TodayPlayWrapper>
-                    <S.TodayPlay>{todayPlay[currentSlide]?.text}</S.TodayPlay>
-                </S.TodayPlayWrapper>
-                <S.RightButton onClick={handleNextSlide}>▶</S.RightButton>
-            </S.Content>
+            <S.ContentWrapper>
+                <S.Content>
+                    <S.LeftButton onClick={handlePrevSlide}>◀</S.LeftButton>
+                    <S.TodayPlayWrapper>
+                        <S.TodayPlay>{todayPlay[currentSlide]?.text}</S.TodayPlay>
+                    </S.TodayPlayWrapper>
+                    <S.RightButton onClick={handleNextSlide}>▶</S.RightButton>
+                </S.Content>
+                <S.PlayWrapper>
+                    {todayPlay.map((item, index) => (
+                        <S.Play key={index} color={item.color}>
+                            <S.PlayText>{item.text}</S.PlayText>
+                            <S.DeleteButton onClick={() => handleDeletePlay(index)}>X</S.DeleteButton>
+                        </S.Play>
+                    ))}
+                </S.PlayWrapper>
+            </S.ContentWrapper>
         </S.Container>
     )
 }

@@ -178,7 +178,7 @@ export const Back = styled.div`
     color: #000;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    background-image: url('/imgs/card5.jpg');
+    background-image: url('/imgs/card5.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -191,7 +191,8 @@ export const Front = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-image: url('/imgs/card1.jpg');
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3); 
+    background-image: url('/imgs/card1.png');
     backface-visibility: hidden;
     background-size: cover;
     background-position: center;

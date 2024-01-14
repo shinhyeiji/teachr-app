@@ -30,6 +30,7 @@ export const Content = styled.div`
     padding: 20px 0;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 `
 export const Card1 = styled.div`
     display: flex;
@@ -39,7 +40,9 @@ export const Card1 = styled.div`
     justify-content: left;
     align-items: center;
     color: #fff;
+    border-radius: 30px;
     background: ${props => props.clicked ? 'lightblue' :'0%'};
+    background-image: url('/imgs/check.png');
     transition: background 1s ease;
 `
 export const Card2 = styled.div`
@@ -50,7 +53,9 @@ export const Card2 = styled.div`
     justify-content: left;
     align-items: center;
     color: #fff;
+    border-radius: 30px;
     background: ${props => props.clicked ? 'skyblue' :'0%'};
+    background-image: url('/imgs/check.png');
     transition: background 1s ease;
 `
 export const Card3 = styled.div`
@@ -61,7 +66,9 @@ export const Card3 = styled.div`
     justify-content: left;
     align-items: center;
     color: #fff;
+    border-radius: 30px;
     background: ${props => props.clicked ? '#00BFFF' :'0%'};
+    background-image: url('/imgs/check.png');
     transition: background 1s ease;
 `
 export const Left = styled.p`

@@ -15,7 +15,7 @@ const Play = () => {
     return(
         <S.Container>
             <S.HeadWrapper>
-                <S.Title>활동명</S.Title>
+                <S.Title>알림장</S.Title>
             </S.HeadWrapper>
             <S.Content>
                 <S.Date>

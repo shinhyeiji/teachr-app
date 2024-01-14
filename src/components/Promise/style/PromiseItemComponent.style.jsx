@@ -11,16 +11,21 @@ export const PromiseItem = styled.div`
     gap: 20px;
     border-bottom: 5px dotted #f0f0f0;
 `
+export const Stamp = styled.img`
+    display: flex;
+    align-items: center;
+    width: 150px;
+`
 export const CheckboxDiv = styled.div`
     display: flex;
     align-items: center;
 `
 export const Checkbox = styled.input`
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
 `;
 export const Content = styled.div`
-    width: 1000px;
+    width: 930px;
     text-align: center;
 `
 export const ButtonDiv = styled.div`
@@ -28,8 +33,8 @@ export const ButtonDiv = styled.div`
     align-items: center;
 `
 export const Button = styled.button`
-    width: 100px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     border-radius: 10px;
     border: none;

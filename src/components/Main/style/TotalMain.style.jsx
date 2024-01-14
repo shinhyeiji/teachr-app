@@ -50,7 +50,7 @@ export const CurrentTime = styled.span`
 `
 export const Content = styled.div`
     width: 1200px;
-    height: 810px;
+    height: 100%;
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -58,7 +58,7 @@ export const Content = styled.div`
 `
 export const Div = styled.div`
     width: 33%;
-    height: 100%;
+    height: 200%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -90,4 +90,22 @@ export const DivContent3 = styled.div`
     border: 5px solid #ffceec;
     border-radius: 10px;
     font-size: 40px;
+`
+export const Made = styled.div`
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+export const Notice = styled.p`
+    bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 0 10px;
+`
+export const MadeBy = styled.p`
+    width: 100px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
 `

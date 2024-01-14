@@ -67,6 +67,10 @@ const TotalMain = () => {
                     </S.DivContent3>
                 </S.Div>
             </S.Content>
+            <S.Made>
+                <S.MadeBy>made by Shin</S.MadeBy>
+                <S.Notice>📌 캐시 삭제 시 저장된 내용이 모두 사라지니 주의하세요.</S.Notice>
+            </S.Made>
         </S.TotalMain>
     );
 };

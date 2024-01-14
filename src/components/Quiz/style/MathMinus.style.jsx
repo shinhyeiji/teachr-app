@@ -49,18 +49,31 @@ export const Number1 = styled.input`
     height: 130px;
     font-size: 100px;
     text-align: center;
+    z-index:999;
+    border: none;
+    border-radius: 10px;
+    background-color: lightpink;
 `
 export const Number2 = styled.input`
     width: 300px;
     height: 130px;
     font-size: 100px;
     text-align: center;
+    z-index:999;
+    border: none;
+    border-radius: 10px;
+    background-color: lightblue;
 `
 export const Number3 = styled.input`
     width: 300px;
     height: 130px;
     font-size: 100px;
     text-align: center;
+    z-index:999;
+    border: none;
+    border-radius: 10px;
+    background-color: #999fff;
+    color: white;
 `
 export const HeightWrapper = styled.div`
     display: flex;
@@ -79,18 +92,28 @@ export const Number4 = styled.input`
     height: 130px;
     font-size: 100px;
     text-align: right;
+    border: none;
+    border-radius: 10px;
+    background-color: lightpink;
 `
 export const Number5 = styled.input`
     width: 300px;
     height: 130px;
     font-size: 100px;
     text-align: right;
+    border: none;
+    border-radius: 10px;
+    background-color: lightblue;
 `
 export const Number6 = styled.input`
     width: 300px;
     height: 130px;
     font-size: 100px;
     text-align: right;
+    border: none;
+    border-radius: 10px;
+    background-color: #999fff;
+    color: white;
 `
 export const Wrapper = styled.div`
     display: flex;

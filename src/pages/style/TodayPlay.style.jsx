@@ -44,34 +44,43 @@ export const AddButton = styled.button`
     background-color: #999fff;
     color: #fff;
 `;
-export const PlayWrapper = styled.div`
+export const ContentWrapper = styled.div`
     width: 100%;
-    height: 70px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #f0f0f0;
+`
+export const PlayWrapper = styled.div`
+    width: 10%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 `
 export const Play = styled.div`
-    height: 70px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
     padding: 5px;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 700;
+    color: gray;
 `
 export const PlayText = styled.p`
     margin-right: 10px;
 `
 export const DeleteButton = styled.button`
     border: none;
-    font-size: 25px;
+    border-radius: 20%;
+    font-size: 15px;
+    color: white;
 `
 export const Content = styled.div`
-    width: 100%;
-    height: 550px;
+    width: 90%;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,17 +89,21 @@ export const Content = styled.div`
 export const LeftButton = styled.button`
     width: 50px;
     height: 50px;
-    margin: 20px;
+    margin: 10px;
+    border: 3px solid lightgray;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 25px;
+    color: lightgray;
     background-color: #fff;
 `
 export const RightButton = styled.button`
     width: 50px;
     height: 50px;
-    margin: 20px;
+    margin: 10px;
+    border: 3px solid lightgray;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 25px;
+    color: lightgray;
     background-color: #fff;
 `
 const getRandomColor = () => {
@@ -119,6 +132,6 @@ export const TodayPlayWrapper = styled.div`
 `
 export const TodayPlay = styled.p`
     font-size: 250px;
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     white-space: pre-wrap;
 `
